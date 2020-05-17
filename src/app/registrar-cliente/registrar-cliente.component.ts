@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from '../cliente.service';
+import { Router } from '@angular/router';
+import { Cliente } from '../model/cliente';
 
 @Component({
   selector: 'app-registrar-cliente',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registrar-cliente.component.css']
 })
 export class RegistrarClienteComponent implements OnInit {
-  
-  constructor() { }
+
+  cliente: Cliente = new Cliente();
+  constructor(private clienteService: ClienteService, private router:Router) { }
 
   ngOnInit(): void {
+  }
+  
+  save(){
+    this.clienteService.registrarCliente(this.cliente).subscribe(data => this.router.navigate([""]));
   }
 
 }

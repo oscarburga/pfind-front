@@ -1,25 +1,54 @@
 <h3>Registra tu Bodega</h3>
 <div>
-    <form (ngSubmit)="save()">
+    <form (ngSubmit)="save()" #registrarForm="ngForm">
         <div class="form-group">
             <label for="jefe"></label>
-            <input type="text" placeholder="Administrador de Bodega" class="form-control" id= "jefe" [(ngModel)]="bodega.jefe" name="jefe">
+            <input type="text" placeholder="Administrador de Bodega" class="form-control" id= "jefe" [(ngModel)]="bodega.jefe" name="jefe" required #jefe="ngModel">
+            <div class="alert alert-danger" *ngIf="jefe.invalid && (jefe.dirty || jefe.touched)">
+                <div *ngIf = "jefe.errors.required">
+                    Nombre del Administrador es requerido
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="nombre"></label>
-            <input type="text" placeholder="Nombre de la Bodega" class="form-control" id="nombre" [(ngModel)]="bodega.nombre" name="nombre">
+            <input type="text" placeholder="Nombre de la Bodega" class="form-control" id="nombre" [(ngModel)]="bodega.nombre" name="nombre"
+            required #nombre="ngModel">
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf = "nombre.errors.required">
+                    Nombre del Administrador es requerido
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="email"></label>
-            <input type="text" placeholder="Email" class="form-control" id="email" [(ngModel)] = "bodega.email" name="email">
+            <input type="email" placeholder="Email" class="form-control" id="email" [(ngModel)] = "bodega.email" name="email"
+            required #email="ngModel">
+            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf = "email.errors.required">
+                    Email es requerido
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="password"></label>
-            <input type="password" placeholder="Contraseña" class="form-control" id="password" [(ngModel)] = "bodega.password" name="password">
+            <input type="password" placeholder="Contraseña" class="form-control" id="password" [(ngModel)] = "bodega.password" name="password"
+            required #password="ngModel">
+            <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf = "email.errors.required">
+                    La Contraseña es requerida
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="direccion"></label>
-            <input type="text" placeholder="Dirección" class="form-control" id="direccion" [(ngModel)] = "bodega.direccion" name="direccion">
+            <input type="text" placeholder="Dirección" class="form-control" id="direccion" [(ngModel)] = "bodega.direccion" name="direccion"
+            required #direccion="ngModel">
+            <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                <div *ngIf = "direccion.errors.required">
+                    La Dirección es requerida
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="agencia_bancaria"></label>
@@ -32,6 +61,12 @@
         <div class="form-group">
             <label for="ruc"></label>
             <input type="text" placeholder="R.U.C" class="form-control" id="ruc" [(ngModel)] = "bodega.ruc" name="ruc">
+        </div>
+        <div class="form-group">
+            <li *ngFor="let c of cat">    
+                <input type="checkbox"  id="cat_{{c.codigo}}">  
+                <label for="categoria">{{c.nombre}}</label>
+            </li>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success">Registrar</button>

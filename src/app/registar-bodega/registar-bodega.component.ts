@@ -3,9 +3,8 @@ import { BodegaService } from '../bodega.service';
 import { Router } from '@angular/router';
 import { Bodega } from '../model/bodega';
 import { Categoria } from '../model/categoria';
-import { ThrowStmt } from '@angular/compiler';
 import { Observable } from 'rxjs';
-import { ok } from 'assert';
+
 
 @Component({
   selector: 'app-registar-bodega',
@@ -14,8 +13,8 @@ import { ok } from 'assert';
 })
 export class RegistarBodegaComponent implements OnInit {
 
-  bodega: Bodega
-  categoria: Categoria[]
+  bodega = new Bodega()
+  cat: Observable<Categoria[]>
 
   constructor(private bodegaService:BodegaService, private router:Router) { }
 
@@ -30,7 +29,8 @@ export class RegistarBodegaComponent implements OnInit {
   }
 
   getCategoria(){
-    return this.bodegaService.obtenerCategoria().subscribe(
+    this.bodegaService.obtenerCategoria().subscribe(
+      data => this.cat = data
     );
   }
 

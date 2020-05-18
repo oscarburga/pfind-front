@@ -10,13 +10,21 @@ import { ProductoService } from '../producto.service';
 })
 export class BuscarProductoComponent implements OnInit {
 
-  productos: Observable<Producto[]>;
+  productos: Producto[];
   nombre : String = "";
+  categoria: number = 0;
   constructor(private productoService : ProductoService ) { }
 
   ngOnInit(): void {
   }
+  buscar(){
+    if (this.categoria != 0) this.buscarPorCategoria();
+    else this.buscarPorNombre();
+  }
   buscarPorNombre(){
     this.productoService.listarProductos(this.nombre).subscribe(productos => this.productos = productos);
+  }
+  buscarPorCategoria(){
+    this.productoService.buscarPorCategoria(this.categoria).subscribe(productos => this.productos = productos);
   }
 }

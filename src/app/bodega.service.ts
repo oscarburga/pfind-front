@@ -26,7 +26,6 @@ export class BodegaService {
   }
 
   registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{
-
     return this.http.post(this.urlBase + "/producto/" + bid.toString() + "/" + pid.toString() + "/" + precio.toString(), {headers: this.httpHeaders});
   }
 }

@@ -13,8 +13,12 @@ export class ProductoService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private http: HttpClient) { }
 
-  listarProductos(nombre: String) : Observable<any>{
+  listarProductos(nombre: String) : Observable<Producto[]>{
     return this.http.get(this.urlBase+"/listar/"+nombre).pipe(map(response => response as Producto[]));
+  }
+
+  buscarPorCategoria(cid: number) : Observable<Producto[]>{
+    return this.http.get(this.urlBase+ "/buscarCtg/" + cid.toString()).pipe(map(response => response as Producto[]))
   }
 
   obtenerProducto(id: number): Observable<Object>{

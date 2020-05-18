@@ -11,12 +11,14 @@ import { Cliente } from '../model/cliente';
 export class RegistrarClienteComponent implements OnInit {
 
   cliente: Cliente = new Cliente();
+
   constructor(private clienteService: ClienteService, private router:Router) { }
 
   ngOnInit(): void {
   }
   
   save(){
+    this.cliente.distrito = "Rimac";
     this.clienteService.registrarCliente(this.cliente).subscribe(data => this.router.navigate([""]));
   }
 

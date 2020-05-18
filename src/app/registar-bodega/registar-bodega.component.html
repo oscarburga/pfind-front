@@ -1,0 +1,46 @@
+<h3>Registra tu Bodega</h3>
+<div>
+    <form (ngSubmit)="save()">
+        <div class="form-group">
+            <label for="jefe"></label>
+            <input type="text" placeholder="Administrador de Bodega" class="form-control" id= "jefe" [(ngModel)]="bodega.jefe" name="jefe">
+        </div>
+        <div class="form-group">
+            <label for="nombre"></label>
+            <input type="text" placeholder="Nombre de la Bodega" class="form-control" id="nombre" [(ngModel)]="bodega.nombre" name="nombre">
+        </div>
+        <div class="form-group">
+            <label for="email"></label>
+            <input type="text" placeholder="Email" class="form-control" id="email" [(ngModel)] = "bodega.email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="password"></label>
+            <input type="text" placeholder="Contraseña" class="form-control" id="password" [(ngModel)] = "bodega.password" name="password">
+        </div>
+        <div class="form-group">
+            <label for="direccion"></label>
+            <input type="text" placeholder="Dirección" class="form-control" id="direccion" [(ngModel)] = "bodega.direccion" name="direccion">
+        </div>
+        <div class="form-group">
+            <label for="agencia_bancaria"></label>
+            <input type="text" placeholder="Agencia Bancaria" class="form-control" id="agenteBanca" [(ngModel)] = "bodega.agencia_bancaria" name="agencia_bancaria">
+        </div>
+        <div class="form-group">
+            <label for="aforo"></label>
+            <input type="text" placeholder="Aforo" class="form-control" id="aforo" [(ngModel)] = "bodega.aforo" name="aforo">
+        </div>
+        <div class="form-group">
+            <label for="ruc"></label>
+            <input type="text" placeholder="R.U.C" class="form-control" id="ruc" [(ngModel)] = "bodega.ruc" name="ruc ">
+        </div>
+        <div class="form-group">
+            <label for="categorias">Categorías de Productos</label>     
+            <label *ngFor="let c of categoria">
+                <label for="">{{c.categoria}}</label>
+            </label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Registrar</button>
+        </div> 
+    </form>
+</div>

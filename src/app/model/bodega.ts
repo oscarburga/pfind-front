@@ -7,8 +7,11 @@ export class Bodega extends Usuario{
     codigo: number;
     ruc: string;
     nombre: string;
+    jefe: string;
+    password: string;
     direccion: string;
     aforo: number;
+    email : string;
     agencia_bancaria: String;
     bodega_categoria: BodegaCategoria[];
     productos: BodegaProducto[];

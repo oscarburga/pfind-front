@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { RegistarBodegaComponent } from './registar-bodega/registar-bodega.component';
+import { BuscarProductoComponent } from './buscar-producto/buscar-producto.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RegistarBodegaComponent } from './registar-bodega/registar-bodega.compo
     LoginUsuarioComponent,
     RegistrarUsuarioComponent,
     RegistarBodegaComponent,
+    BuscarProductoComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { RegistrarClienteComponent } from './registrar-cliente/registrar-cliente
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { RegistarBodegaComponent } from './registar-bodega/registar-bodega.component';
+import { BuscarProductoComponent } from './buscar-producto/buscar-producto.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path: 'registrarUsuario', component:RegistrarUsuarioComponent},
   {path: 'loginUsuario', component:LoginUsuarioComponent},
   {path: 'registrarCliente', component:RegistrarClienteComponent},
-  {path: 'regitrarBodega', component:RegistarBodegaComponent}
+  {path: 'regitrarBodega', component:RegistarBodegaComponent},
+  {path: 'buscarProducto', component:BuscarProductoComponent}
 ];
 
 @NgModule({

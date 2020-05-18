@@ -1,0 +1,27 @@
+<div class="card border-dark mb-3">
+    <div class="card-header">Productos</div>
+    <div class="card-body text-dark">
+        <h5 class ="card-title">Listado de Productos</h5>
+    </div>
+    <div>
+        <label for="lblNombre">Nombre</label>
+        <input type="text" class="form-control" id="lblNombre" name="lblNombre" [(ngModel)]="nombre">
+        <button (click) = "buscarPorNombre()">Enviar</button>
+    </div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of productos">
+                <th>{{p.codigo}}</th>
+                <th>{{p.nombre}}</th>
+                <th>{{p.categoria}}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>

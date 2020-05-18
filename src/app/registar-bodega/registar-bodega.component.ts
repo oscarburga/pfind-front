@@ -24,7 +24,6 @@ export class RegistarBodegaComponent implements OnInit {
   }
 
   save(){
-    this.bodega.modalidad = "Bodega"
     this.bodegaService.registrarBodega(this.bodega).subscribe(
       data => this.router.navigate([""])
     );

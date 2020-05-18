@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Producto } from './model/producto';
+import { BodegaProducto } from './model/bodega-producto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,12 @@ export class ProductoService {
     return this.http.get(this.urlBase+"/listar/"+nombre).pipe(map(response => response as Producto[]));
   }
 
-  registrarProducto(p: Producto) : Observable<Object>{
-    return this.http.post(this.urlBase+"/registrar", p, { headers: this.httpHeaders});
+  obtenerProducto(id: number): Observable<Object>{
+    return this.http.get(this.urlBase+"/buscar/"+ id.toString()).pipe(map(response => response as Producto))
   }
+
+  registrarProducto(p: Producto, cid: number) : Observable<Object>{
+    return this.http.post(this.urlBase+"/registrar/" + cid.toString(), p, { headers: this.httpHeaders});
+  }
+
 }

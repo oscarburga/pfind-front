@@ -10,6 +10,10 @@
                     Nombre es requerido
                 </div>
             </div>
+            <div class="form-group">
+                <label for="cid">Categoria ID</label>
+                <input type="text" class = "form-control" id="cid" [(ngModel)]="cid" name="cid" required #edad="ngModel">
+            </div>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success" [disabled]="registrarForm.form.invalid">Registrar</button>    

@@ -10,13 +10,14 @@ import { Producto } from '../model/producto';
 export class RegistrarProductoComponent implements OnInit {
 
   producto : Producto = new Producto();
+  cid: number = 1;
   constructor(private productoService : ProductoService) { }
 
   ngOnInit(): void {
   }
 
   save(){
-    this.productoService.registrarProducto(this.producto).subscribe(data => console.log(data));
+    this.productoService.registrarProducto(this.producto, this.cid).subscribe(data => console.log(data));
   }
 
 }

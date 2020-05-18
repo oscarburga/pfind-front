@@ -11,6 +11,7 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
 import { RegistarBodegaComponent } from './registar-bodega/registar-bodega.component';
 import { BuscarProductoComponent } from './buscar-producto/buscar-producto.component';
 import { RegistrarProductoComponent } from './registrar-producto/registrar-producto.component';
+import { RegistrarBodegaProductoComponent } from './registrar-bodega-producto/registrar-bodega-producto.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RegistrarProductoComponent } from './registrar-producto/registrar-produ
     RegistarBodegaComponent,
     BuscarProductoComponent,
     RegistrarProductoComponent,
+    RegistrarBodegaProductoComponent
   ],
   imports: [
     BrowserModule,

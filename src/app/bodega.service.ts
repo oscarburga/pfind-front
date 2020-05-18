@@ -4,6 +4,7 @@ import { Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Bodega } from './model/bodega';
 import { Categoria } from './model/categoria';
+import { BodegaProducto } from './model/bodega-producto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,10 @@ export class BodegaService {
     return this.http.get("http://localhost:8080/categoria/obtener").pipe(
       map(response => response as Categoria[])
     )
+  }
+
+  registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{
+
+    return this.http.post(this.urlBase + "/producto/" + bid.toString() + "/" + pid.toString() + "/" + precio.toString(), {headers: this.httpHeaders});
   }
 }

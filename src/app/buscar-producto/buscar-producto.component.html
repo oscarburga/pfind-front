@@ -6,8 +6,6 @@
     <div>
         <label for="lblNombre">Nombre</label>
         <input type="text" class="form-control" id="lblNombre" name="lblNombre" [(ngModel)]="nombre">
-        <label for="lblCtg">Categoria</label>
-        <input type="number" class="form-control" id="lblCtg" name="lblCtg" [(ngModel)]="categoria">
         <button (click) = "buscar()">Enviar</button>
     </div>
     <table class="table table-dark">
@@ -22,7 +20,7 @@
             <tr *ngFor="let p of productos">
                 <th>{{p.codigo}}</th>
                 <th>{{p.nombre}}</th>
-                <th>{{p.categoria.codigo}}</th>
+                <th>{{p.categoria.nombre}}</th>
             </tr>
         </tbody>
     </table>

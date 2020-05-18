@@ -17,7 +17,8 @@ const routes: Routes = [
   {path: 'registrarBodega', component:RegistarBodegaComponent},
   {path: 'buscarProducto', component:BuscarProductoComponent},
   {path: 'registrarProducto', component:RegistrarProductoComponent},
-  {path: 'registrarBP', component:RegistrarBodegaProductoComponent}
+  {path: 'registrarBP', component:RegistrarBodegaProductoComponent},
+  {path: 'buscarProducto/:cid', component:BuscarProductoComponent}
 ];
 
 @NgModule({

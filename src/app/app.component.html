@@ -1,15 +1,10 @@
-<div>
+<nav>
+    <img src="{{imagen}}" alt="logo" class="logo">
     <div class="box">
         <div class="container-4">
-          <input type="search" id="search" placeholder="Search..." />
-          <button class="icon"><i class="fa fa-search"></i></button>
+            <input type="search" id="search" placeholder="Search..." />
+            <button class="icon"><i class="fa fa-search"></i></button>
         </div>
-        <div class="menu">
-            <a routerLink="registrarUsuario" class="btn btn-light" style="float:right">Registrar</a>
-            <a routerLink="loginUsuario" class="btn btn-light" style="float:right">Login</a>
-        </div>
-    </div>
-    <nav>
         <ul>
             <li><a href="">Limpieza</a></li>
             <li><a href="">Cuidado Personal</a></li>
@@ -18,11 +13,13 @@
             <li><a href="">Embutidos</a></li>
             <li><a href="">Mascotas</a></li>
             <li><a href="">Bebidas</a></li>
-
         </ul>
-        
-    </nav>
-    <a routerLink="registrarProducto" class="btn btn-primary active">Registrar Productos</a>
-        <a routerLink="buscarProducto" class="btn btn-primary active">Buscar Productos</a>
-</div>
+    </div>
+    <div class="menu">
+        <a routerLink="registrarUsuario" class="btn btn-light">Registrar</a>
+        <a routerLink="loginUsuario" class="btn btn-light" >Login</a>
+    </div>
+    <!--<a routerLink="registrarProducto" class="btn btn-primary active">Registrar Productos</a>
+    <a routerLink="buscarProducto" class="btn btn-primary active">Buscar Productos</a>-->
+</nav>
 <router-outlet></router-outlet>

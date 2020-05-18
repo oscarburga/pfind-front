@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Pfind';
+  imagen = 'https://cdn.discordapp.com/attachments/476130359545823233/712005957915508862/music-and-multimedia.png'
 }
 

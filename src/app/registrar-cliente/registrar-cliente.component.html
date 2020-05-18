@@ -25,6 +25,15 @@
             <input type="text" class = "form-control" id="edad" [(ngModel)]="cliente.edad" name="edad" required #edad="ngModel">
         </div>
         <div class="form-group">
+            <label for="distrito">Distrito</label>
+            <input type="text" class = "form-control" id="distrito" [(ngModel)]="cliente.distrito" name="distrito" required #distrito="ngModel">
+            <div class="alert alert-danger" *ngIf="distrito.invalid && (distrito.dirty || distrito.touched)">
+                <div *ngIf = "distrito.errors.required">
+                    Distrito es requerido
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
             <button type="submit" class="btn btn-success" [disabled]="registrarForm.form.invalid">Registrar</button>    
         </div>
     </form>

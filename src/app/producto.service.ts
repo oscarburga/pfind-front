@@ -15,4 +15,8 @@ export class ProductoService {
   listarProductos(nombre: String) : Observable<any>{
     return this.http.get(this.urlBase+"/listar/"+nombre).pipe(map(response => response as Producto[]));
   }
+
+  registrarProducto(p: Producto) : Observable<Object>{
+    return this.http.post(this.urlBase+"/registrar", p, { headers: this.httpHeaders});
+  }
 }

@@ -10,6 +10,7 @@ import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { RegistarBodegaComponent } from './registar-bodega/registar-bodega.component';
 import { BuscarProductoComponent } from './buscar-producto/buscar-producto.component';
+import { RegistrarProductoComponent } from './registrar-producto/registrar-producto.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BuscarProductoComponent } from './buscar-producto/buscar-producto.compo
     RegistrarUsuarioComponent,
     RegistarBodegaComponent,
     BuscarProductoComponent,
+    RegistrarProductoComponent,
   ],
   imports: [
     BrowserModule,

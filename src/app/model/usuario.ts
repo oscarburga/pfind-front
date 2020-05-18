@@ -1,5 +1,5 @@
 export class Usuario {
-    correo : String;
-    contraseña : String;
+    email: String;
+    password: String;
     modalidad : String;
 }

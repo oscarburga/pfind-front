@@ -15,27 +15,24 @@ import { ok } from 'assert';
 export class RegistarBodegaComponent implements OnInit {
 
   bodega: Bodega
-  ex: string
-  categoria: Observable<Categoria[]>
+  categoria: Categoria[]
 
   constructor(private bodegaService:BodegaService, private router:Router) { }
 
   ngOnInit(): void {
-    this.getCategoria()
+    this.getCategoria();
   }
 
   save(){
-    console.log(this.ex);
+    this.bodega.modalidad = "Bodega"
     this.bodegaService.registrarBodega(this.bodega).subscribe(
       data => this.router.navigate([""])
-    )
+    );
   }
 
   getCategoria(){
-    this.bodegaService.obtenerCategoria().subscribe(
-      cat => this.categoria = cat 
-    )
-    console.log(this.categoria)
+    return this.bodegaService.obtenerCategoria().subscribe(
+    );
   }
 
 }

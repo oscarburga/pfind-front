@@ -6,5 +6,4 @@ export class Categoria {
     nombre: String;
     bodega_categoria: BodegaCategoria[];
     producto: Producto[];
-    
 }

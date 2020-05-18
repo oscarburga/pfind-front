@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from '../model/producto';
 import { Observable } from 'rxjs';
 import { ProductoService } from '../producto.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-buscar-producto',
@@ -11,12 +12,16 @@ import { ProductoService } from '../producto.service';
 export class BuscarProductoComponent implements OnInit {
 
   productos: Observable<Producto[]>;
-  nombre : String = "";
-  constructor(private productoService : ProductoService ) { }
+  nombre: string
+  constructor(private productoService : ProductoService, private _Activatedroute:ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.buscarPorNombre();
   }
   buscarPorNombre(){
-    this.productoService.listarProductos(this.nombre).subscribe(productos => this.productos = productos);
+    this.nombre=this._Activatedroute.snapshot.paramMap.get("nombre");
+    this.productoService.listarProductos(this.nombre).subscribe(
+      data => this.productos = data
+    )
   }
 }

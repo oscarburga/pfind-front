@@ -7,15 +7,17 @@ import { RegistarBodegaComponent } from './registar-bodega/registar-bodega.compo
 import { BuscarProductoComponent } from './buscar-producto/buscar-producto.component';
 import { RegistrarProductoComponent } from './registrar-producto/registrar-producto.component';
 import { RegistrarBodegaProductoComponent } from './registrar-bodega-producto/registrar-bodega-producto.component';
+import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'customer', pathMatch: 'full'},
+  {path: 'inicio', component:PaginaInicioComponent},
   {path: 'registrarUsuario', component:RegistrarUsuarioComponent},
   {path: 'loginUsuario', component:LoginUsuarioComponent},
   {path: 'registrarCliente', component:RegistrarClienteComponent},
   {path: 'registrarBodega', component:RegistarBodegaComponent},
-  {path: 'buscarProducto', component:BuscarProductoComponent},
+  {path: 'buscarProducto/:nombre', component:BuscarProductoComponent},
   {path: 'registrarProducto', component:RegistrarProductoComponent},
   {path: 'registrarBP', component:RegistrarBodegaProductoComponent}
 ];

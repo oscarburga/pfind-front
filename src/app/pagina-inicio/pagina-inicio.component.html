@@ -1,0 +1,25 @@
+<nav>
+    <img src="{{imagen}}" alt="logo" class="logo">
+    <div class="box">
+        <div class="container-4">
+            <input type="search" id="search" placeholder="Search..." />
+            <button class="icon"><i class="fa fa-search"></i></button>
+        </div>
+        <ul>
+            <li><a href="">Limpieza</a></li>
+            <li><a href="">Cuidado Personal</a></li>
+            <li><a href="">Abarrotes</a></li>
+            <li><a href="">Frutas y Verduras</a></li>
+            <li><a href="">Embutidos</a></li>
+            <li><a href="">Mascotas</a></li>
+            <li><a href="">Bebidas</a></li>
+        </ul>
+    </div>
+    <div class="menu">
+        <a routerLink="registrarUsuario" class="btn btn-light">Registrar</a>
+        <a routerLink="loginUsuario" class="btn btn-light" >Login</a>
+    </div>
+    <a [routerLink]="['/buscarProducto', 'Yogurt']">Yogurt</a>
+    <!--<a routerLink="registrarProducto" class="btn btn-primary active">Registrar Productos</a>
+    <a routerLink="/buscarProducto/Leche%Gloria" class="btn btn-primary active">Buscar Productos</a>-->
+</nav>

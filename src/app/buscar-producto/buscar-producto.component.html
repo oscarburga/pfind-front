@@ -5,8 +5,8 @@
     </div>
     <div>
         <label for="lblNombre">Nombre</label>
-        <input type="text" class="form-control" id="lblNombre" name="lblNombre" [(ngModel)]="nombre" >
-        <button (click) = "buscarPorNombre()">Enviar</button>
+        <input type="text" class="form-control" id="lblNombre" name="lblNombre" [(ngModel)]="nombre">
+        <button (click) = "buscar()">Enviar</button>
     </div>
     <table class="table table-dark">
         <thead>
@@ -20,7 +20,7 @@
             <tr *ngFor="let p of productos">
                 <th>{{p.codigo}}</th>
                 <th>{{p.nombre}}</th>
-                <th>{{p.categoria.codigo}}</th>
+                <th>{{p.categoria.nombre}}</th>
             </tr>
         </tbody>
     </table>

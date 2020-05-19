@@ -15,27 +15,31 @@ import { Observable } from 'rxjs';
 export class BuscarProductoComponent implements OnInit {
 
   bodegaProducto: BodegaProducto[];
-  nombre : string = "";
-  categoria: number = 0;
+  param: string;
+  tipo:number;
 
   constructor(private bodegaService:BodegaService, private _Activatedroute: ActivatedRoute ) { }
 
 
   ngOnInit(): void {
-    this.nombre=this._Activatedroute.snapshot.paramMap.get("nombre");
-    this.buscarPorNombre();
+    this.param=this._Activatedroute.snapshot.paramMap.get("param");
+    this.tipo = Number(this._Activatedroute.snapshot.paramMap.get("tipo"));
+    this.buscar();
     console.log(this.bodegaProducto)
   }
   buscar(){
-    if (this.categoria != 0) this.buscarPorCategoria();
-    else this.buscarPorNombre();
+    if (this.tipo == 1) this.buscarPorNombre();
+    else this.buscarPorCategoria();
   }
   buscarPorNombre(){
-    this.bodegaService.obtenerBodegaProducto(this.nombre).subscribe(
+    this.bodegaService.obtenerBodegaProducto(this.param).subscribe(
       data => this.bodegaProducto = data
     );
   }
   buscarPorCategoria(){
-    this.bodegaService.buscarCategoria(this.categoria);
+    console.log("Pendejada")
+    this.bodegaService.buscarCategoria(Number(this.param)).subscribe(
+      data => this.bodegaProducto = data
+    );
   }
 }

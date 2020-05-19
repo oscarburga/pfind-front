@@ -41,4 +41,10 @@ export class BodegaService {
     )
   }
 
+  buscarCategoriaProducto(id:number, nombre:string) :Observable<any>{
+    return this.http.get(this.urlBase + "producto/buscarBPCtgNombre/" + id + "/" + nombre).pipe(
+      map(response => response as BodegaProducto[])
+    )
+  }
+
 }

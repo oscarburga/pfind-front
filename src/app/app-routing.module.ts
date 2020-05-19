@@ -17,10 +17,9 @@ const routes: Routes = [
   {path: 'loginUsuario', component:LoginUsuarioComponent},
   {path: 'registrarCliente', component:RegistrarClienteComponent},
   {path: 'registrarBodega', component:RegistarBodegaComponent},
-  {path: 'buscarProducto/:nombre', component:BuscarProductoComponent},
+  {path: 'buscarProducto/:tipo/:param', component:BuscarProductoComponent},
   {path: 'registrarProducto', component:RegistrarProductoComponent},
   {path: 'registrarBP', component:RegistrarBodegaProductoComponent},
-  {path: 'buscarProducto/:cid', component:BuscarProductoComponent}
 ];
 
 @NgModule({

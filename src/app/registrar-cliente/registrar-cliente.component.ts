@@ -19,7 +19,7 @@ export class RegistrarClienteComponent implements OnInit {
   
   save(){
     this.cliente.distrito = "Rimac";
-    this.clienteService.registrarCliente(this.cliente).subscribe(data => this.router.navigate([""]));
+    this.clienteService.registrarCliente(this.cliente).subscribe(data => this.router.navigate(["/inicio"]));
   }
 
 }

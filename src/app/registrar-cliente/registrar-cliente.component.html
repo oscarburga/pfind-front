@@ -20,6 +20,14 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class = "form-control" id="email" [(ngModel)]="cliente.email" name="email" required #apellido="ngModel">
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class = "form-control" id="password" [(ngModel)]="cliente.password" name="password" required #apellido="ngModel">
+        </div>
+        <div class="form-group">
             <label for="edad">Edad</label>
             <input type="text" class = "form-control" id="edad" [(ngModel)]="cliente.edad" name="edad" required #edad="ngModel">
         </div>

@@ -23,7 +23,7 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   }
   
   save(){
-    console.log(this.bodegaService.registrarBodegaProducto(this.bid, this.pid, this.precio));
+    this.bodegaService.registrarBodegaProducto(this.bid, this.pid, this.precio).subscribe(data=> console.log(data));
   }
 
 }

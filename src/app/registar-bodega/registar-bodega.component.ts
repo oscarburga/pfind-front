@@ -24,7 +24,7 @@ export class RegistarBodegaComponent implements OnInit {
 
   save(){
     this.bodegaService.registrarBodega(this.bodega).subscribe(
-      data => this.router.navigate([""])
+      data => this.router.navigate(["/inicio"])
     );
   }
 

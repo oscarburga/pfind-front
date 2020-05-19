@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pfind"
+    }
+  },
+  "defaultProject": "pfind",
+  "cli": {
+    "analytics": false
+  }
 }

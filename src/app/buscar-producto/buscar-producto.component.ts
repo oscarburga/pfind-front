@@ -24,7 +24,6 @@ export class BuscarProductoComponent implements OnInit {
 
   constructor(private bodegaService:BodegaService, private _Activatedroute: ActivatedRoute ) { }
 
-
   ngOnInit(): void {
     this.bodegaService.obtenerCategoria().subscribe(data => this.cat = data);
     this.param=this._Activatedroute.snapshot.paramMap.get("param");
@@ -38,12 +37,16 @@ export class BuscarProductoComponent implements OnInit {
       this.catg = Number(this.param);
       this.buscarPorCategoria();
     }
-      console.log(this.bodegaProducto)
   }
   buscarMixto(){
-    if (this.catg == 0) this.buscarPorNombre();
-    console.log("Buscando", this.catg, ", ", this.nombre)
-    this.bodegaService.buscarCategoriaProducto(this.catg, this.nombre).subscribe(data => this.bodegaProducto = data);
+    if (this.catg == 0) {
+      console.log("Buscando", this.catg, ", ", this.nombre);
+      this.buscarPorNombre();
+    }
+    else{
+      console.log("Buscando", this.catg, ", ", this.nombre);
+      this.bodegaService.buscarCategoriaProducto(this.catg, this.nombre).subscribe(data => this.bodegaProducto = data);
+    }
   }
   buscarPorNombre(){
     this.bodegaService.obtenerBodegaProducto(this.nombre).subscribe(

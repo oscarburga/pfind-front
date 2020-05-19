@@ -28,4 +28,17 @@ export class BodegaService {
   registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{
     return this.http.post(this.urlBase + "/producto/" + bid.toString() + "/" + pid.toString() + "/" + precio.toString(), {headers: this.httpHeaders});
   }
+
+  obtenerBodegaProducto(nombre: string) : Observable<any>{
+    return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre).pipe(
+      map(response => response as BodegaProducto[])
+    )
+  }
+
+  buscarCategoria(id:number) : Observable<any>{
+    return this.http.get(this.urlBase + "/producto/buscarBPCtg/" + id).pipe(
+      map(response => response as BodegaProducto[])
+    )
+  }
+
 }

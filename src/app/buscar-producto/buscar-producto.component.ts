@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from '../model/producto';
 import { ProductoService } from '../producto.service';
 import { ActivatedRoute } from '@angular/router';
+import { BodegaService } from '../bodega.service';
+import { BodegaProducto } from '../model/bodega-producto';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-buscar-producto',
@@ -10,29 +14,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BuscarProductoComponent implements OnInit {
 
-  productos: Producto[];
-  nombre : String = "";
+  bodegaProducto: BodegaProducto[];
+  nombre : string = "";
   categoria: number = 0;
-  constructor(private productoService : ProductoService, private _Activatedroute: ActivatedRoute ) { }
 
-  update(){
-    this.categoria = Number(this._Activatedroute.snapshot.paramMap.get("cid"));
-  }
+  constructor(private bodegaService:BodegaService, private _Activatedroute: ActivatedRoute ) { }
+
+
   ngOnInit(): void {
-    this.buscar();
+    this.nombre=this._Activatedroute.snapshot.paramMap.get("nombre");
+    this.buscarPorNombre();
+    console.log(this.bodegaProducto)
   }
   buscar(){
-    this.update();
     if (this.categoria != 0) this.buscarPorCategoria();
     else this.buscarPorNombre();
   }
   buscarPorNombre(){
-    this.nombre=this._Activatedroute.snapshot.paramMap.get("nombre");
-    this.productoService.listarProductos(this.nombre).subscribe(
-      data => this.productos = data
-    )
+    this.bodegaService.obtenerBodegaProducto(this.nombre).subscribe(
+      data => this.bodegaProducto = data
+    );
   }
   buscarPorCategoria(){
-    this.productoService.buscarPorCategoria(this.categoria).subscribe(productos => this.productos = productos);
+    this.bodegaService.buscarCategoria(this.categoria);
   }
 }

@@ -11,16 +11,16 @@
     <table class="table table-dark">
         <thead>
             <tr>
-                <th>Codigo</th>
-                <th>Nombre</th>
-                <th>Categoria</th>
+                <th>Bodega</th>
+                <th>Precio</th>
+                <th>Producto</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of productos">
-                <th>{{p.codigo}}</th>
-                <th>{{p.nombre}}</th>
-                <th>{{p.categoria.nombre}}</th>
+            <tr *ngFor="let p of bodegaProducto">
+                <th>{{p.bodega.nombre}}</th>
+                <th>{{p.precio}}</th>
+                <th>{{p.producto.nombre}}</th>
             </tr>
         </tbody>
     </table>

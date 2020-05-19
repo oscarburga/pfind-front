@@ -1,8 +1,12 @@
 <div class="card border-dark mb-3">
     <div class="card-header">Productos</div>
+    <div>
+        <input type="radio" [(ngModel)]="catg" value="0">
+        <label for="lblCat">Todas las categorías</label>
+    </div>
     <div *ngFor="let c of cat">
-        <label for="lblCat">{{c.nombre}}</label>
         <input type="radio" [(ngModel)]="catg" value="{{c.codigo}}">
+        <label for="lblCat">{{c.nombre}}</label>
     </div>
     <div class="card-body text-dark">
         <h5 class ="card-title">Listado de Productos</h5>

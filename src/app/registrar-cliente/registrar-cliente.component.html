@@ -1,47 +1,84 @@
-<h3>Registro de Cliente</h3>
-<div>
-    <form (ngSubmit) = "save()" #registrarForm="ngForm">
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class = "form-control" id="nombre" [(ngModel)]="cliente.nombre" name="nombre" required #nombre="ngModel">
-            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-                <div *ngIf = "nombre.errors.required">
-                    Nombre es requerido
+<div class="contenedor">
+    <div class="formulario-registro">
+        <form (ngSubmit)="save()" #registrarForm="ngForm">
+            <div class="row">
+                <div class="col">
+                    <div class="titulo">
+                        <h1>Únete</h1>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="apellido">Apellido</label>
-            <input type="text" class = "form-control" id="apellido" [(ngModel)]="cliente.apellido" name="apellido" required #apellido="ngModel">
-            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
-                <div *ngIf = "apellido.errors.required">
-                    Apellido es requerido
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" [(ngModel)]="cliente.nombre" name="nombre"
+                            required #nombre="ngModel">
+                        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                            <div *ngIf="nombre.errors.required">
+                                Nombre es requerido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" [(ngModel)]="cliente.apellido"
+                            name="apellido" required #apellido="ngModel">
+                        <div class="alert alert-danger"
+                            *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                            <div *ngIf="apellido.errors.required">
+                                Apellido es requerido
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class = "form-control" id="email" [(ngModel)]="cliente.email" name="email" required #apellido="ngModel">
-        </div>
-        <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input type="password" class = "form-control" id="password" [(ngModel)]="cliente.password" name="password" required #apellido="ngModel">
-        </div>
-        <div class="form-group">
-            <label for="edad">Edad</label>
-            <input type="text" class = "form-control" id="edad" [(ngModel)]="cliente.edad" name="edad" required #edad="ngModel">
-        </div>
-        <div class="form-group">
-            <label for="distrito">Distrito</label>
-            <input type="text" class = "form-control" id="distrito" [(ngModel)]="cliente.distrito" name="distrito" required #distrito="ngModel">
-            <div class="alert alert-danger" *ngIf="distrito.invalid && (distrito.dirty || distrito.touched)">
-                <div *ngIf = "distrito.errors.required">
-                    Distrito es requerido
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" [(ngModel)]="cliente.email" name="email"
+                            required #apellido="ngModel">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success" [disabled]="registrarForm.form.invalid">Registrar</button>    
-        </div>
-    </form>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" class="form-control" id="password" [(ngModel)]="cliente.password"
+                            name="password" required #apellido="ngModel">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="password">Confirmar Contraseña</label>
+                        <input type="password" class="form-control" id="password" [(ngModel)]="cliente.password"
+                            name="password" required #apellido="ngModel">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="edad">Edad</label>
+                        <input type="text" class="form-control" id="edad" [(ngModel)]="cliente.edad" name="edad"
+                            required #edad="ngModel">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="distrito">Distrito</label>
+                        <input type="text" class="form-control" id="distrito" [(ngModel)]="cliente.distrito"
+                            name="distrito">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-info" [disabled]="registrarForm.form.invalid">Registrar</button>
+            </div>
+        </form>
+    </div>
 </div>

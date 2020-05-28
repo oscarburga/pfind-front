@@ -1,0 +1,29 @@
+.criterios{
+    float: left;
+    margin-top: 4%;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: lightgrey;
+}
+
+.busubi{
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+.buttonubi{
+    margin-left: 10%;
+}
+
+.lblranprecios{
+    font-size: 18px;
+}
+
+.minimo{
+    size: 100px;
+    margin-right: 10px;
+}
+
+.maximo{
+    margin: 2px;
+}

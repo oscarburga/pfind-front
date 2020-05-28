@@ -1,0 +1,51 @@
+.contenedor{
+    padding-top: 7%;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 5%;
+}
+
+.formulario-bodega{
+    border-radius: 5%;
+    padding: 2% 2%;
+    background-color: #F8F9FA;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
+
+.titulo{
+    border-bottom: 1px black solid;
+    margin-bottom: 3%;
+}
+
+
+.seleccion{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    background-color: #F8F9FA;
+    border: 1px#CCCCCC solid;
+    margin: 0 0;
+}
+
+
+.seleccion:hover{
+    background-color: #D6F4FC;
+    border: none;
+}
+
+.seleccion:visited{
+    color: aqua;
+    border: none;
+}
+
+.titulo-categorias{
+    padding-top: 1%;
+    padding-bottom: 2%;
+}
+
+.titulo-categorias h3{
+    padding: 0 0;
+    margin: 0 0;
+}

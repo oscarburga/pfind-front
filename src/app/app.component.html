@@ -1,1 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="inicio" >
+    <img src="{{logoInicio}}" alt="inicio" loading="lazy"  style={{marginImg()}}>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"  *ngIf = "isRClienteRoute()">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="inicio">Inicio<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categorías  
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li *ngFor="let c of cat">
+                    <a class="dropdown-item" href="#">{{c.nombre}}</a>
+                </li>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Lista</a>
+          </li>
+      </ul>
+      <div class="box">
+        <div class="container-4">
+            <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscar()"/>
+            <button class="icon" routerLink="/buscarProducto/1/{{busqueda}}"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
+        <li><a routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span> Iniciar</a></li>
+      </ul>
+    </div>
+  </nav>
 <router-outlet></router-outlet>

@@ -13,7 +13,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li *ngFor="let c of cat">
-                    <a class="dropdown-item" href="#">{{c.nombre}}</a>
+                    <a class="dropdown-item" routerLink="/buscarProducto/2/{{c.codigo}}" href="#">{{c.nombre}}</a>
                 </li>
             </div>
           </li>

@@ -15,5 +15,7 @@ export class ClienteService {
   registrarCliente(cliente: Cliente): Observable<Object>{
     return this.http.post(this.urlBase+"/registrar", cliente, {headers: this.httpHeaders});
   }
+
+  
   
 }

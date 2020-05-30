@@ -5,9 +5,10 @@
 }
 
 .formulario-registro{
-    border-radius: 5%;
+    border-radius: 3%;
     padding: 2% 2%;
     background-color: #F8F9FA;
+    
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 }

@@ -15,6 +15,8 @@ export class BodegaService {
 
   constructor(private http: HttpClient) { }
 
+  BodegaProducto: any = [];
+  
   registrarBodega(bodega:Bodega){
     return this.http.post(this.urlBase + "/registrar", bodega, {headers: this.httpHeaders})
   }
@@ -24,15 +26,19 @@ export class BodegaService {
       map(response => response as Categoria[])
     )
   }
+  obtenerp(nombre: string){
+    return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre)
+  }
 
   registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{
     return this.http.post(this.urlBase + "/producto/registrar/" + bid.toString() + "/" + pid.toString() + "/" + precio.toString(), {headers: this.httpHeaders});
   }
 
-  obtenerBodegaProducto(nombre: string) : Observable<any>{
-    return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre).pipe(
+  obtenerBodegaProducto(nombre: string): Observable<any>{
+    return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre)
+    .pipe(
       map(response => response as BodegaProducto[])
-    )
+    );
   }
 
   buscarCategoria(id:number) : Observable<any>{

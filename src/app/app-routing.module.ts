@@ -8,6 +8,7 @@ import { BuscarProductoComponent } from './buscar-producto/buscar-producto.compo
 import { RegistrarProductoComponent } from './registrar-producto/registrar-producto.component';
 import { RegistrarBodegaProductoComponent } from './registrar-bodega-producto/registrar-bodega-producto.component';
 import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
+import { ListadoProductoComponent } from './listado-producto/listado-producto.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'buscarProducto/:tipo/:param', component:BuscarProductoComponent},
   {path: 'registrarProducto', component:RegistrarProductoComponent},
   {path: 'registrarBP', component:RegistrarBodegaProductoComponent},
+  {path: 'lista', component:ListadoProductoComponent},
 ];
 
 @NgModule({

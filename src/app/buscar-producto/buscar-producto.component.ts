@@ -21,6 +21,8 @@ export class BuscarProductoComponent implements OnInit {
   cat: Categoria[];
   nombre:string;
   catg:number = 0;
+  filmarca:string[];
+  filbodega:string[];
 
   constructor(private bodegaService:BodegaService, private _Activatedroute: ActivatedRoute ) { }
 
@@ -37,7 +39,10 @@ export class BuscarProductoComponent implements OnInit {
       this.catg = Number(this.param);
       this.buscarPorCategoria();
     }
+    
+    this.mostrarfiltros();
   }
+
   buscarMixto(){
     if (this.catg == 0) {
       console.log("Buscando", this.catg, ", ", this.nombre);
@@ -53,9 +58,23 @@ export class BuscarProductoComponent implements OnInit {
       data => this.bodegaProducto = data
     );
   }
+ 
   buscarPorCategoria(){
     this.bodegaService.buscarCategoria(Number(this.param)).subscribe(
       data => this.bodegaProducto = data
     );
+  }
+  mostrarfiltros(){
+    if(this.bodegaProducto.length != 0){
+      let filtros = [];
+      for(var i = 0;i < this.bodegaProducto.length ;i++ ){
+        if(!(filtros.includes(this.bodegaProducto[i].bodega.nombre))){
+          filtros.push(this.bodegaProducto[i].bodega.nombre);
+        }
+        /*if(!(filtros.includes(this.bodegaProducto[i].producto.))){
+          filtros.push(this.bodegaProducto[i].bodega.nombre);
+        }*/
+      }
+    }
   }
 }

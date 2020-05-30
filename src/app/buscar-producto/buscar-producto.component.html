@@ -1,35 +1,60 @@
-<body background="https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg">
-    <section class="criterios">
+<body>
+    <div class="contenido">
+        <section class="criterios">
+            <div class="ubicacion" role="search" style="width: 250px">
+                <input type="text" class="busubi" style="width: 210px; height: 30px" placeholder="  Introduce tu ubicación">
+                <div class="buttonubi">
+                    <button type="button" class="btn btn-primary btn-lg active" style="background-color:lightskyblue; border-color: lightskyblue; 
+                    width: 110px; height: 30px; font-size: x-small;font-weight: 900">Elige en el mapa</button>
+                    <button type="button" class="btn btn-default btn-lg active" style="background-color:rgb(112, 175, 214); border-color:rgb(112, 175, 214);
+                    width: 100px; height: 30px; color: white; font-size: x-small;font-weight: 900;">Mi ubicacion</button>
+                </div>
+            </div>
         
-        <section class="ubicacion" role="search">
-            <input type="text" class="busubi" style="width: 300px; height: 40px" placeholder="  Introduce tu ubicación">
-            <div class="buttonubi">
-                <button type="button" class="btn btn-primary btn-lg active">Elige en el mapa</button>
-                <button type="button" class="btn btn-default btn-lg active">Mi ubicacion</button>
+            <div class="precio">
+                <label class="lblranprecios" >Rango de Precios</label>
+                <div class="rangoprecios">
+                    <input type="number" class="minimo" style="width: 80px; height: 30px" placeholder="  Desde">
+                    <input type="number" class="maximo" style="width: 80px; height: 30px" placeholder="  Hasta">
+                </div>
+            </div>
+            <div class="marca">
+                <label class="lblranprecios">Marca</label>
+            </div>
+            <div class="bodega">
+                <label class="lblranprecios">Bodega</label>
+                <!--
+                <table class="bodegas">
+                    <thead>
+                        <tr>
+                            <th>Bodega</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of filbodega">
+                            <th>{{p}}</th>
+                        </tr>
+                    </tbody>
+                </table>-->
             </div>
         </section>
-    
-        <section class="precio">
-            <label class="lblranprecios">Rango de Precios</label>
-            <div class="rangoprecios">
-                <input type="number" class="minimo" style="width: 180px; height: 40px" placeholder="  Desde">
-                <input type="number" class="maximo" style="width: 180px; height: 40px" placeholder="  Hasta">
+        <section class="productos">    
+            <div class="row">
+                <div class="col">
+                    <div class="nosequehaces">
+                        <label class="f">Bodega</label>
+                    </div>
+                </div>
             </div>
         </section>
-        <section class="marca">
-            <label class="lblranprecios">Marca</label>
-        </section>
-        
-        <section class="bodega">
-            <label class="lblranprecios">Bodega</label>
-        </section>
-    </section>
-    
+    </div>
+
+
     <!--<div class="busqueda">
        
     </div>-->
-    <div class="contenido">
-        <!--<div class="card-header">Productos</div>
+    <!--<div class="co">
+        <div class="card-header">Productos</div>
         <div>
             <input type="radio" [(ngModel)]="catg" value="0">
             <label for="lblCat">Todas las categorías</label>
@@ -39,12 +64,12 @@
             <label for="lblCat">{{c.nombre}}</label>
         </div>
         <div class="card-body text-dark">
-            <h5 class ="card-title">Listado de Productos</h5>
-        </div>-->
-        <!--<section class="hola">
+            <h5 class="card-title">Listado de Productos</h5>
+        </div>
+        <section class="hola">
             <label for="lblNombre">Nombre</label>
             <input type="text" class="form-control" id="lblNombre" name="lblNombre" [(ngModel)]="nombre">
-        </section>-->
+        </section>
         <table class="productos">
             <thead>
                 <tr>
@@ -61,5 +86,20 @@
                 </tr>
             </tbody>
         </table>
-    </div>    
+        <div class="bodega">
+            <label class="lblranprecios">Bodega</label>
+            <table class="bodegas">
+                <thead>
+                    <tr>
+                        <th>Bodega</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of filbodega">
+                        <th>{{p}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>-->
 </body>

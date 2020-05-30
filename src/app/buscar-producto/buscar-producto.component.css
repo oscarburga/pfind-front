@@ -1,29 +1,58 @@
+.contenido{
+    padding-top: 5%;
+}
 .criterios{
     float: left;
-    margin-top: 4%;
     margin-left: 20px;
     padding: 10px;
-    background-color: lightgrey;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5%;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.3);
 }
 
 .busubi{
-    margin-left: 10%;
+    margin-left: 7%;
     margin-bottom: 5%;
+    margin-top: 5%;
+    border: 0;
+    border-radius: 5%;
 }
 
 .buttonubi{
-    margin-left: 10%;
+    margin-left: 7%;
 }
 
 .lblranprecios{
-    font-size: 18px;
+    font-size: 13px;
+    margin-top: 5%;
+    margin-left: 4%;
+    margin-bottom: 4%;
 }
 
 .minimo{
     size: 100px;
-    margin-right: 10px;
+    margin-right: 5%;
+    margin-left: 4%;
+    border: 0;
+    border-radius: 5%;
 }
 
 .maximo{
-    margin: 2px;
+    border: 0;
+    border-radius: 5%;
+}
+
+.marca{
+    
+}
+
+.bodega{
+    margin-top: 0%;
+}
+
+.nosequehaces{
+    background-color: red;
+    width: 30px;
+    height: 50px;
 }

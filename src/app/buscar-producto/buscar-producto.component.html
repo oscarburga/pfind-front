@@ -1,6 +1,6 @@
 <body>
     <div class="contenido">
-        <section class="criterios">
+        <div class="criterios">
             <div class="ubicacion" role="search" style="width: 250px">
                 <input type="text" class="busubi" style="width: 210px; height: 30px" placeholder="  Introduce tu ubicación">
                 <div class="buttonubi">
@@ -23,7 +23,7 @@
             </div>
             <div class="bodega">
                 <label class="lblranprecios">Bodega</label>
-                <!--
+                <!----
                 <table class="bodegas">
                     <thead>
                         <tr>
@@ -37,16 +37,37 @@
                     </tbody>
                 </table>-->
             </div>
-        </section>
-        <section class="productos">    
-            <div class="row">
-                <div class="col">
-                    <div class="nosequehaces">
-                        <label class="f">Bodega</label>
+        </div>
+        <div class="container">
+                <div class="row">
+                    <div *ngFor="let p of bodegaProducto; let j = index ">
+                            <div class="col">
+                                <div class="product">
+                                    <label class="pnombre">h</label>
+                                    <div class="corazon">
+                                        <label><input type="checkbox">
+                                            <div class="like-btn-svg"></div>
+                                        </label>
+                                    </div>
+                                    <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
+                                    <div class="row">
+                                        <label class="pmarca">{{p.producto.marca}}</label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="pbodega">{{p.bodega.nombre}}</label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="pprecio">S/. {{p.precio}}</label>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        
                     </div>
                 </div>
+            
+            
             </div>
-        </section>
     </div>
 
 

@@ -6,6 +6,7 @@ import { BodegaService } from '../bodega.service';
 import { BodegaProducto } from '../model/bodega-producto';
 import { Observable } from 'rxjs';
 import { Categoria } from '../model/categoria';
+import { Bodega } from '../model/bodega';
 
 
 @Component({
@@ -16,8 +17,11 @@ import { Categoria } from '../model/categoria';
 export class BuscarProductoComponent implements OnInit {
 
   bodegaProducto: BodegaProducto[];
+  x: number = 0;
+  counter= Array;
+  cantidad: number = Math.round(2.2);
   param: string;
-  tipo: number;
+  tipo: number; 
   cat: Categoria[];
   nombre:string;
   catg:number = 0;
@@ -40,7 +44,7 @@ export class BuscarProductoComponent implements OnInit {
       this.buscarPorCategoria();
     }
     
-    this.mostrarfiltros();
+    //this.mostrarfiltros();
   }
 
   buscarMixto(){
@@ -56,7 +60,10 @@ export class BuscarProductoComponent implements OnInit {
   buscarPorNombre(){
     this.bodegaService.obtenerBodegaProducto(this.nombre).subscribe(
       data => this.bodegaProducto = data
+      
     );
+
+    
   }
  
   buscarPorCategoria(){

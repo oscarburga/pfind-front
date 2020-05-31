@@ -43,16 +43,11 @@
                     <div *ngFor="let p of bodegaProducto; let j = index ">
                             <div class="col">
                                 <div class="product">
-                                    <label class="pnombre">h</label>
-                                    <div class="corazon">
-                                        <label><input type="checkbox">
-                                            <div class="like-btn-svg"></div>
-                                        </label>
-                                    </div>
+                                    <label class="pnombre">{{p.producto.nombre}}</label>
+                                    
+                                        
+    
                                     <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
-                                    <div class="row">
-                                        <label class="pmarca">{{p.producto.marca}}</label>
-                                    </div>
                                     <div class="row">
                                         <label class="pbodega">{{p.bodega.nombre}}</label>
                                     </div>

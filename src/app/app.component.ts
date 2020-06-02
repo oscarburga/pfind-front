@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BodegaService } from 'src/app/bodega.service';
 import { Categoria } from 'src/app/model/categoria';
 import { ProductoService } from 'src/app/producto.service';
 import { strict } from 'assert';
+import { partitionArray } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,7 @@ export class AppComponent {
     return this.isLogin;
   }
 
-  buscar():void{
+  buscar():void{ 
     this.router.navigate(["/buscarProducto/1/" + this.busqueda]);
   }
 

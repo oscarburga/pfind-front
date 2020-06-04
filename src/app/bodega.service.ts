@@ -26,6 +26,28 @@ export class BodegaService {
       map(response => response as Categoria[])
     )
   }
+
+  buscarBodegaProducto(id_categoria: number,
+                        nombre: string, marca: string,
+                        bodega: string, minimo: number,
+                        maximo: number) : Observable<any>{
+    let cat_id = "/cat_id=";
+    if (id_categoria != null && id_categoria != undefined) cat_id += id_categoria.toString();
+    let nom = "/nom=";
+    if (nombre != undefined && nombre != null) nom += nombre;
+    let marc = "/marc=";
+    if (marca != undefined && marca != null) marc+=marca;
+    let bod = "/bod=";
+    if (bodega != undefined && bodega != null) bod+=bodega;
+    let min = "/min=";
+    if (minimo != null && minimo != undefined) min+= minimo.toString();
+    let max = "/max=";
+    if (maximo != null && maximo != undefined) max+= maximo.toString();
+    let url_query = this.urlBase + "/producto/busqueda"+cat_id+nom+marc+bod+min+max;
+    console.log("REQUEST: ", url_query);
+    return this.http.get(url_query).pipe(map(response => response as BodegaProducto[]));
+  }
+
   obtenerp(nombre: string){
     return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre)
   }

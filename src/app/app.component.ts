@@ -38,7 +38,7 @@ export class AppComponent {
     return this.isLogin;
   }
 
-  buscar():void{ 
+  buscar():void{
     this.router.navigate(["/buscarProducto/1/" + this.busqueda]);
   }
 
@@ -47,7 +47,5 @@ export class AppComponent {
       data => this.cat = data
     )
   }
-
-
 }
 

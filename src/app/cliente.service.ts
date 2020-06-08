@@ -9,7 +9,7 @@ import { Listado } from './model/listado';
   providedIn: 'root'
 })
 export class ClienteService {
-  private urlBase = "http://localhost:8080/cliente";
+  private urlBase = "http://localhost:8762/cliente";
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   
 

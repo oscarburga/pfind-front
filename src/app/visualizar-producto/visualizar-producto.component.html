@@ -1,1 +1,20 @@
 <p>visualizar-producto works!</p>
+<div class="body">
+    <div class="col">
+        <div class="product">
+            <label class="pnombre">{{bp.producto.nombre}}</label>
+            <div>
+                <label class="pmarca">{{bp.producto.marca}}</label>
+            </div>
+            <div>
+                <img class="pimagen" src={{bp.producto.imagenprin}} alt="f">
+            </div>
+            <div class="row">
+                <label class="pbodega">Bodega: {{bp.bodega.nombre}}</label>
+            </div>
+            <div class="row">
+                <label class="pprecio">Precio S/.{{bp.precio}}</label>
+            </div>
+        </div>
+    </div>
+</div>

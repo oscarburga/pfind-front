@@ -7,5 +7,4 @@ export class BodegaProducto {
     precio: number;
     producto: Producto;
     bodega: Bodega;
-    listado: Listado;
 }

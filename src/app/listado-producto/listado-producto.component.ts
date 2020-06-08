@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto} from '../model/producto';
-import { Bodega} from '../model/bodega';
+import { BodegaProducto } from 'src/app/model/bodega-producto'
+import { ClienteService } from 'src/app/cliente.service'
 import { Observable } from 'rxjs';
-import { ProductoService } from 'src/app/producto.service';
+import { Listado } from 'src/app/model/listado'
+
 
 @Component({
   selector: 'app-listado-producto',
@@ -10,21 +12,25 @@ import { ProductoService } from 'src/app/producto.service';
   styleUrls: ['./listado-producto.component.css']
 })
 export class ListadoProductoComponent implements OnInit {
-  products: Observable<Producto>
-  bodegas: Observable<Bodega>
-  fDescription : String
-  price : number
-  image : string
-  direccion : string
-  constructor(private productoService: ProductoService) { }
+  costoTotal :any
+  lista_Productos :Observable<Listado[]>
+  array: Listado[]
+  constructor(private clienteService:ClienteService) { }
 
   ngOnInit(): void {
     this.reloadData();
+    this.loadPrecio()
+    console.log(this.costoTotal)
   }
 
   reloadData(){
     console.log("RELOAD!")
-    /*this.productoService.listadoCliente().subscribe(products => this.products = products);*/
-    /*this.productoService.listadoBodegas().subscribe(bodegas => this.bodegas = bodegas);*/
+    this.clienteService.enlistarProductos().subscribe(
+      data => this.lista_Productos = data
+    )
   }
+
+  loadPrecio(){
+    this.costoTotal = this.clienteService.obtenerPrecio()
+    }
 }

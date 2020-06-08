@@ -8,4 +8,5 @@ export class BodegaProducto {
     producto: Producto;
     bodega: Bodega;
     listado: Listado;
+    descripcion: string;
 }

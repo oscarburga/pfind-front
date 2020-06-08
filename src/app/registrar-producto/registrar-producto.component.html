@@ -1,6 +1,6 @@
 <p>registrar-producto works!</p>
 <h3>Registro de Producto</h3>
-<div>
+<div class = "contenido">
     <form (ngSubmit) = "save()" #registrarForm="ngForm">
         <div class="form-group">
             <label for="nombre">Nombre</label>
@@ -8,6 +8,20 @@
             <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                 <div *ngIf = "nombre.errors.required">
                     Nombre es requerido
+                </div>
+            </div>
+            <label for="marca">Marca</label>
+            <input type="text" class = "form-control" id="marca" [(ngModel)]="producto.marca" name="marca" required #marca="ngModel">
+            <div class="alert alert-danger" *ngIf="marca.invalid && (marca.dirty || marca.touched)">
+                <div *ngIf = "marca.errors.required">
+                    Marca es requerido
+                </div>
+            </div>
+            <label for="imagenprin">URL Imagen</label>
+            <input type="text" class = "form-control" id="imagenprin" [(ngModel)]="producto.imagenprin" name="imagenprin" required #imagenprin="ngModel">
+            <div class="alert alert-danger" *ngIf="imagenprin.invalid && (imagenprin.dirty || imagenprin.touched)">
+                <div *ngIf = "imagenprin.errors.required">
+                    URL de la imagen es requerido
                 </div>
             </div>
             <div class="form-group">

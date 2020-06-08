@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" routerLink="inicio" >
-    <img src="{{logoInicio}}" alt="inicio" loading="lazy"  style={{marginImg()}}>
+    <img src="{{logoInicio}}" alt="inicio" loading="lazy" style={{marginImg()}}>
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent"  *ngIf = "isRClienteRoute()">
       <ul class="navbar-nav mr-auto">
@@ -30,6 +30,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
         <li><a routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span> Iniciar</a></li>
+        <li><a routerLink="/actualizarBodega" class="login-buttoms">AB</a></li>
+        <li><a routerLink="/registrarBP" class="login-buttoms">RBP</a></li>
       </ul>
     </div>
   </nav>

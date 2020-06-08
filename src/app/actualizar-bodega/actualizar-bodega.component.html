@@ -1,0 +1,146 @@
+<div class="contenedor">
+    <div class="formulario-bodega">
+        <form (ngSubmit)="save()" #registrarForm="ngForm">
+            <div class="row">
+                <div class="col">
+                    <div class="titulo">
+                        <h1>Actualizar Información de Bodega</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <form (ngSubmit)="getBodega()" #buscarForm="ngForm">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="bodegaid">Id bodega</label>
+                            <input type="number" placeholder="Ingrese ID de la bodega" class="form-control" id="bodegaid"
+                                [(ngModel)]="bID" name="bodegaid" required #bodegaid="ngModel">
+                            <button type="submit" class="btn btn-info" [disabled]="buscarForm.form.invalid">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="jefe">Jefe de la bodega</label>
+                        <input type="text" placeholder="Jefe de la bodega" class="form-control" id="jefe"
+                            [(ngModel)]="bodega.jefe" name="jefe" required #jefe="ngModel">
+                        <div class="alert alert-danger" *ngIf="jefe.invalid && (jefe.dirty || jefe.touched)">
+                            <div *ngIf="jefe.errors.required">
+                                Nombre del Administrador es requerido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nombre">Nombre de la bodega</label>
+                        <input type="text" placeholder="Nombre de la bodega" class="form-control" id="nombre"
+                            [(ngModel)]="bodega.nombre" name="nombre" required #nombre="ngModel">
+                        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                            <div *ngIf="nombre.errors.required">
+                                Nombre del Administrador es requerido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Email" class="form-control" id="email"
+                            [(ngModel)]="bodega.email" name="email" required #email="ngModel">
+                        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <div *ngIf="email.errors.required">
+                                Email es requerido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" placeholder="Contraseña" class="form-control" id="password"
+                            [(ngModel)]="bodega.password" name="password" required #password="ngModel">
+                        <div class="alert alert-danger"
+                            *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <div *ngIf="email.errors.required">
+                                La Contraseña es requerida
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" placeholder="Dirección" class="form-control" id="direccion"
+                            [(ngModel)]="bodega.direccion" name="direccion" required #direccion="ngModel">
+                        <div class="alert alert-danger"
+                            *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                            <div *ngIf="direccion.errors.required">
+                                La Dirección es requerida
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="agencia_bancaria">Agencias bancarias</label>
+                        <input type="text" placeholder="Agencia Bancaria" class="form-control" id="agenteBanca"
+                            [(ngModel)]="bodega.agencia_bancaria" name="agencia_bancaria">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="aforo">Aforo</label>
+                        <input type="text" placeholder="Aforo" class="form-control" id="aforo"
+                            [(ngModel)]="bodega.aforo" name="aforo">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="ruc">RUC</label>
+                        <input type="text" placeholder="R.U.C" class="form-control" id="ruc" [(ngModel)]="bodega.ruc"
+                            name="ruc">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="titulo-categorias">
+                        <h3>Categorías</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding: 0 2%;">
+                <div class="col" *ngFor="let c of cat" style="width: 100%;" style="height: 100%;" style="padding: 0 0;">
+                    <button type="button" class="seleccion">{{c.nombre}}</button>
+                <!--<div class="form-group">
+                        <ul>
+                            <li *ngFor="let c of cat" class="list-group-item">
+                                <input type="text" id="cat_{{c.codigo}}">
+                                <label for="categoria">{{c.nombre}}</label>
+                            </li>
+                        </ul>
+                    </div>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group" style="margin-top: 2%;">
+                        <button type="submit" class="btn btn-info" [disabled]="registrarForm.form.invalid">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

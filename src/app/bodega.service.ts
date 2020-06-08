@@ -21,6 +21,14 @@ export class BodegaService {
     return this.http.post(this.urlBase + "/registrar", bodega, {headers: this.httpHeaders})
   }
 
+  actualizarBodega(bodega:Bodega){
+    return this.http.put(this.urlBase + "/actualizar", bodega, {headers: this.httpHeaders})
+  }
+
+  buscarBodega(id: number) : Observable<any>{
+    return this.http.get(this.urlBase+"/"+id.toString()).pipe(map(response => response as Bodega));
+  }
+
   obtenerCategoria() : Observable<any>{
     return this.http.get("http://localhost:8080/categoria/obtener").pipe(
       map(response => response as Categoria[])

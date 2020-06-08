@@ -10,6 +10,8 @@ import { RegistrarBodegaProductoComponent } from './registrar-bodega-producto/re
 import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
 import { ListadoProductoComponent } from './listado-producto/listado-producto.component';
 import { ActualizarBodegaComponent } from './actualizar-bodega/actualizar-bodega.component';
+import { VisualizarProductoComponent } from './visualizar-producto/visualizar-producto.component';
+import { VisualizarBodegaComponent } from './visualizar-bodega/visualizar-bodega.component';
 
 
 const routes: Routes = [
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path: 'registrarProducto', component:RegistrarProductoComponent},
   {path: 'registrarBP', component:RegistrarBodegaProductoComponent},
   {path: 'lista', component:ListadoProductoComponent},
-  {path: 'actualizarBodega', component:ActualizarBodegaComponent}
+  {path: 'actualizarBodega', component:ActualizarBodegaComponent},
+  {path: 'producto/:bid/:pid', component:VisualizarProductoComponent},
+  {path: 'bodega/:bid', component:VisualizarBodegaComponent}
 ];
 
 @NgModule({

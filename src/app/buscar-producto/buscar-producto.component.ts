@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from '../model/producto';
-import { ProductoService } from '../producto.service';
 import { ActivatedRoute } from '@angular/router';
 import { BodegaService } from '../bodega.service';
 import { BodegaProducto } from '../model/bodega-producto';
-import { Observable } from 'rxjs';
 import { Categoria } from '../model/categoria';
-import { Bodega } from '../model/bodega';
 import { ClienteService } from '../cliente.service';
 
 

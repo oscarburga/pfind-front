@@ -35,6 +35,9 @@ export class BodegaService {
     )
   }
 
+  obtenerBP(bID:number, pID:number) : Observable<any>{
+    return this.http.get(this.urlBase+"/producto/buscar/"+bID.toString() + "/" + pID.toString()).pipe(map(response => response as BodegaProducto));
+  }
   buscarBodegaProducto(id_categoria: number,
                         nombre: string, marca: string,
                         bodega: string, minimo: number,

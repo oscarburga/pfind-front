@@ -31,10 +31,9 @@ export class ClienteService {
     )
   }
 
-  obtenerPrecio() : Observable<Number>{
-    return this.http.get(this.urlBase + '/costo/' + this.Cliente_id).pipe(
-      map(response => response as Number)
-    )
+  obtenerPrecio() : any{
+    /*http://localhost:8080/cliente/costo/11*/
+    return this.http.get(this.urlBase + '/costo/' + this.Cliente_id)
   }
   
 }

@@ -1,0 +1,33 @@
+<p>visualizar-producto works!</p>
+<div class="body">
+    <div class="col">
+        <div class="bodega">
+            <label class="nombre">{{bod.nombre}}</label>
+            <div>
+                <label class="direcc">{{bod.direccion}}</label>
+            </div>
+            <div class="row">
+                <label class="correo">Email de contacto: {{bod.email}}</label>
+            </div>
+            <div class="row">
+                <label class="agencias">Agencias bancarias: {{bod.agencia_bancaria}}</label>
+            </div>
+        </div>
+        <div class = "listado">
+            <div *ngFor="let p of bod.productos">
+                <div class="col">
+                    <div class="product">
+                        <label class="pnombre" routerLink="/producto/{{bod.codigo}}/{{p.producto.codigo}}">
+                            {{p.producto.nombre}}</label>
+                        <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
+                        <div class="row">
+                            <label class="pprecio">S/. {{p.precio}}</label>
+                        </div>
+    
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+</div>

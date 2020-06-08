@@ -51,7 +51,8 @@
                                         {{p.producto.nombre}}</label>
                                     <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
                                     <div class="row">
-                                        <label class="pbodega">{{p.bodega.nombre}}</label>
+                                        <label class="pbodega" routerLink="/bodega/{{p.bodega.codigo}}">
+                                            {{p.bodega.nombre}}</label>
                                     </div>
                                     <div class="row">
                                         <label class="pprecio">S/. {{p.precio}}</label>

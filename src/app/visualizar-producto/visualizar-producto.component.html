@@ -10,7 +10,7 @@
                 <img class="pimagen" src={{bp.producto.imagenprin}} alt="f">
             </div>
             <div class="row">
-                <label class="pbodega">Bodega: {{bp.bodega.nombre}}</label>
+                <label class="pbodega" routerLink="/bodega/{{bp.bodega.codigo}}">Bodega: {{bp.bodega.nombre}}</label>
             </div>
             <div class="row">
                 <label class="pprecio">Precio S/.{{bp.precio}}</label>

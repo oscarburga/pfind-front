@@ -30,7 +30,7 @@
     </div>
   </div>
   </div>
-  <div class="nav-derecha">
+  <div class="nav-derecha" *ngIf="isRClienteRoute()">
     <ul class="nav navbar-nav navbar-right">
       <li><a routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user"></span>
           Registrar</a></li>
@@ -51,7 +51,8 @@
       <div class="container-4">
         <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscar()" />
         <button class="icon" (click)="buscar()"><i class="fa fa-search"></i></button>
-      </div>
+      </div
+      >
     </div>
     <div class="menu-icon"><button class="menu-barras" (click)=desplegar()><i class="fa fa-bars" aria-hidden="true"></i></button></div>
   </div>

@@ -42,7 +42,7 @@
                 <button type="submit" (click)="buscarMaestro()" class="btn btn-info">Actualizar</button>
             </div>
         </div>
-        <div class="container">
+        <div class="container"> 
                 <div class="row">
                     <div *ngFor="let p of bodegaProducto; let j = index ">
                             <div class="col">
@@ -50,17 +50,22 @@
                                     <label class="pnombre" routerLink="/producto/{{p.bodega.codigo}}/{{p.producto.codigo}}">
                                         {{p.producto.nombre}}</label>
                                     <div class="row">
+                                        <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
+                                    </div>    
+                                    <div class="row">
                                         <label class="pbodega" routerLink="/bodega/{{p.bodega.codigo}}">
                                             {{p.bodega.nombre}}</label>
                                     </div>
+                                    
                                     <div class="row">
                                         <label class="pprecio">S/. {{p.precio}}</label>
                                     </div>
-                                    <label><input type="checkbox">
+                                    <!--<label><input type="checkbox">
+
                                         
                                         <div class="like-btn-svg" (click)="agregarLista(p.producto.codigo)" ></div>
                                       </label>
-                                    
+                                    -->
                                 </div>
                             </div>
                         

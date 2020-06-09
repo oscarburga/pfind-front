@@ -1,20 +1,69 @@
 <p>visualizar-producto works!</p>
 <div class="body">
-    <div class="col">
-        <div class="product">
-            <label class="pnombre">{{bp.producto.nombre}}</label>
-            <div>
-                <label class="pmarca">{{bp.producto.marca}}</label>
+        <div class="container">
+            <div class="row" style="margin-bottom: 15%;">
+                
+                    <div class="col">
+                        <div class="container">
+                            <img class="pimagen" src={{bp.producto.imagenprin}} alt="f">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="info">
+                            <div class="row">
+                                <label class="pnombre">{{bp.producto.nombre}}</label>
+                            </div>
+                            <div class="row">
+                                <label class="pmarca">{{bp.producto.marca}}</label>
+                            </div>
+                            <div class="row">
+                                
+                                    <label class="pprecio">S/.{{bp.precio}}</label>
+                               
+                                    <div class="cuadrado">
+                                    </div>
+                               
+                            </div>
+                            <div class="row">
+                                <label class="pdes">Descripción:</label>
+                            </div>
+                            <div class="row">
+                                
+                                <label class="pdes">{{bp.descripcion}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1160.1236011871686!2d -77.028427!3d-12.030384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cfa97c6a07cf%3A0x15d3699fd6e49efb!2sContigo%20Per%C3%BA!5e0!3m2!1ses-419!2spe!4v1591666823119!5m2!1ses-419!2spe" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                
             </div>
-            <div>
-                <img class="pimagen" src={{bp.producto.imagenprin}} alt="f">
-            </div>
-            <div class="row">
-                <label class="pbodega" routerLink="/bodega/{{bp.bodega.codigo}}">Bodega: {{bp.bodega.nombre}}</label>
-            </div>
-            <div class="row">
-                <label class="pprecio">Precio S/.{{bp.precio}}</label>
+            <div class="row" style="float: right;">
+                <div class="col">
+                    <div class="row">
+                        <label class="pbodeganombre" routerLink="/bodega/{{bp.bodega.codigo}}">{{bp.bodega.nombre}}</label>
+                    </div>
+                    <div class="row">
+                        <label class="pbodegadireccion">Dirección</label>
+                    </div>
+                    <div class="row">
+                        <label class="pbodegadireccion">{{bp.bodega.direccion}}</label>
+                    </div>
+                    <div class="row">
+                        <label class="pbodegaaforo">Aforo</label>
+                    </div>
+                    <div class="row">
+                        
+                        <label class="pbodegaaforo">{{bp.bodega.aforo}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    
+                        <img class="pimagen" src="https://lh5.googleusercontent.com/p/AF1QipPBEbvIa0Zk-0QyMlVKgk6zCE2iXuD_4-XMe18d=w426-h240-k-no" alt="f">
+                    
+                </div>
             </div>
         </div>
-    </div>
+        
+    
 </div>

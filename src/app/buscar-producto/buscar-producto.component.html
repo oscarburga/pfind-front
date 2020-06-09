@@ -5,7 +5,7 @@
                 <input type="text" class="busubi" style="width: 210px; height: 30px" placeholder="  Introduce tu ubicación">
                 <div class="buttonubi">
                     <button type="button" class="btn btn-primary btn-lg active" style="background-color:lightskyblue; border-color: lightskyblue; 
-                    width: 110px; height: 30px; font-size: x-small;font-weight: 900" (click) = "agregarLista()">Elige en el mapa</button>
+                    width: 110px; height: 30px; font-size: x-small;font-weight: 900">Elige en el mapa</button>
                     <button type="button" class="btn btn-default btn-lg active" style="background-color:rgb(112, 175, 214); border-color:rgb(112, 175, 214);
                     width: 100px; height: 30px; color: white; font-size: x-small;font-weight: 900;">Mi ubicacion</button>
                 </div>
@@ -49,7 +49,6 @@
                                 <div class="product">
                                     <label class="pnombre" routerLink="/producto/{{p.bodega.codigo}}/{{p.producto.codigo}}">
                                         {{p.producto.nombre}}</label>
-                                    <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
                                     <div class="row">
                                         <label class="pbodega" routerLink="/bodega/{{p.bodega.codigo}}">
                                             {{p.bodega.nombre}}</label>
@@ -57,6 +56,10 @@
                                     <div class="row">
                                         <label class="pprecio">S/. {{p.precio}}</label>
                                     </div>
+                                    <label><input type="checkbox">
+                                        
+                                        <div class="like-btn-svg" (click)="agregarLista(p.producto.codigo)" ></div>
+                                      </label>
                                     
                                 </div>
                             </div>
@@ -64,8 +67,7 @@
                     </div>
                 </div>
             
-            
-            </div>
+            </div>  
     </div>
 
 

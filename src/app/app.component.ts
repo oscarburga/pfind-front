@@ -17,6 +17,7 @@ export class AppComponent {
   logoInicio =  'https://cdn.discordapp.com/attachments/700237020278030396/714972834518270052/online-shopping.png'
   cat: Categoria[];
   isLogin : Boolean;
+  desplegarmenu : Boolean = false;
   
   constructor(private router: Router, private bodegaServicio: BodegaService, private productoservicio : ProductoService){}
 
@@ -47,5 +48,14 @@ export class AppComponent {
       data => this.cat = data
     )
   }
+
+  desplegar(): Boolean{
+    if(this.desplegarmenu){
+      this.desplegarmenu = false;
+    }
+    else this.desplegarmenu = true;
+    return this.desplegarmenu;
+  }
+
 }
 

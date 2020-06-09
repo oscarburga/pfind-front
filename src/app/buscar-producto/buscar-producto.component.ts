@@ -112,10 +112,9 @@ export class BuscarProductoComponent implements OnInit {
       }
     }
   }
-
-  agregarLista(){
+  agregarLista(bt:number){
     console.log("componente");
-    this.clienteService.listarProductos(2);
+    this.clienteService.listarProductos(bt);
   }
 
 }

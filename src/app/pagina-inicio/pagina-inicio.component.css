@@ -3,3 +3,12 @@
     height: 30%;
     padding-top: 6%;
 }
+
+@media only screen and (max-width: 995px){
+    .container{
+        width: 60%;
+        height: 30%;
+        padding-top: 15%;
+    }
+
+}

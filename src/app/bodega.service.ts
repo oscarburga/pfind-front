@@ -15,7 +15,7 @@ export class BodegaService {
 
   constructor(private http: HttpClient) { }
 
-  BodegaProducto: any = [];
+  dataBusqueda: any;
   
   registrarBodega(bodega:Bodega){
     return this.http.post(this.urlBase + "/registrar", bodega, {headers: this.httpHeaders})
@@ -58,15 +58,28 @@ export class BodegaService {
     console.log("REQUEST: ", url_query);
     return this.http.get(url_query).pipe(map(response => response as BodegaProducto[]));
   }
-
+//######## USANDO ACTUALMENTE ###############################################################
   obtenerp(nombre: string){
-    return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre)
+    return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre).subscribe(
+      data => this.dataBusqueda = data
+    )
   }
+
+  buscarCategoria(id:number){
+    return this.http.get(this.urlBase + "/producto/buscarBPCtg/" + id).subscribe(
+      data => this.dataBusqueda  = data
+    )
+  }
+
+  descargarData(){
+    return this.dataBusqueda;
+  }
+//######## USANDO ACTUALMENTE ###############################################################
 
   registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{
     return this.http.post(this.urlBase + "/producto/registrar/" + bid.toString() + "/" + pid.toString() + "/" + precio.toString(), {headers: this.httpHeaders});
   }
-
+  /*producto/buscarBPn/{nombre}*/
   obtenerBodegaProducto(nombre: string): Observable<any>{
     return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre)
     .pipe(
@@ -74,11 +87,7 @@ export class BodegaService {
     );
   }
 
-  buscarCategoria(id:number) : Observable<any>{
-    return this.http.get(this.urlBase + "/producto/buscarBPCtg/" + id).pipe(
-      map(response => response as BodegaProducto[])
-    )
-  }
+
 
   buscarCategoriaProducto(id:number, nombre:string) :Observable<any>{
     return this.http.get(this.urlBase + "/producto/buscarBPCtgNombre/" + id + "/" + nombre).pipe(

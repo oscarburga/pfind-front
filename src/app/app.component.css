@@ -5,9 +5,17 @@
   right: 0;
   z-index: 100;
 }
+#ini_logo {
+  height: auto;
+  padding: 0 0;
+}
 
 #nav-secundario {
   display: none;
+}
+
+#barra-desplegable{
+  cursor: pointer;
 }
 
 img {

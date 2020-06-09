@@ -49,3 +49,18 @@
     padding: 0 0;
     margin: 0 0;
 }
+
+@media only screen and (max-width: 995px) {
+    .contenedor{
+        padding-top: 7rem;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 5%;
+    }
+    h1{
+        font-size: x-large;
+    }
+    h3{
+        font-size: x-large;
+    }
+}

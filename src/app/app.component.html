@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav-principal">
-  <a class="navbar-brand" routerLink="inicio" style="margin: 0 0;">
-    <img src="{{logoInicio}}" alt="inicio" loading="lazy" style={{marginImg()}}>
+  <a class="navbar-brand" routerLink="inicio" style="margin: 0 0;" id="ini_logo">
+    <img src="{{logoInicio}}" alt="inicio" loading="lazy">
   </a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="isRClienteRoute()"
     style="display: inline-block;">
@@ -15,7 +15,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <li *ngFor="let c of cat">
-        <a class="dropdown-item" routerLink="/buscarProducto/2/{{c.codigo}}">{{c.nombre}}</a>
+        <a class="dropdown-item" id="barra-desplegable" (click)=buscarCategoria(c.codigo)>{{c.nombre}}</a>
       </li>
   </div>
   </li>
@@ -25,8 +25,8 @@
   </ul>
   <div class="box">
     <div class="container-4">
-      <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscar()" />
-      <button class="icon" (click)="buscar()"><i class="fa fa-search"></i></button>
+      <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscarNombre()" />
+      <button class="icon" (click)="buscarNombre()"><i class="fa fa-search"></i></button>
     </div>
   </div>
   </div>
@@ -36,6 +36,8 @@
           Registrar</a></li>
       <li><a routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>
           Iniciar</a></li>
+      <li><a routerLink="/registrarBP" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RBP</a></li>
+      <li><a routerLink="/registrarProducto" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RP</a></li>
     </ul>
   </div>
 </nav>
@@ -49,30 +51,32 @@
     </a>
     <div class="box">
       <div class="container-4">
-        <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscar()" />
-        <button class="icon" (click)="buscar()"><i class="fa fa-search"></i></button>
-      </div
-      >
+        <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscarNombre()" />
+        <button class="icon" (click)="buscarNombre()"><i class="fa fa-search"></i></button>
+      </div>
     </div>
-    <div class="menu-icon"><button class="menu-barras" (click)=desplegar()><i class="fa fa-bars" aria-hidden="true"></i></button></div>
+    <div class="menu-icon"><button class="menu-barras" (click)=desplegar()><i class="fa fa-bars"
+          aria-hidden="true"></i></button></div>
   </div>
-  <div class="escondido" *ngIf= desplegarmenu>
+  <div class="escondido" *ngIf=desplegarmenu>
     <div class="row">
       <div class="col">
         <ul class="lista-categorias">
           <li *ngFor="let c of cat">
-            <a class="dropdown-item" routerLink="/buscarProducto/2/{{c.codigo}}">{{c.nombre}}</a>
+            <a class="dropdown-item" id="barra-desplegable" (click)=buscarCategoria(c.codigo)  (click)=desplegar()>{{c.nombre}}</a>
           </li>
         </ul>
       </div>
       <div class="col" id="col2">
         <ul class="lista-menu">
           <li class="nav-item">
-            <a class="car-compra" routerLink="/lista"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <a class="car-compra"  (click)=desplegar() routerLink="/lista"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
           </li>
-          <li><a routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user" style="color: gray;"></span></a>
+          <li><a  (click)=desplegar() routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user"
+                style="color: gray;"></span></a>
           </li>
-          <li><a routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in" style="color: gray;"></span></a>
+          <li><a  (click)=desplegar() routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"
+                style="color: gray;"></span></a>
           </li>
         </ul>
       </div>

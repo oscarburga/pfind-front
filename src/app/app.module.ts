@@ -17,6 +17,8 @@ import { ListadoProductoComponent } from './listado-producto/listado-producto.co
 import { ActualizarBodegaComponent } from './actualizar-bodega/actualizar-bodega.component';
 import { VisualizarProductoComponent } from './visualizar-producto/visualizar-producto.component';
 import { VisualizarBodegaComponent } from './visualizar-bodega/visualizar-bodega.component';
+import { LoginClienteComponent } from './login-cliente/login-cliente.component';
+import { LoginBodegaComponent } from './login-bodega/login-bodega.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { VisualizarBodegaComponent } from './visualizar-bodega/visualizar-bodega
     ListadoProductoComponent,
     ActualizarBodegaComponent,
     VisualizarProductoComponent,
-    VisualizarBodegaComponent
+    VisualizarBodegaComponent,
+    LoginClienteComponent,
+    LoginBodegaComponent
   ],
   imports: [
     BrowserModule,

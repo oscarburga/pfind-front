@@ -31,7 +31,7 @@ export class ClienteService {
     )
   }
 
-  obtenerPrecio() : any{
+  obtenerPrecio() : Observable<any>{
     /*http://localhost:8080/cliente/costo/11*/
     return this.http.get(this.urlBase + '/costo/' + this.Cliente_id)
   }

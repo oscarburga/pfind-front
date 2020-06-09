@@ -13,7 +13,7 @@ import { ClienteService } from '../cliente.service';
 })
 export class BuscarProductoComponent implements OnInit {
 
-  bodegaProducto: BodegaProducto[];
+  bodegaProducto: BodegaProducto[] = this.bodegaService.descargarData();
   x: number = 0;
   counter= Array;
   cantidad: number = Math.round(2.2);
@@ -33,14 +33,18 @@ export class BuscarProductoComponent implements OnInit {
   constructor(private bodegaService:BodegaService, private _Activatedroute: ActivatedRoute, private  clienteService: ClienteService) { }
 
   ngOnInit(): void {
-    this.obtenerDatos();
+    //this.obtenerDatos();
     //this.mostrarfiltros();
   }
 
   ngOnDestroy(): void{
     this.bodegaProducto
   }
-
+  //######## USANDO ACTUALMENTE ###############################################################
+  descargarData(){
+    return this.bodegaService.descargarData();
+  }
+//######## USANDO ACTUALMENTE ###############################################################
   buscarMaestro(){
     console.log("BUSQUEDA MAESTRA", this.catg, this.pmin, this.pmax, this.nombre_marca, this.nombre_bodega);
     this.bodegaService.buscarBodegaProducto(this.catg, this.nombre,
@@ -72,7 +76,7 @@ export class BuscarProductoComponent implements OnInit {
     else{
       this.nombre = "";
       this.catg = Number(this.param);
-      this.buscarPorCategoria();
+      //this.buscarPorCategoria();
     }
   }
 
@@ -94,11 +98,11 @@ export class BuscarProductoComponent implements OnInit {
       });
   }
  
-  buscarPorCategoria(){
+ /* buscarPorCategoria(){
     this.bodegaService.buscarCategoria(Number(this.param)).subscribe(
       data => {this.bodegaProducto = data}
     );
-  }
+  }*/
   mostrarfiltros(){
     if(this.bodegaProducto.length != 0){
       let filtros = [];
@@ -112,8 +116,7 @@ export class BuscarProductoComponent implements OnInit {
       }
     }
   }
-  agregarLista(bt:number){
-    console.log("componente");
+  agregarLista(bt: number){
     this.clienteService.listarProductos(bt);
   }
 

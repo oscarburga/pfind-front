@@ -12,7 +12,7 @@ import { Listado } from 'src/app/model/listado'
   styleUrls: ['./listado-producto.component.css']
 })
 export class ListadoProductoComponent implements OnInit {
-  costoTotal :any
+  costoTotal : number;
   lista_Productos :Observable<Listado[]>
   array: Listado[]
   constructor(private clienteService:ClienteService) { }
@@ -31,6 +31,6 @@ export class ListadoProductoComponent implements OnInit {
   }
 
   loadPrecio(){
-    this.costoTotal = this.clienteService.obtenerPrecio()
-    }
+    this.clienteService.obtenerPrecio().subscribe(data => this.costoTotal = data);
+  }
 }

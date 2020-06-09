@@ -1,5 +1,5 @@
 .container{
-    padding-top: 7%;
+    padding-top: 7rem;
 }
 
 .titulo{
@@ -32,4 +32,13 @@ h5{
 .imagen-producto{
     width: 170px;
     height: 170px;
+}
+
+@media only screen and (max-width: 995px){
+    .container{
+        padding-top: 7rem;
+    }
+    h1{
+        font-size: x-large;
+    }
 }

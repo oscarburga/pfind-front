@@ -1,5 +1,5 @@
 .contenedor{
-    padding-top: 8%;
+    padding-top: 8rem;
     padding-left: 20%;
     padding-right: 20%;
 }
@@ -16,4 +16,16 @@
 .titulo{
     border-bottom: 1px black solid;
     margin-bottom: 3%;
+}
+
+
+@media only screen and (max-width: 995px) {
+    .contenedor{
+        padding-top: 8rem;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    h1{
+        font-size: x-large;
+    }
 }

@@ -12,6 +12,9 @@ import { ListadoProductoComponent } from './listado-producto/listado-producto.co
 import { ActualizarBodegaComponent } from './actualizar-bodega/actualizar-bodega.component';
 import { VisualizarProductoComponent } from './visualizar-producto/visualizar-producto.component';
 import { VisualizarBodegaComponent } from './visualizar-bodega/visualizar-bodega.component';
+import { LoginClienteComponent } from './login-cliente/login-cliente.component';
+import { LoginBodegaComponent } from './login-bodega/login-bodega.component';
+
 
 
 const routes: Routes = [
@@ -19,9 +22,11 @@ const routes: Routes = [
   {path: 'inicio', component:PaginaInicioComponent},
   {path: 'registrarUsuario', component:RegistrarUsuarioComponent},
   {path: 'loginUsuario', component:LoginUsuarioComponent},
+  {path: 'loginCliente', component:LoginClienteComponent},
+  {path: 'loginBodega', component:LoginBodegaComponent},
   {path: 'registrarCliente', component:RegistrarClienteComponent},
   {path: 'registrarBodega', component:RegistarBodegaComponent},
-  {path: 'buscarProducto/:tipo/:param', component:BuscarProductoComponent},
+  {path: 'buscarProducto', component:BuscarProductoComponent},
   {path: 'registrarProducto', component:RegistrarProductoComponent},
   {path: 'registrarBP', component:RegistrarBodegaProductoComponent},
   {path: 'lista', component:ListadoProductoComponent},

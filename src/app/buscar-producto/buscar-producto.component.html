@@ -2,19 +2,23 @@
     <div class="contenido">
         <div class="criterios">
             <div class="ubicacion" role="search" style="width: 250px">
-                <input type="text" class="busubi" style="width: 210px; height: 30px" placeholder="  Introduce tu ubicación">
+                <input type="text" class="busubi" style="width: 210px; height: 30px"
+                    placeholder="  Introduce tu ubicación">
                 <div class="buttonubi">
                     <button type="button" class="btn btn-primary btn-lg active" style="background-color:lightskyblue; border-color: lightskyblue; 
                     width: 110px; height: 30px; font-size: x-small;font-weight: 900">Elige en el mapa</button>
                     <button type="button" class="btn btn-default btn-lg active" style="background-color:rgb(112, 175, 214); border-color:rgb(112, 175, 214);
-                    width: 100px; height: 30px; color: white; font-size: x-small;font-weight: 900;">Mi ubicacion</button>
+                    width: 100px; height: 30px; color: white; font-size: x-small;font-weight: 900;">Mi
+                        ubicacion</button>
                 </div>
             </div>
             <div class="precio">
-                <label class="lblranprecios" >Rango de Precios</label>
+                <label class="lblranprecios">Rango de Precios</label>
                 <div class="rangoprecios">
-                    <input type="number" class="minimo" style="width: 80px; height: 30px" [(ngModel)]="pmin" placeholder="  Desde">
-                    <input type="number" class="maximo" style="width: 80px; height: 30px" [(ngModel)]="pmax" placeholder="  Hasta">
+                    <input type="number" class="minimo" style="width: 80px; height: 30px" [(ngModel)]="pmin"
+                        placeholder="  Desde">
+                    <input type="number" class="maximo" style="width: 80px; height: 30px" [(ngModel)]="pmax"
+                        placeholder="  Hasta">
                 </div>
             </div>
             <div class="marca">
@@ -42,37 +46,37 @@
                 <button type="submit" (click)="buscarMaestro()" class="btn btn-info">Actualizar</button>
             </div>
         </div>
-        <div class="container"> 
-                <div class="row">
-                    <div *ngFor="let p of bodegaProducto; let j = index ">
-                            <div class="col">
-                                <div class="product">
-                                    <label class="pnombre" routerLink="/producto/{{p.bodega.codigo}}/{{p.producto.codigo}}">
-                                        {{p.producto.nombre}}</label>
-                                    <div class="row">
-                                        <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
-                                    </div>    
-                                    <div class="row">
-                                        <label class="pbodega" routerLink="/bodega/{{p.bodega.codigo}}">
-                                            {{p.bodega.nombre}}</label>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <label class="pprecio">S/. {{p.precio}}</label>
-                                    </div>
-                                    <!--<label><input type="checkbox">
-
-                                        
-                                        <div class="like-btn-svg" (click)="agregarLista(p.producto.codigo)" ></div>
-                                      </label>
-                                    -->
-                                </div>
+        <div class="container">
+            <div class="row">
+                <div *ngFor="let p of descargarData(); let j = index ">
+                    <div class="col">
+                        <div class="product">
+                            <div>
+                                <label class="pnombre" routerLink="/producto/{{p.bodega.codigo}}/{{p.producto.codigo}}">
+                                    {{p.producto.nombre}}</label>
+                                <!--<buttom><input type="checkbox">
+                                    <div class="like-btn-svg" (click)="agregarLista(p.codigo)"></div>
+                                </label>-->
                             </div>
-                        
+                            <div class="row">
+
+                                <img class="pimagen" src={{p.producto.imagenprin}} alt="Imagen Producto">
+                            </div>
+                            <div class="row">
+                                <label class="pbodega" routerLink="/bodega/{{p.bodega.codigo}}">
+                                    {{p.bodega.nombre}}</label>
+                            </div>
+
+                            <div class="row">
+                                <label class="pprecio">S/. {{p.precio}}</label>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-            
-            </div>  
+            </div>
+
+        </div>
     </div>
 
 

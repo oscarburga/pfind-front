@@ -32,7 +32,6 @@ export class AppComponent {
   }
 //######## USANDO ACTUALMENTE BUSQUEDA ###############################################################
   buscarNombre(){
-    console.log(this.busqueda)  
      this.bodegaServicio.obtenerp(this.busqueda)
      this.router.navigate(['/buscarProducto'])
   }

@@ -114,6 +114,11 @@
     background-position: -2800px 0;
   }
   
+  .drop-cat{
+      list-style: none;
+      padding: 0 0;
+  }
+
   @keyframes fave-like-btn-svg {
     0% {
       background-position: 0 0;

@@ -4,6 +4,7 @@ import { BodegaService } from '../bodega.service';
 import { BodegaProducto } from '../model/bodega-producto';
 import { Categoria } from '../model/categoria';
 import { ClienteService } from '../cliente.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -33,8 +34,7 @@ export class BuscarProductoComponent implements OnInit {
   constructor(private bodegaService:BodegaService, private _Activatedroute: ActivatedRoute, private  clienteService: ClienteService) { }
 
   ngOnInit(): void {
-    //this.obtenerDatos();
-    //this.mostrarfiltros();
+  this.cargarCategora()
   }
 
   ngOnDestroy(): void{
@@ -45,51 +45,8 @@ export class BuscarProductoComponent implements OnInit {
     return this.bodegaService.descargarData();
   }
 //######## USANDO ACTUALMENTE ###############################################################
-  buscarMaestro(){
-    console.log("BUSQUEDA MAESTRA", this.catg, this.pmin, this.pmax, this.nombre_marca, this.nombre_bodega);
-    this.bodegaService.buscarBodegaProducto(this.catg, this.nombre,
-         this.nombre_marca, this.nombre_bodega, this.pmin, this.pmax).subscribe(
-            data => this.bodegaProducto = data
-         );
-    console.log(this.bodegaProducto);
-    
-/*    console.log(this.pmin);
-    console.log(this.pmax);
-    console.log(this.nombre_marca);
-    console.log(this.nombre_bodega);
- */   
-    
-  }
-  obtenerDatos(){
-    this.bodegaService.obtenerCategoria().subscribe(data => this.cat = data);
-    this._Activatedroute.paramMap.subscribe(params =>{
-      this.param = params.get('param');
-      this.tipo = Number(params.get('tipo'));
-    })
-    /*this.param=this._Activatedroute.snapshot.paramMap.get("param");
-    this.tipo = Number(this._Activatedroute.snapshot.paramMap.get("tipo"));*/
-    
-    if (this.tipo == 1) {
-      this.nombre = this.param;
-      this.buscarPorNombre();
-    }
-    else{
-      this.nombre = "";
-      this.catg = Number(this.param);
-      //this.buscarPorCategoria();
-    }
-  }
+  
 
-  buscarMixto(){
-    if (this.catg == 0) {
-      console.log("Buscando", this.catg, ", ", this.nombre);
-      this.buscarPorNombre();
-    }
-    else{
-      console.log("Buscando", this.catg, ", ", this.nombre);
-      this.bodegaService.buscarCategoriaProducto(this.catg, this.nombre).subscribe(data => this.bodegaProducto = data);
-    }
-  }
   buscarPorNombre(){
     this.bodegaService.obtenerBodegaProducto(this.nombre).subscribe(
       data => {
@@ -118,6 +75,12 @@ export class BuscarProductoComponent implements OnInit {
   }
   agregarLista(bt: number){
     this.clienteService.listarProductos(bt);
+  }
+
+  cargarCategora(){
+    this.bodegaService.obtenerCategoria().subscribe(
+      data => this.cat = data
+    )
   }
 
 }

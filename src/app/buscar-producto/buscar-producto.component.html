@@ -58,27 +58,30 @@
         </div>
         <div class="container">
             <div class="row">
-                <div *ngFor="let p of descargarData(); let j = index ">
+                <div *ngFor="let bp of descargarData(); let j = index ">
                     <div class="col">
                         <div class="product">
                             <div>
-                                <label class="pnombre" routerLink="/producto/{{p.bodega.codigo}}/{{p.producto.codigo}}">
-                                    {{p.producto.nombre}}</label>
-                                <!--<buttom><input type="checkbox">
-                                    <div class="like-btn-svg" (click)="agregarLista(p.codigo)"></div>
-                                </label>-->
+                                <label class="pnombre" routerLink="/busqueda/Bodega/Producto/{{bp.codigo}}"
+                                    id="cursor_producto">
+                                    {{bp.producto.nombre}}</label>
+                            </div>
+                            <div class="row" id="cursor_producto">
+                                <img class="pimagen" src={{bp.producto.imagenprin}} alt="Imagen Producto">
                             </div>
                             <div class="row">
-
-                                <img class="pimagen" src={{p.producto.imagenprin}} alt="Imagen Producto">
-                            </div>
-                            <div class="row">
-                                <label class="pbodega" routerLink="/bodega/{{p.bodega.codigo}}">
-                                    {{p.bodega.nombre}}</label>
+                                <label class="pbodega" routerLink="/bodega/{{bp.bodega.codigo}}" id="cursor_producto">
+                                    {{bp.bodega.nombre}}</label>
                             </div>
 
                             <div class="row">
-                                <label class="pprecio">S/. {{p.precio}}</label>
+                                <div class="col">
+                                    <label class="pprecio">S/. {{bp.precio}}</label>
+                                </div>
+                                <div class="col" id="caja_agregar">
+                                    <a (click)="agregarLista(bp.codigo)" id="agregar_lista"
+                                        style="color:{{corazoncss}}"><i class={{corazon}} aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>

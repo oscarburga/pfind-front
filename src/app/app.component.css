@@ -10,6 +10,20 @@
   padding: 0 0;
 }
 
+.foto_perfil{
+  margin-left: 25px;
+  margin-right: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: black;
+  border-radius: 5px;
+}
+
+.foto_perfil img{
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
 #nav-secundario {
   display: none;
 }

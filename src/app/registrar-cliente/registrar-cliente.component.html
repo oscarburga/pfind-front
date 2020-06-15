@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" [(ngModel)]="cliente.nombre" name="nombre"
-                            required #nombre="ngModel">
+                            required #nombre="ngModel" placeholder="Nombre">
                         <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                             <div *ngIf="nombre.errors.required">
                                 Nombre es requerido
@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label for="apellido">Apellido</label>
                         <input type="text" class="form-control" id="apellido" [(ngModel)]="cliente.apellido"
-                            name="apellido" required #apellido="ngModel">
+                            name="apellido" required #apellido="ngModel" placeholder="Apellido">
                         <div class="alert alert-danger"
                             *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
                             <div *ngIf="apellido.errors.required">
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" [(ngModel)]="cliente.email" name="email"
-                            required #apellido="ngModel">
+                            required #apellido="ngModel" placeholder="Email">
                     </div>
                 </div>
             </div>
@@ -49,14 +49,14 @@
                     <div class="form-group">
                         <label for="password">Contraseña</label>
                         <input type="password" class="form-control" id="password" [(ngModel)]="cliente.password"
-                            name="password" required #apellido="ngModel">
+                            name="password" placeholder="Contraseña" required #apellido="ngModel">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="password">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="password" [(ngModel)]="cliente.password"
-                            name="password" required #apellido="ngModel">
+                        <input type="password" class="form-control" id="confirm_password" [(ngModel)]="cliente.password"
+                            name="password" placeholder="Contraseña" required #apellido="ngModel">
                     </div>
                 </div>
             </div>
@@ -65,14 +65,23 @@
                     <div class="form-group">
                         <label for="edad">Edad</label>
                         <input type="text" class="form-control" id="edad" [(ngModel)]="cliente.edad" name="edad"
-                            required #edad="ngModel">
+                            placeholder="Edad" required #edad="ngModel">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="distrito">Distrito</label>
                         <input type="text" class="form-control" id="distrito" [(ngModel)]="cliente.distrito"
-                            name="distrito">
+                            placeholder="Distrito" name="distrito">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group" id="selectedFile">
+                        <h5 id="imagen">{{label_imagen}}</h5>
+                        <input type="file" class="form-control" id="imagen" (change)="onFileSelected($event)"
+                            name="profile" style="display: none;" #selectedFile>
+                        <button type="button" (click)="selectedFile.click()" class="btn btn-secondary">Examinar
+                            equipo</button>
                     </div>
                 </div>
             </div>

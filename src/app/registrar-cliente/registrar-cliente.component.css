@@ -18,6 +18,9 @@
     margin-bottom: 3%;
 }
 
+#selectedFile{
+    text-align: center;
+}
 
 @media only screen and (max-width: 995px) {
     .contenedor{

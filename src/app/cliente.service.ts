@@ -12,8 +12,12 @@ export class ClienteService {
   private urlBase = "http://localhost:8080/cliente";
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   
-
-  Cliente_id: number = 11;
+  retrievedResponse: any;
+  retrievedImage: any;
+  base64Data: any;
+  Cliente_id: number = 1;
+  Nombre: String;
+  Apellido: String;
 
   constructor(private http: HttpClient) { }
 
@@ -21,8 +25,32 @@ export class ClienteService {
     return this.http.post(this.urlBase+"/registrar", cliente, {headers: this.httpHeaders});
   }
 
+  subirImagen(imagenData:any){
+    return this.http.post(this.urlBase + "/upload_imagen" , imagenData, { observe: 'response' }).subscribe(
+      (response) => {
+        if(response.status === 200){
+          console.log("Imagen cargada correctamente")
+        }else{
+          console.log("Imagen no cargada")
+          }
+        }
+    )
+  }
+
+  getImage(){
+    this.http.get(this.urlBase + '/get_imagen/'+ this.Cliente_id).subscribe(
+        res => {
+          this.retrievedResponse = res;
+          this.Nombre = this.retrievedResponse.nombre;
+          this.Apellido = this.retrievedResponse.apellido;
+          this.base64Data = this.retrievedResponse.imagen;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+      );
+  }
+
   listarProductos(bp:number) : Observable<any>{
-    return this.http.post(this.urlBase + "/" + this.Cliente_id + "/enlistar/" + bp, {headers: this.httpHeaders});
+    return this.http.post(this.urlBase + '/agregar/' + this.Cliente_id + '/' + bp, { observe: 'response' });
     }
 
   enlistarProductos(): Observable<any>{
@@ -32,7 +60,6 @@ export class ClienteService {
   }
 
   obtenerPrecio() : Observable<any>{
-    /*http://localhost:8080/cliente/costo/11*/
     return this.http.get(this.urlBase + '/costo/' + this.Cliente_id)
   }
   

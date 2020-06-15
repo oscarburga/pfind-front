@@ -30,6 +30,8 @@ export class BuscarProductoComponent implements OnInit {
   filmarca:string[];
   filbodega:string[];
   agregado_id:number;
+  corazon: string = "fa fa-heart-o";
+  corazoncss: string = "black";
 
   constructor(private bodegaService:BodegaService, private _Activatedroute: ActivatedRoute, private  clienteService: ClienteService) { }
 
@@ -42,18 +44,18 @@ export class BuscarProductoComponent implements OnInit {
   }
   //######## USANDO ACTUALMENTE ###############################################################
   descargarData(){
-    return this.bodegaService.descargarData();
+    return this.bodegaService.descargarData();  
   }
 //######## USANDO ACTUALMENTE ###############################################################
   
 
-  buscarPorNombre(){
+ /* buscarPorNombre(){
     this.bodegaService.obtenerBodegaProducto(this.nombre).subscribe(
       data => {
         this.bodegaProducto = data;
         console.log(data);
       });
-  }
+  }*/
  
  /* buscarPorCategoria(){
     this.bodegaService.buscarCategoria(Number(this.param)).subscribe(
@@ -74,7 +76,11 @@ export class BuscarProductoComponent implements OnInit {
     }
   }
   agregarLista(bt: number){
-    this.clienteService.listarProductos(bt);
+    this.corazon ="fa fa-heart";
+    this.corazoncss = "red";
+    this.clienteService.listarProductos(bt).subscribe(
+      data=> console.log("Agregado Exitosamente")
+    );
   }
 
   cargarCategora(){

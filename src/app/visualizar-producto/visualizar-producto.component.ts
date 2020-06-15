@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ChildActivationStart } from '@angular/router';
 import { BodegaService } from '../bodega.service';
 import { BodegaProducto } from '../model/bodega-producto';
 
@@ -9,19 +9,16 @@ import { BodegaProducto } from '../model/bodega-producto';
   styleUrls: ['./visualizar-producto.component.css']
 })
 export class VisualizarProductoComponent implements OnInit {
-  bid: number;
-  pid: number;
+  bpid: number;
   bp: BodegaProducto;
   constructor(private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute) { }
   
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe(params =>{
-      this.bid = Number(params.get('bid'));
-      this.pid = Number(params.get('pid'));
+      this.bpid = Number(params.get('id'));
     })
-    console.log(this.bid);
-    console.log(this.pid);
-    this.bodegaService.obtenerBP(this.bid, this.pid).subscribe(data => this.bp = data);
+    console.log(this.bpid);
+    this.bodegaService.obtenerBodegaProductoId(this.bpid).subscribe(data => this.bp = data);
   }
 
 }

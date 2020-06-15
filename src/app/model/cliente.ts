@@ -11,4 +11,5 @@ export class Cliente {
     distrito: String;
     listado: Listado;
     reseñas: Reseña[];
+    imagen: any;
 }

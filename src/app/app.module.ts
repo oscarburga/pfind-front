@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { RegistrarClienteComponent } from './registrar-cliente/registrar-cliente.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { RegistarBodegaComponent } from './registar-bodega/registar-bodega.component';
@@ -42,7 +43,8 @@ import { LoginBodegaComponent } from './login-bodega/login-bodega.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -35,9 +35,6 @@ export class BodegaService {
     )
   }
 
-  obtenerBP(bID:number, pID:number) : Observable<any>{
-    return this.http.get(this.urlBase+"/producto/buscar/"+bID.toString() + "/" + pID.toString()).pipe(map(response => response as BodegaProducto));
-  }
   buscarBodegaProducto(id_categoria: number,
                         nombre: string, marca: string,
                         bodega: string, minimo: number,
@@ -59,8 +56,8 @@ export class BodegaService {
     return this.http.get(url_query).pipe(map(response => response as BodegaProducto[]));
   }
 //######## USANDO ACTUALMENTE ###############################################################
-  obtenerp(nombre: string){
-    return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre).subscribe(
+  obtenerBodegaProductoNombre(nombre: string){
+    return this.http.get(this.urlBase + "/Bodega_Producto_Nombre/" + nombre).subscribe(
       data => this.dataBusqueda = data
     )
   }
@@ -74,18 +71,22 @@ export class BodegaService {
   descargarData(){
     return this.dataBusqueda;
   }
+
+  obtenerBodegaProductoId(id:number) : Observable<any>{
+    return this.http.get(this.urlBase + '/Bodega_Producto_Id/' + id).pipe(map(response => response as BodegaProducto));
+  }
 //######## USANDO ACTUALMENTE ###############################################################
 
   registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{
     return this.http.post(this.urlBase + "/producto/registrar/" + bid.toString() + "/" + pid.toString() + "/" + precio.toString(), {headers: this.httpHeaders});
   }
   /*producto/buscarBPn/{nombre}*/
-  obtenerBodegaProducto(nombre: string): Observable<any>{
+  /*obtenerBodegaProducto(nombre: string): Observable<any>{
     return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre)
     .pipe(
       map(response => response as BodegaProducto[])
     );
-  }
+  }*/
 
 
 

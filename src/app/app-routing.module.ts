@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'registrarBP', component:RegistrarBodegaProductoComponent},
   {path: 'lista', component:ListadoProductoComponent},
   {path: 'actualizarBodega', component:ActualizarBodegaComponent},
-  {path: 'producto/:bid/:pid', component:VisualizarProductoComponent},
+  {path: 'busqueda/Bodega/Producto/:id', component:VisualizarProductoComponent},
   {path: 'bodega/:bid', component:VisualizarBodegaComponent}
 ];
 

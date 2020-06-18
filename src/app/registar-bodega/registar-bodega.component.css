@@ -1,3 +1,9 @@
+#mapa{
+    width: 90%;
+    height: 100%;
+    background-color: red;
+  }
+
 .contenedor{
     padding-top: 7%;
     padding-left: 20%;

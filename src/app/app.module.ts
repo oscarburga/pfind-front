@@ -20,6 +20,8 @@ import { VisualizarProductoComponent } from './visualizar-producto/visualizar-pr
 import { VisualizarBodegaComponent } from './visualizar-bodega/visualizar-bodega.component';
 import { LoginClienteComponent } from './login-cliente/login-cliente.component';
 import { LoginBodegaComponent } from './login-bodega/login-bodega.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { LoginBodegaComponent } from './login-bodega/login-bodega.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDu3P7MY6ptSbGVvEKNzUgKKdTJhuTwF9A'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

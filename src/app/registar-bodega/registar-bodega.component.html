@@ -11,7 +11,6 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="jefe"></label>
                         <input type="text" placeholder="Administrador de Bodega" class="form-control" id="jefe"
                             [(ngModel)]="bodega.jefe" name="jefe" required #jefe="ngModel">
                         <div class="alert alert-danger" *ngIf="jefe.invalid && (jefe.dirty || jefe.touched)">
@@ -23,12 +22,11 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="nombre"></label>
                         <input type="text" placeholder="Nombre de la Bodega" class="form-control" id="nombre"
                             [(ngModel)]="bodega.nombre" name="nombre" required #nombre="ngModel">
                         <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                             <div *ngIf="nombre.errors.required">
-                                Nombre del Administrador es requerido
+                                Nombre de la Bodega es requerido
                             </div>
                         </div>
                     </div>
@@ -37,7 +35,6 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="email"></label>
                         <input type="email" placeholder="Email" class="form-control" id="email"
                             [(ngModel)]="bodega.email" name="email" required #email="ngModel">
                         <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
@@ -51,7 +48,6 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="password"></label>
                         <input type="password" placeholder="Contraseña" class="form-control" id="password"
                             [(ngModel)]="bodega.password" name="password" required #password="ngModel">
                         <div class="alert alert-danger"
@@ -67,7 +63,6 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="direccion"></label>
                         <input type="text" placeholder="Dirección" class="form-control" id="direccion"
                             [(ngModel)]="bodega.direccion" name="direccion" required #direccion="ngModel">
                         <div class="alert alert-danger"
@@ -78,28 +73,35 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Numero" class="form-control" id="Ndireccion" name="Ndireccion">
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="form-group">
-                        <label for="agencia_bancaria"></label>
-                        <input type="text" placeholder="Agencia Bancaria" class="form-control" id="agenteBanca"
-                            [(ngModel)]="bodega.agencia_bancaria" name="agencia_bancaria">
+                    <div class="row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Agencia Bancaria" class="form-control" id="agenteBanca"
+                                [(ngModel)]="bodega.agencia_bancaria" name="agencia_bancaria">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Aforo" class="form-control" id="aforo"
+                                [(ngModel)]="bodega.aforo" name="aforo">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <input type="text" placeholder="R.U.C" class="form-control" id="ruc"
+                                [(ngModel)]="bodega.ruc" name="ruc">
+                        </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="form-group">
-                        <label for="aforo"></label>
-                        <input type="text" placeholder="Aforo" class="form-control" id="aforo"
-                            [(ngModel)]="bodega.aforo" name="aforo">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="ruc"></label>
-                        <input type="text" placeholder="R.U.C" class="form-control" id="ruc" [(ngModel)]="bodega.ruc"
-                            name="ruc">
-                    </div>
+                    <div id="mapa"></div>
                 </div>
             </div>
             <div class="row">
@@ -112,7 +114,7 @@
             <div class="row" style="padding: 0 2%;">
                 <div class="col" *ngFor="let c of cat" style="width: 100%;" style="height: 100%;" style="padding: 0 0;">
                     <button type="button" class="seleccion">{{c.nombre}}</button>
-                <!--<div class="form-group">
+                    <!--<div class="form-group">
                         <ul>
                             <li *ngFor="let c of cat" class="list-group-item">
                                 <input type="text" id="cat_{{c.codigo}}">
@@ -125,7 +127,8 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group" style="margin-top: 2%;">
-                        <button type="submit" class="btn btn-info" [disabled]="registrarForm.form.invalid">Registrar</button>
+                        <button type="submit" class="btn btn-info"
+                            [disabled]="registrarForm.form.invalid">Registrar</button>
                     </div>
                 </div>
             </div>

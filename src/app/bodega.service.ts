@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Bodega } from './model/bodega';
 import { Categoria } from './model/categoria';
 import { BodegaProducto } from './model/bodega-producto';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +76,13 @@ export class BodegaService {
   obtenerBodegaProductoId(id:number) : Observable<any>{
     return this.http.get(this.urlBase + '/Bodega_Producto_Id/' + id).pipe(map(response => response as BodegaProducto));
   }
+
+  obtenerDireccion(direccion:string) : Observable<any>{
+    return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address="+direccion+"&key="+"AIzaSyCRBsEXevVkFRosgbEYdFA77BeY1v1RL9Q").pipe(
+      
+    )
+  }
+
 //######## USANDO ACTUALMENTE ###############################################################
 
   registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{

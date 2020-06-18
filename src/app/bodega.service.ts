@@ -77,8 +77,14 @@ export class BodegaService {
     return this.http.get(this.urlBase + '/Bodega_Producto_Id/' + id).pipe(map(response => response as BodegaProducto));
   }
 
-  obtenerDireccion(direccion:string) : Observable<any>{
-    return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address="+direccion+"&key="+"AIzaSyCRBsEXevVkFRosgbEYdFA77BeY1v1RL9Q").pipe(
+  obtenerdeDireccion(direccion:string) : Observable<any>{
+    return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address="+direccion+"Lima,+Peru&key="+"AIzaSyCRBsEXevVkFRosgbEYdFA77BeY1v1RL9Q").pipe(
+      
+    )
+  }
+
+  obtenerdeLngLat(lng:number, lat:number) : Observable<any>{
+    return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lng+','+lat + "&key="+"AIzaSyCRBsEXevVkFRosgbEYdFA77BeY1v1RL9Q").pipe(
       
     )
   }

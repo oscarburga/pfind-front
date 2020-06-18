@@ -63,8 +63,8 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <input type="text" placeholder="Dirección" class="form-control" id="direccion"
-                            [(ngModel)]="bodega.direccion" name="direccion" required #direccion="ngModel">
+                        <input type="text" placeholder="Dirección" class="form-control" id="direccion" [(ngModel)]="bodega.direccion"
+                        #box (keyup)="cambioDireccion(box.value)" value={{address}} name="direccion" required #direccion="ngModel">
                         <div class="alert alert-danger"
                             *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
                             <div *ngIf="direccion.errors.required">
@@ -73,35 +73,38 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Numero" class="form-control" id="Ndireccion" name="Ndireccion">
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col">
+                    <div id="mapa"></div>
+                </div>
+
+                <div class="col" id="sidemap">
                     <div class="row">
+                        <div class="col">
                         <div class="form-group">
                             <input type="text" placeholder="Agencia Bancaria" class="form-control" id="agenteBanca"
                                 [(ngModel)]="bodega.agencia_bancaria" name="agencia_bancaria">
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <input type="text" placeholder="Aforo" class="form-control" id="aforo"
-                                [(ngModel)]="bodega.aforo" name="aforo">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group">
-                            <input type="text" placeholder="R.U.C" class="form-control" id="ruc"
-                                [(ngModel)]="bodega.ruc" name="ruc">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" placeholder="Aforo" class="form-control" id="aforo"
+                                    [(ngModel)]="bodega.aforo" name="aforo">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div id="mapa"></div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" placeholder="R.U.C" class="form-control" id="ruc"
+                                    [(ngModel)]="bodega.ruc" name="ruc">
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
             <div class="row">

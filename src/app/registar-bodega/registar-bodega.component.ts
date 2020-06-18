@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BodegaService } from '../bodega.service';
 import { Router } from '@angular/router';
 import { Bodega } from '../model/bodega';
@@ -20,32 +20,39 @@ export class RegistarBodegaComponent implements OnInit {
   mapa: mapboxgl.Map;
   latitud: number;
   longitud: number;
+  address: string="";
+  n_address:string = "";
+  marker :mapboxgl.Marker;
+  box: Input;
 
   constructor(private bodegaService:BodegaService, private router:Router) { }
 
   ngOnInit(): void {
     this.getCategoria();
-    mapboxgl.accessToken = environment.mapboxKey;
+    (mapboxgl as any).accessToken = environment.mapboxKey;
     this.mapa = new mapboxgl.Map({
       container: 'mapa', // container id
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-74.5, 40], // starting position
+      center: [-77.0427589,-12.0463503], // starting position
       zoom: 9 // starting zoom
     });
-
-    this.crearmarcador(-74.5, 40);
+    this.marker = new mapboxgl.Marker({
+      draggable: true
+    })
+    this.crearmarcador(-77.0427589,-12.0463503);
+    this.moverMarcador(this.longitud, this.latitud);
   }
 
   crearmarcador(lng: number, lat: number) {
-    const marker = new mapboxgl.Marker({
-      draggable: true
-    })
-      .setLngLat([lng, lat])
-      .addTo(this.mapa);
-    
-    marker.on('drag',()=>{
-      this.longitud = marker.getLngLat().lng;
-      console.log(this.longitud)
+    this.mapa.setCenter([lng,lat]);
+    this.marker.setLngLat([lng, lat]).addTo(this.mapa);
+  }
+
+  moverMarcador(lng:number, lat: number){
+    this.marker.on('drag',()=>{
+      this.longitud = this.marker.getLngLat().lng;
+      this.latitud = this.marker.getLngLat().lat;
+      this.obtenerDireccionLngLat();
     })
   }
 
@@ -61,4 +68,32 @@ export class RegistarBodegaComponent implements OnInit {
     );
   }
 
+  cambioDireccion(value: string) { 
+    this.address = this.n_address+value;
+    this.obtenerMarcador();
+  }
+
+  obtenerMarcador(){
+    this.bodegaService.obtenerdeDireccion(this.address).subscribe(
+      data => {
+        console.log(data);
+        if(data.results.length != 0){
+          this.latitud = data.results[0].geometry.location.lat;
+          this.longitud = data.results[0].geometry.location.lng;
+          this.crearmarcador(this.longitud, this.latitud);
+        }
+      }
+    )
+  }
+
+  obtenerDireccionLngLat(){
+    this.bodegaService.obtenerdeLngLat(this.latitud,this.longitud).subscribe(
+      data => {
+        console.log(data);
+        if(data.results.length != 0){
+          this.address = data.results[0].formatted_address;
+        }
+      }
+    )
+  }
 }

@@ -37,7 +37,7 @@ export class AppComponent {
     }
     //Si está logueado carga su foto de perfil
 
-    this.router.navigate(["inicio"]);
+    this.router.navigate(["inicioBodega"]);
 
    
   }

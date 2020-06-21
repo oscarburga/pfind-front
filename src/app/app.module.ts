@@ -21,6 +21,7 @@ import { VisualizarBodegaComponent } from './visualizar-bodega/visualizar-bodega
 import { LoginClienteComponent } from './login-cliente/login-cliente.component';
 import { LoginBodegaComponent } from './login-bodega/login-bodega.component';
 import { AgmCoreModule } from '@agm/core';
+import { PaginaInicioBodegaComponent } from './pagina-inicio-bodega/pagina-inicio-bodega.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AgmCoreModule } from '@agm/core';
     VisualizarProductoComponent,
     VisualizarBodegaComponent,
     LoginClienteComponent,
-    LoginBodegaComponent
+    LoginBodegaComponent,
+    PaginaInicioBodegaComponent
   ],
   imports: [
     BrowserModule,

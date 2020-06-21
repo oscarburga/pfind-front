@@ -14,6 +14,7 @@ import { VisualizarProductoComponent } from './visualizar-producto/visualizar-pr
 import { VisualizarBodegaComponent } from './visualizar-bodega/visualizar-bodega.component';
 import { LoginClienteComponent } from './login-cliente/login-cliente.component';
 import { LoginBodegaComponent } from './login-bodega/login-bodega.component';
+import { PaginaInicioBodegaComponent} from './pagina-inicio-bodega/pagina-inicio-bodega.component';
 
 
 
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path: 'lista', component:ListadoProductoComponent},
   {path: 'actualizarBodega', component:ActualizarBodegaComponent},
   {path: 'busqueda/Bodega/Producto/:id', component:VisualizarProductoComponent},
-  {path: 'bodega/:bid', component:VisualizarBodegaComponent}
+  {path: 'bodega/:bid', component:VisualizarBodegaComponent},
+  {path: 'inicioBodega', component:PaginaInicioBodegaComponent}
 ];
 
 @NgModule({

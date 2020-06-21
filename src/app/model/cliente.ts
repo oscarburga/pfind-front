@@ -1,5 +1,5 @@
 import { Listado } from './listado';
-import { Reseña } from './reseña';
+import { Resena } from './resena';
 
 export class Cliente {
     codigo: number;
@@ -10,6 +10,6 @@ export class Cliente {
     password: String;
     distrito: String;
     listado: Listado;
-    reseñas: Reseña[];
+    resenas: Resena[];
     imagen: any;
 }

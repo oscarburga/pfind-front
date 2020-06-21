@@ -6,7 +6,7 @@ import { Bodega } from './model/bodega';
 import { Categoria } from './model/categoria';
 import { BodegaProducto } from './model/bodega-producto';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
-
+import { Resena } from './model/resena' ;
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +21,9 @@ export class BodegaService {
   registrarBodega(bodega:Bodega){
     return this.http.post(this.urlBase + "/registrar", bodega, {headers: this.httpHeaders})
   }
-
+  crearResena(resena: Resena, bid : number, cid: number) : Observable<Object>{
+    return this.http.post(this.urlBase+"/resena" + "/registrar/" +  bid.toString() + "/" + cid.toString(), resena, {headers: this.httpHeaders});
+  }
   actualizarBodega(bodega:Bodega){
     return this.http.put(this.urlBase + "/actualizar", bodega, {headers: this.httpHeaders})
   }

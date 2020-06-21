@@ -1,6 +1,6 @@
 import { BodegaCategoria } from './bodega-categoria';
 import { BodegaProducto } from './bodega-producto';
-import { Reseña } from './reseña';
+import { Resena } from './resena';
 
 export class Bodega{
     codigo: number;
@@ -14,5 +14,5 @@ export class Bodega{
     agencia_bancaria: String;
     bodega_categoria: BodegaCategoria[];
     productos: BodegaProducto[];
-    reseña: Reseña[];
+    resena: Resena[];
 }

@@ -29,5 +29,57 @@
     
             </div>
         </div>
-    </div>
+        <div class = "bodega">
+            <div class="col"> Reseñas:
+            <div *ngFor="let p of bod.resena">
+                
+                    <div class="resena">
+                        
+                        <label class="Calificacion"> Calificacion: {{p.calificacion}}</label>
+                        <div>
+                        <label class="Contenido">Contenido: {{p.contenido}}</label>
+                        <div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+         
+        <div class="g">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Deja tus comentarios
+            </button>
+            
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                <div class="modal-content">
+            
+                    <!-- Modal Header -->
+                    <div class="modal-body">
+                        <form (ngSubmit) = "save()" #clienteForm="ngForm">
+                            <div class="form-group">
+                            <label for="calificacion">Calificacion</label>
+                            <input type="text" class="form-control" id="calificacion" [(ngModel)]="re.calificacion" name="calificacion"> 
+                            </div>
+                            <div class="form-group">
+                            <label for="contenido">Contenido</label>
+                            <input type="text" class="form-control" id="contenido" [(ngModel)]="re.contenido" name="contenido"> 
+                            </div>
+                    
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-success" [disabled] = "!clienteForm.form.valid">Enviar</button>
+                            </div>
+                    
+                        </form>
+                   </div>
+                </div>
+                </div>
+            </div>
+            
+            </div>
+
+
+
 </div>
+

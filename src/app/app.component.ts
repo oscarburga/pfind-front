@@ -38,11 +38,8 @@ export class AppComponent {
     //Si está logueado carga su foto de perfil
 
     this.router.navigate(["inicioBodega"]);
-
    
   }
-
-  
 
   isRClienteRoute() {
     return !(this.router.url == '/loginCliente' || this.router.url == '/loginBodega');

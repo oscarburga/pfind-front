@@ -17,13 +17,20 @@ export class RegistarBodegaComponent implements OnInit {
 
   bodega = new Bodega()
   cat: Observable<Categoria[]>
+  //mapa
   mapa: mapboxgl.Map;
   latitud: number;
   longitud: number;
   address: string="";
-  n_address:string = "";
   marker :mapboxgl.Marker;
   box: Input;
+  //cargar imagenes
+  fileName: String;
+  label_imagen : String = "Elige una imagen";
+  selectedFile: File;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
 
   constructor(private bodegaService:BodegaService, private router:Router) { }
 
@@ -57,8 +64,12 @@ export class RegistarBodegaComponent implements OnInit {
   }
 
   save(){
-    this.bodegaService.registrarBodega(this.bodega).subscribe(
-      data => this.router.navigate(["/inicio"])
+    this.bodegaService.registrarBodega(this.bodega).subscribe(data => {
+      const uploadImageData = new FormData();
+      console.log(this.selectedFile);
+      uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+      this.bodegaService.subirImagen(uploadImageData);
+      this.router.navigate(["/loginBodega"]);}
     );
   }
 
@@ -69,7 +80,7 @@ export class RegistarBodegaComponent implements OnInit {
   }
 
   cambioDireccion(value: string) { 
-    this.address = this.n_address+value;
+    this.address =value;
     this.obtenerMarcador();
   }
 
@@ -95,5 +106,22 @@ export class RegistarBodegaComponent implements OnInit {
         }
       }
     )
+  }
+
+  onFileSelected(event){
+    
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.fileName = event.target.files[0].name;
+      this.selectedFile = event.target.files[0];
+    }
+
+    if(this.fileName.length < 30){
+      this.label_imagen = this.fileName;
+    }else{
+      if(this.fileName.length > 50){
+        this.label_imagen = "Imagen seleccionada"
+      }
+    }
   }
 }

@@ -17,7 +17,8 @@ export class BodegaService {
   constructor(private http: HttpClient) { }
 
   dataBusqueda: any;
-  
+   
+//######## USANDO ACTUALMENTE ###############################################################
   registrarBodega(bodega:Bodega){
     return this.http.post(this.urlBase + "/registrar", bodega, {headers: this.httpHeaders})
   }
@@ -37,28 +38,7 @@ export class BodegaService {
       map(response => response as Categoria[])
     )
   }
-
-  buscarBodegaProducto(id_categoria: number,
-                        nombre: string, marca: string,
-                        bodega: string, minimo: number,
-                        maximo: number) : Observable<any>{
-    let cat_id = "/cat_id=";
-    if (id_categoria != null && id_categoria != undefined) cat_id += id_categoria.toString();
-    let nom = "/nom=";
-    if (nombre != undefined && nombre != null) nom += nombre;
-    let marc = "/marc=";
-    if (marca != undefined && marca != null) marc+=marca;
-    let bod = "/bod=";
-    if (bodega != undefined && bodega != null) bod+=bodega;
-    let min = "/min=";
-    if (minimo != null && minimo != undefined) min+= minimo.toString();
-    let max = "/max=";
-    if (maximo != null && maximo != undefined) max+= maximo.toString();
-    let url_query = this.urlBase + "/producto/busqueda"+cat_id+nom+marc+bod+min+max;
-    console.log("REQUEST: ", url_query);
-    return this.http.get(url_query).pipe(map(response => response as BodegaProducto[]));
-  }
-//######## USANDO ACTUALMENTE ###############################################################
+ 
   obtenerBodegaProductoNombre(nombre: string){
     return this.http.get(this.urlBase + "/Bodega_Producto_Nombre/" + nombre).subscribe(
       data => this.dataBusqueda = data
@@ -91,20 +71,23 @@ export class BodegaService {
     )
   }
 
+  subirImagen(imagenData:any){
+    return this.http.post(this.urlBase + "/upload_imagen" , imagenData, { observe: 'response' }).subscribe(
+      (response) => {
+        if(response.status === 200){
+          console.log("Imagen cargada correctamente")
+        }else{
+          console.log("Imagen no cargada")
+          }
+        }
+    )
+  }
+
 //######## USANDO ACTUALMENTE ###############################################################
 
   registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{
     return this.http.post(this.urlBase + "/producto/registrar/" + bid.toString() + "/" + pid.toString() + "/" + precio.toString(), {headers: this.httpHeaders});
   }
-  /*producto/buscarBPn/{nombre}*/
-  /*obtenerBodegaProducto(nombre: string): Observable<any>{
-    return this.http.get(this.urlBase + "/producto/buscarBPn/" + nombre)
-    .pipe(
-      map(response => response as BodegaProducto[])
-    );
-  }*/
-
-
 
   buscarCategoriaProducto(id:number, nombre:string) :Observable<any>{
     return this.http.get(this.urlBase + "/producto/buscarBPCtgNombre/" + id + "/" + nombre).pipe(

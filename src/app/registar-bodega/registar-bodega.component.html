@@ -58,7 +58,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col"></div>
+                <div class="col">
+                    <div class="form-group" id="selectedFile">
+                        <!--<h5 id="imagen">{{label_imagen}}</h5>-->
+                        <input type="file" class="form-control" id="imagen" (change)="onFileSelected($event)"
+                            name="profile" style="display: none;" #selectedFile>
+                        <button type="button" (click)="selectedFile.click()" class="btn btn-secondary">{{label_imagen}}</button>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col">

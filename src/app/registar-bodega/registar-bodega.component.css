@@ -69,6 +69,10 @@
     padding: 3% 0;
 }
 
+#selectedFile{
+    text-align: center;
+}
+
 
 @media only screen and (max-width: 995px) {
     .contenedor{

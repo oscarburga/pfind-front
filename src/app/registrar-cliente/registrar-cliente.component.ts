@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ClienteService } from '../cliente.service';
 import { Router } from '@angular/router';
 import { Cliente } from '../model/cliente';

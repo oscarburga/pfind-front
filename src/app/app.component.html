@@ -35,7 +35,7 @@
     <!--Usuario no logueado-->
     <ul class="nav navbar-nav navbar-right" *ngIf="!ClienteLogueado()">
       <li><a routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user"></span>
-          Registrar</a></li>  
+          Registrar</a></li>
       <li><a routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>
           Iniciar</a></li>
       <!--<li><a routerLink="/registrarBP" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RBP</a></li>
@@ -45,7 +45,15 @@
     <!--Usuario logueado-->
 
     <ul class="nav navbar-nav navbar-right" *ngIf="ClienteLogueado()">
-      <li><a routerLink="#" class="foto_perfil"><img [src]="Perfil()" alt="Foto Perfil">{{DatosUsuario().Nombre}} {{DatosUsuario().Apellido}}</a></li>
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil">{{DatosUsuario().Nombre}}
+          {{DatosUsuario().Apellido}}</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">Actualizar Información</a>
+          <a class="dropdown-item">Cerrar Sesión</a>
+        </div>
+      </div>
     </ul>
   </div>
 </nav>
@@ -59,7 +67,8 @@
     </a>
     <div class="box">
       <div class="container-4">
-        <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscarNombre()" />
+        <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda"
+          (keyup.enter)="buscarNombre()" />
         <button class="icon" (click)="buscarNombre()"><i class="fa fa-search"></i></button>
       </div>
     </div>
@@ -71,20 +80,22 @@
       <div class="col">
         <ul class="lista-categorias">
           <li *ngFor="let c of cat">
-            <a class="dropdown-item" id="barra-desplegable" (click)=buscarCategoria(c.codigo)  (click)=desplegar()>{{c.nombre}}</a>
+            <a class="dropdown-item" id="barra-desplegable" (click)=buscarCategoria(c.codigo)
+              (click)=desplegar()>{{c.nombre}}</a>
           </li>
         </ul>
       </div>
       <div class="col" id="col2">
         <ul class="lista-menu">
           <li class="nav-item">
-            <a class="car-compra"  (click)=desplegar() routerLink="/lista"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <a class="car-compra" (click)=desplegar() routerLink="/lista"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i></a>
           </li>
-          <li><a  (click)=desplegar() routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user"
-                style="color: gray;"></span></a>
+          <li><a (click)=desplegar() routerLink="/registrarUsuario" class="login-buttoms"><span
+                class="glyphicon glyphicon-user" style="color: gray;"></span></a>
           </li>
-          <li><a  (click)=desplegar() routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"
-                style="color: gray;"></span></a>
+          <li><a (click)=desplegar() routerLink="/loginUsuario" class="login-buttoms"><span
+                class="glyphicon glyphicon-log-in" style="color: gray;"></span></a>
           </li>
         </ul>
       </div>

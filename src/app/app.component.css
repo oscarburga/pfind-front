@@ -1,5 +1,3 @@
-
-
 #nav-principal {
   position: fixed;
   left: 0;
@@ -12,18 +10,20 @@
   padding: 0 0;
 }
 
-.foto_perfil{
-  margin-left: 25px;
-  margin-right: 25px;
-  padding-top: 0;
-  padding-bottom: 0;
+#foto_perfil{
   color: black;
   border-radius: 5px;
+  background: none;
 }
 
-.foto_perfil img{
+#foto_perfil img{
   border-radius: 10px;
   margin-right: 10px;
+}
+
+.nav-derecha{
+  margin: 0 0;
+  padding-right: 1%;
 }
 
 #nav-secundario {
@@ -54,6 +54,7 @@ img {
   vertical-align: middle;
   white-space: nowrap;
   border: none;
+  padding-left: 2%;
 }
 .container-4 input#search {
   width: 100%;

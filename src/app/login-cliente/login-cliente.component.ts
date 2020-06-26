@@ -6,18 +6,18 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login-cliente.component.html'
+  templateUrl: './login-cliente.component.html',
+  styleUrls: ['./login-cliente.component.css']
 })
 export class LoginClienteComponent implements OnInit {
 
-  titulo: string = 'Por favor Sign In!';
   usuario: Usuario;
 
   constructor(private authService: AuthService, private router: Router) {
-    this.usuario = new Usuario();
   }
 
   ngOnInit() {
+    this.usuario = new Usuario();
     if (this.authService.isAuthenticated()) {
       swal.fire('Login', `Hola ${this.authService.usuario.username} ya estás autenticado!`, 'info');
       this.router.navigate(['/clientes']);

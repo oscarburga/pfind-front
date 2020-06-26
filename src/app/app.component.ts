@@ -21,8 +21,6 @@ export class AppComponent {
   Nombre: string;
   Apellido: string;
  
-
-
   constructor(
     private router: Router,
     private bodegaServicio: BodegaService,
@@ -37,7 +35,7 @@ export class AppComponent {
     }
     //Si está logueado carga su foto de perfil
 
-    this.router.navigate(["inicioBodega"]);
+    //this.router.navigate(["inicioBodega"]);
    
   }
 
@@ -47,7 +45,7 @@ export class AppComponent {
 
   //Funcion que cambia cuando el cliente se loguea o se desloguea -> Falta que el profe explique
   ClienteLogueado() {
-    return false;
+    return true;
   }
 
   //Contiene la imagen del perfil del cliente logueado

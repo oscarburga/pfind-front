@@ -20,6 +20,7 @@ export class AppComponent {
   perfil: any;
   Nombre: string;
   Apellido: string;
+  logueado: Boolean = true;
  
   constructor(
     private router: Router,
@@ -45,7 +46,7 @@ export class AppComponent {
 
   //Funcion que cambia cuando el cliente se loguea o se desloguea -> Falta que el profe explique
   ClienteLogueado() {
-    return true;
+    return this.logueado;
   }
 
   //Contiene la imagen del perfil del cliente logueado
@@ -81,6 +82,10 @@ export class AppComponent {
     }
     else this.desplegarmenu = true;
     return this.desplegarmenu;
+  }
+
+  cerrarSesion(){
+    this.logueado = false;
   }
 
 }

@@ -24,6 +24,10 @@ export class ClienteService {
   registrarCliente(cliente: Cliente): Observable<Object>{
     return this.http.post(this.urlBase+"/registrar", cliente, {headers: this.httpHeaders});
   }
+  
+  actualizarCliente(cliente: Cliente): Observable<Object>{
+    return this.http.post(this.urlBase+"/actualizar/" + this.Cliente_id, cliente, {headers: this.httpHeaders});
+  }
 
   subirImagen(imagenData:any){
     return this.http.post(this.urlBase + "/upload_imagen" , imagenData, { observe: 'response' }).subscribe(

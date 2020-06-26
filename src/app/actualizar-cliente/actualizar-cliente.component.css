@@ -1,0 +1,34 @@
+.contenedor{
+    padding-top: 8rem;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.formulario-registro{
+    border-radius: 3%;
+    padding: 2% 2%;
+    background-color: #F8F9FA;
+    
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
+
+.titulo{
+    border-bottom: 1px black solid;
+    margin-bottom: 3%;
+}
+
+#selectedFile{
+    text-align: center;
+}
+
+@media only screen and (max-width: 995px) {
+    .contenedor{
+        padding-top: 8rem;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    h1{
+        font-size: x-large;
+    }
+}

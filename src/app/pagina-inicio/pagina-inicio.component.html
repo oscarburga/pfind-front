@@ -1,32 +1,50 @@
 <div class="container">
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" id="estilo-carrusel">
-      <div class="carousel-item active">
-        <img class="d-block w-100" id="imagen-inicio" src="https://cdn.discordapp.com/attachments/705952300526731295/715383530154229802/audio-agalep-823138mp3_823139.png"  alt="First slide" >
-        <div class="carousel-caption d-none d-md-block">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" id="estilo-carrusel">
+            <div class="carousel-item active">
+                <img class="d-block w-100" id="imagen-inicio" src="https://cdn.discordapp.com/attachments/705952300526731295/715383530154229802/audio-agalep-823138mp3_823139.png" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+
+            <div class="carousel-item" id="estilo-carrusel">
+                <img class="d-block w-100" id="imagen-inicio" src="https://www.dogalize.com/wp-content/uploads/2017/06/La-sverminazione-e-la-pulizia-del-cucciolo-del-cane-2-800x400-800x400.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item" id="estilo-carrusel">
+                <img class="d-block w-100" id="imagen-inicio" src="https://assets.puzzlefactory.pl/puzzle/218/136/original.jpg" alt="Third slide">
+            </div>
         </div>
-      </div>
-      
-      <div class="carousel-item" id="estilo-carrusel">
-        <img class="d-block w-100" id="imagen-inicio" src="https://www.dogalize.com/wp-content/uploads/2017/06/La-sverminazione-e-la-pulizia-del-cucciolo-del-cane-2-800x400-800x400.jpg" alt="Second slide">
-      </div>
-      <div class="carousel-item" id="estilo-carrusel">
-        <img class="d-block w-100" id="imagen-inicio" src="https://assets.puzzlefactory.pl/puzzle/218/136/original.jpg" alt="Third slide" >
-      </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
 </div>
 
+<footer>
+    <hr style="border-color:#f16a78; width: 60%;border-width: 5px;border-radius: 25px;">
 
+    <div class="row justify-content-md-center">
+        <div *ngFor="let a of aus">
+            <div class="col">
+                <div class="aus">
+                    <img class="alogo " src={{a.logo}} alt="Logo ">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</footer>

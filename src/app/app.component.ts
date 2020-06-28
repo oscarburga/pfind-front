@@ -6,6 +6,7 @@ import { ProductoService } from 'src/app/producto.service';
 import { ClienteService } from 'src/app/cliente.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,7 +27,8 @@ export class AppComponent {
     private router: Router,
     private bodegaServicio: BodegaService,
     private productoservicio: ProductoService,
-    private clienteServicio: ClienteService
+    private clienteServicio: ClienteService,
+    
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class AppComponent {
    
   }
 
+  
   isRClienteRoute() {
     return !(this.router.url == '/loginCliente' || this.router.url == '/loginBodega');
   }

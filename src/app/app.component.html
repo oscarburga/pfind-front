@@ -1,108 +1,102 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav-principal">
-  <a class="navbar-brand" routerLink="inicio" style="margin: 0 0;" id="ini_logo">
-    <img src="{{logoInicio}}" alt="inicio" loading="lazy">
-  </a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="isRClienteRoute()"
-    style="display: inline-block;">
-    <ul class="navbar-nav mr-auto" id="menu">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="inicio">Inicio<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+    <a class="navbar-brand" routerLink="inicio" style="margin: 0 0;" id="ini_logo">
+        <img src="{{logoInicio}}" alt="inicio" loading="lazy">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="isRClienteRoute()" style="display: inline-block;">
+        <ul class="navbar-nav mr-auto" id="menu">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="inicio">Inicio<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categorías
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <li *ngFor="let c of cat">
-        <a class="dropdown-item" id="barra-desplegable" (click)=buscarCategoria(c.codigo)>{{c.nombre}}</a>
-      </li>
-  </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/lista">Lista</a>
-  </li>
-  </ul>
-  <div class="box">
-    <div class="container-4">
-      <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscarNombre()" />
-      <button class="icon" (click)="buscarNombre()"><i class="fa fa-search"></i></button>
-    </div>
-  </div>
-  </div>
-  <div class="nav-derecha" *ngIf="isRClienteRoute()">
-
-    <!--Usuario no logueado-->
-    <ul class="nav navbar-nav navbar-right" *ngIf="!ClienteLogueado()">
-      <li><a routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user"></span>
-          Registrar</a></li>
-      <li><a routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>
-          Iniciar</a></li>
-      <!--<li><a routerLink="/registrarBP" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RBP</a></li>
-      <li><a routerLink="/registrarProducto" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RP</a></li>-->
-    </ul>
-
-    <!--Usuario logueado-->
-
-    <ul class="nav navbar-nav navbar-right" *ngIf="ClienteLogueado()">
-      <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil">{{DatosUsuario().Nombre}}
-          {{DatosUsuario().Apellido}}</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="http://localhost:4200//actualizarCliente"> Actualizar Información</a>
-          <a class="dropdown-item">Cerrar Sesión</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li *ngFor="let c of cat">
+                        <a class="dropdown-item" id="barra-desplegable" (click)=buscarCategoria(c.codigo)>{{c.nombre}}</a>
+                    </li>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/lista">Lista</a>
+            </li>
+        </ul>
+        <div class="box">
+            <div class="container-4">
+                <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscarNombre()" />
+                <button class="icon" (click)="buscarNombre()"><i class="fa fa-search"></i></button>
+            </div>
         </div>
-      </div>
-    </ul>
-  </div>
+    </div>
+    <div class="nav-derecha" *ngIf="isRClienteRoute()">
+
+        <!--Usuario no logueado-->
+        <ul class="nav navbar-nav navbar-right" *ngIf="!ClienteLogueado()">
+            <li><a routerLink="/registrarUsuario" class="login-buttoms"><span class="glyphicon glyphicon-user"></span>
+          Registrar</a></li>
+            <li><a routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>
+          Iniciar</a></li>
+            <!--<li><a routerLink="/registrarBP" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RBP</a></li>
+      <li><a routerLink="/registrarProducto" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RP</a></li>-->
+        </ul>
+
+        <!--Usuario logueado-->
+
+        <ul class="nav navbar-nav navbar-right" *ngIf="ClienteLogueado()">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil">{{DatosUsuario().Nombre}} {{DatosUsuario().Apellido}}
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="http://localhost:4200//actualizarCliente"> Actualizar Información</a>
+                    <a class="dropdown-item" (click)=cerrarSesion()>Cerrar Sesión</a>
+                </div>
+            </div>
+        </ul>
+    </div>
 </nav>
 
 <!--DISEÑO RESPONSIVE-->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav-secundario">
-  <div class="permanente">
-    <a class="navbar-brand" routerLink="inicio" style="margin: 0 0;" id="ini_logo">
-      <img src="{{logoInicio}}" alt="inicio" loading="lazy">
-    </a>
-    <div class="box">
-      <div class="container-4">
-        <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda"
-          (keyup.enter)="buscarNombre()" />
-        <button class="icon" (click)="buscarNombre()"><i class="fa fa-search"></i></button>
-      </div>
-    </div>
-    <div class="menu-icon"><button class="menu-barras" (click)=desplegar()><i class="fa fa-bars"
+    <div class="permanente">
+        <a class="navbar-brand" routerLink="inicio" style="margin: 0 0;" id="ini_logo">
+            <img src="{{logoInicio}}" alt="inicio" loading="lazy">
+        </a>
+        <div class="box">
+            <div class="container-4">
+                <input type="search" id="search" placeholder="Buscar..." [(ngModel)]="busqueda" (keyup.enter)="buscarNombre()" />
+                <button class="icon" (click)="buscarNombre()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div class="menu-icon"><button class="menu-barras" (click)=desplegar()><i class="fa fa-bars"
           aria-hidden="true"></i></button></div>
-  </div>
-  <div class="escondido" *ngIf=desplegarmenu>
-    <div class="row">
-      <div class="col">
-        <ul class="lista-categorias">
-          <li *ngFor="let c of cat">
-            <a class="dropdown-item" id="barra-desplegable" (click)=buscarCategoria(c.codigo)
-              (click)=desplegar()>{{c.nombre}}</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col" id="col2">
-        <ul class="lista-menu">
-          <li class="nav-item">
-            <a class="car-compra" (click)=desplegar() routerLink="/lista"><i class="fa fa-shopping-cart"
-                aria-hidden="true"></i></a>
-          </li>
-          <li><a (click)=desplegar() routerLink="/registrarUsuario" class="login-buttoms"><span
-                class="glyphicon glyphicon-user" style="color: gray;"></span></a>
-          </li>
-          <li><a (click)=desplegar() routerLink="/loginUsuario" class="login-buttoms"><span
-                class="glyphicon glyphicon-log-in" style="color: gray;"></span></a>
-          </li>
-        </ul>
-      </div>
     </div>
-  </div>
+    <div class="escondido" *ngIf=desplegarmenu>
+        <div class="row">
+            <div class="col">
+                <ul class="lista-categorias">
+                    <li *ngFor="let c of cat">
+                        <a class="dropdown-item" id="barra-desplegable" (click)=buscarCategoria(c.codigo) (click)=desplegar()>{{c.nombre}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col" id="col2">
+                <ul class="lista-menu">
+                    <li class="nav-item">
+                        <a class="car-compra" (click)=desplegar() routerLink="/lista"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i></a>
+                    </li>
+                    <li><a (click)=desplegar() routerLink="/registrarUsuario" class="login-buttoms"><span
+                class="glyphicon glyphicon-user" style="color: gray;"></span></a>
+                    </li>
+                    <li><a (click)=desplegar() routerLink="/loginUsuario" class="login-buttoms"><span
+                class="glyphicon glyphicon-log-in" style="color: gray;"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </nav>
 
 
 <router-outlet></router-outlet>
-

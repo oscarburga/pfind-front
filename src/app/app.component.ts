@@ -21,7 +21,7 @@ export class AppComponent {
   perfil: any;
   Nombre: string;
   Apellido: string;
-  logueado: Boolean = false;
+  logueado: Boolean = true;
  
   constructor(
     private router: Router,

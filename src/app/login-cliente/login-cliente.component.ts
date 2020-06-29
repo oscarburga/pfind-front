@@ -20,7 +20,7 @@ export class LoginClienteComponent implements OnInit {
     this.usuario = new Usuario();
     if (this.authService.isAuthenticated()) {
       swal.fire('Login', `Hola ${this.authService.usuario.username} ya estás autenticado!`, 'info');
-      this.router.navigate(['/clientes']);
+      this.router.navigate(['/inicio']);
     }
   }
 
@@ -37,7 +37,7 @@ export class LoginClienteComponent implements OnInit {
       this.authService.guardarUsuario(response.access_token);
       this.authService.guardarToken(response.access_token);
       let usuario = this.authService.usuario;
-      this.router.navigate(['/clientes']);
+      this.router.navigate(['/inicio']);
       swal.fire('Login', `Hola ${usuario.username}, has iniciado sesión con éxito!`, 'success');
     }, err => {
       if (err.status == 400) {

@@ -1,12 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, ChildActivationStart } from '@angular/router';
+import { ActivatedRoute, ChildActivationStart, Router } from '@angular/router';
 import { BodegaService } from '../bodega.service';
 import { Bodega } from '../model/bodega';
 import { Resena} from '../model/resena';
 
 import * as mapboxgl from 'mapbox-gl';
+import { AuthService } from '../auth.service';
+import { HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pagina-inicio-bodega',
@@ -18,13 +21,42 @@ export class PaginaInicioBodegaComponent implements OnInit {
   bodega: Bodega;
   res: Resena[];
 
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  
   //map
   mapa2: mapboxgl.Map;
   latitud: number;
   longitud: number;
   address: string;
   marker :mapboxgl.Marker;
-  constructor(private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute) { }
+  constructor(private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute, private authService : AuthService, private router: Router) { }
+
+  private agregarAuthorizationHeader() {
+    let token = this.authService.token;
+    if (token != null) {
+      return this.httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+    return this.httpHeaders;
+  }
+
+  private isNoAutorizado(e): boolean {
+    if (e.status == 401) {
+
+      if (this.authService.isAuthenticated()) {
+        this.authService.logout();
+      }
+      this.router.navigate(['/login']);
+      return true;
+    }
+
+    if (e.status == 403) {
+      Swal.fire('Acceso denegado', `Hola ${this.authService.usuario.username} no tienes acceso a este recurso!`, 'warning');
+      this.router.navigate(['/clientes']);
+      return true;
+    }
+    return false;
+  }
+
 
   ngOnInit(): void {
     this.bodegaService.buscarBodega(1).subscribe(
@@ -32,18 +64,21 @@ export class PaginaInicioBodegaComponent implements OnInit {
         this.bodega = data
         this.cambioDireccion(this.bodega.direccion)
       }
-    );
-    
-    (mapboxgl as any).accessToken = environment.mapboxKey;
-    this.mapa2 = new mapboxgl.Map({
-      container: 'mapa2', // container id
-      style: 'mapbox://styles/mapbox/streets-v11',
-      zoom: 13 // starting zoom
-    });
-    this.marker = new mapboxgl.Marker({
-      draggable: false
-    })
-
+      );
+      
+      (mapboxgl as any).accessToken = environment.mapboxKey;
+      this.mapa2 = new mapboxgl.Map({
+        container: 'mapa2', // container id
+        style: 'mapbox://styles/mapbox/streets-v11',
+        zoom: 13 // starting zoom
+      });
+      this.marker = new mapboxgl.Marker({
+        draggable: false
+      })
+      
+      console.log(this.authService.usuario.idEntity);
+      console.log(this.authService.usuario.username);
+      console.log(this.authService.usuario.password);
   }
 
   crearmarcador(lng: number, lat: number) {

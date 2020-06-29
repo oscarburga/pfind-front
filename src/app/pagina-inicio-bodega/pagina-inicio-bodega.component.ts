@@ -78,7 +78,6 @@ export class PaginaInicioBodegaComponent implements OnInit {
       
       console.log(this.authService.usuario.idEntity);
       console.log(this.authService.usuario.username);
-      console.log(this.authService.usuario.password);
   }
 
   crearmarcador(lng: number, lat: number) {

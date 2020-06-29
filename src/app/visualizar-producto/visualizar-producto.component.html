@@ -1,17 +1,12 @@
-<div class="container">
-    <div class="row" style="margin-bottom: 15%;">
-        <div class="col">
-            <div class="container">
-                <img class="pimagen" src="{{bp.producto.imagenprin}}" alt="Imagen Producto">
-            </div>
+<div class="container" style="width: 80vw;">
+    <div class="row" style="margin-bottom: 5%;">
+        <div class="col-4">
+            <img class="pimagen" src="{{bp.producto.imagenprin}}" alt="Imagen Producto">
         </div>
-        <div class="col">
+        <div class="col-3">
             <div class="info">
                 <div class="row">
                     <label class="pnombre">{{bp.producto.nombre}}</label>
-                </div>
-                <div class="row">
-                    <label class="pmarca">{{bp.producto.marca}}</label>
                 </div>
                 <div class="row">
 
@@ -23,6 +18,10 @@
 
                 </div>
                 <div class="row">
+                    <label class="pmarca">{{bp.producto.marca}}</label>
+                </div>
+
+                <div class="row">
                     <label class="pdes">Descripción:</label>
                 </div>
                 <div class="row">
@@ -31,24 +30,27 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div id="map"></div>
+        <div class="col-5">
+            <div id="mapa3">
+            </div>
         </div>
 
     </div>
-    <div class="row" style="float: right;">
+    <hr style="border-color:#f16a78; width: 60%;border-width: 3px;border-radius: 25px;">
+
+    <div class="row">
         <div class="col">
             <div class="row">
                 <label class="pbodeganombre" routerLink="/bodega/{{bp.bodega.codigo}}">{{bp.bodega.nombre}}</label>
             </div>
             <div class="row">
-                <label class="pbodegadireccion">Dirección</label>
+                <label class="pbodegadireccion">Dirección: </label>
             </div>
             <div class="row">
                 <label class="pbodegadireccion">{{bp.bodega.direccion}}</label>
             </div>
             <div class="row">
-                <label class="pbodegaaforo">Aforo</label>
+                <label class="pbodegaaforo">Aforo:</label>
             </div>
             <div class="row">
                 <label class="pbodegaaforo">{{bp.bodega.aforo}}</label>
@@ -56,8 +58,3 @@
         </div>
     </div>
 </div>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRBsEXevVkFRosgbEYdFA77BeY1v1RL9Q&callback=crearmap()">
-</script>
-
-

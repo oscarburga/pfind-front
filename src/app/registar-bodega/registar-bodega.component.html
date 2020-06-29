@@ -11,8 +11,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <input type="text" placeholder="Administrador de Bodega" class="form-control" id="jefe"
-                            [(ngModel)]="bodega.jefe" name="jefe" required #jefe="ngModel">
+                        <input type="text" placeholder="Administrador de Bodega" class="form-control" id="jefe" [(ngModel)]="bodega.jefe" name="jefe" required #jefe="ngModel">
                         <div class="alert alert-danger" *ngIf="jefe.invalid && (jefe.dirty || jefe.touched)">
                             <div *ngIf="jefe.errors.required">
                                 Nombre del Administrador es requerido
@@ -22,8 +21,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <input type="text" placeholder="Nombre de la Bodega" class="form-control" id="nombre"
-                            [(ngModel)]="bodega.nombre" name="nombre" required #nombre="ngModel">
+                        <input type="text" placeholder="Nombre de la Bodega" class="form-control" id="nombre" [(ngModel)]="bodega.nombre" name="nombre" required #nombre="ngModel">
                         <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                             <div *ngIf="nombre.errors.required">
                                 Nombre de la Bodega es requerido
@@ -35,8 +33,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <input type="email" placeholder="Email" class="form-control" id="email"
-                            [(ngModel)]="bodega.email" name="email" required #email="ngModel">
+                        <input type="email" placeholder="Email" class="form-control" id="email" [(ngModel)]="bodega.email" name="email" required #email="ngModel">
                         <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                             <div *ngIf="email.errors.required">
                                 Email es requerido
@@ -48,10 +45,8 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <input type="password" placeholder="Contraseña" class="form-control" id="password"
-                            [(ngModel)]="bodega.password" name="password" required #password="ngModel">
-                        <div class="alert alert-danger"
-                            *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <input type="password" placeholder="Contraseña" class="form-control" id="password" [(ngModel)]="bodega.password" name="password" required #password="ngModel">
+                        <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
                             <div *ngIf="email.errors.required">
                                 La Contraseña es requerida
                             </div>
@@ -61,8 +56,7 @@
                 <div class="col">
                     <div class="form-group" id="selectedFile">
                         <!--<h5 id="imagen">{{label_imagen}}</h5>-->
-                        <input type="file" class="form-control" id="imagen" (change)="onFileSelected($event)"
-                            name="profile" style="display: none;" #selectedFile>
+                        <input type="file" class="form-control" id="imagen" (change)="onFileSelected($event)" name="profile" style="display: none;" #selectedFile>
                         <button type="button" (click)="selectedFile.click()" class="btn btn-secondary">{{label_imagen}}</button>
                     </div>
                 </div>
@@ -70,10 +64,8 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <input type="text" placeholder="Dirección" class="form-control" id="direccion" [(ngModel)]="bodega.direccion"
-                        #box (keyup)="cambioDireccion(box.value)" value={{address}} name="direccion" required #direccion="ngModel">
-                        <div class="alert alert-danger"
-                            *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                        <input type="text" placeholder="Dirección" class="form-control" id="direccion" [(ngModel)]="bodega.direccion" #box (keyup)="cambioDireccion(box.value)" value={{address}} name="direccion" required #direccion="ngModel">
+                        <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
                             <div *ngIf="direccion.errors.required">
                                 La Dirección es requerida
                             </div>
@@ -89,28 +81,25 @@
                 <div class="col" id="sidemap">
                     <div class="row">
                         <div class="col">
-                        <div class="form-group">
-                            <input type="text" placeholder="Agencia Bancaria" class="form-control" id="agenteBanca"
-                                [(ngModel)]="bodega.agencia_bancaria" name="agencia_bancaria">
-                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
                             <div class="form-group">
-                                <input type="text" placeholder="Aforo" class="form-control" id="aforo"
-                                    [(ngModel)]="bodega.aforo" name="aforo">
+                                <input type="text" placeholder="Agencia Bancaria" class="form-control" id="agenteBanca" [(ngModel)]="bodega.agencia_bancaria" name="agencia_bancaria">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <input type="text" placeholder="R.U.C" class="form-control" id="ruc"
-                                    [(ngModel)]="bodega.ruc" name="ruc">
+                                <input type="text" placeholder="Aforo" class="form-control" id="aforo" [(ngModel)]="bodega.aforo" name="aforo">
                             </div>
                         </div>
-                        
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" placeholder="R.U.C" class="form-control" id="ruc" [(ngModel)]="bodega.ruc" name="ruc">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -137,8 +126,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group" style="margin-top: 2%;">
-                        <button type="submit" class="btn btn-info"
-                            [disabled]="registrarForm.form.invalid">Registrar</button>
+                        <button type="submit" class="btn btn-info" [disabled]="registrarForm.form.invalid">Registrar</button>
                     </div>
                 </div>
             </div>

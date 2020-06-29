@@ -7,6 +7,7 @@ import { Categoria } from './model/categoria';
 import { BodegaProducto } from './model/bodega-producto';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 import { Resena } from './model/resena' ;
+import { R3ResolvedDependencyType } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +32,12 @@ export class BodegaService {
 
   buscarBodega(id: number) : Observable<any>{
     return this.http.get(this.urlBase+"/"+id.toString()).pipe(map(response => response as Bodega));
+  }
+
+  obtenerResenas(): Observable<any>{
+    return this.http.get(this.urlBase + "/resena/obtener").pipe(
+      map(response => response as Resena[])
+    )
   }
 
   obtenerCategoria() : Observable<any>{

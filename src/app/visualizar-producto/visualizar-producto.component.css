@@ -1,43 +1,46 @@
-agm-map {
-  height: 300px;
-  width: 300px;
- }
-.container{
-    padding-top: 10rem;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 5%;
-    
+#mapa3 {
+    width: 100%;
+    height: 30vh;
+    border: 1px #CCCCCC solid;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
 }
 
-.product{
+.container {
+    padding-top: 10rem;
+    padding-bottom: 5%;
+}
+
+.product {
     margin-bottom: 15%;
 }
 
-.pimagen{
-    width: 300px;
-    height: 300px;
-    
-    -webkit-box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
+.pimagen {
+    width: 90%;
+    height: 90%;
+    -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
-
-
-.pnombre{
-    font-size: 30px;
+.pnombre {
+    font-size: 3vh;
+    color: #f16a78;
 }
 
-.pprecio{
-    font-size: 40px;
+.pprecio {
+    font-size: 3vh;
+    color: #f16a78;
 }
 
-.pmarca{
-    font-size: 20px;
+.pmarca {
+    font-size: 2vh;
 }
 
-.pdes{
-    font-size: 20px;
+.pdes {
+    font-size: 2vh;
 }
 
 .like-btn-svg {
@@ -46,41 +49,42 @@ agm-map {
     background: url(https://cdn.discordapp.com/attachments/700237020278030396/719745825013629048/corazon.png) no-repeat;
     background-position: 0 0;
     cursor: pointer;
-  }
-  
-  input[type="checkbox"] {
-    display:none;
-  }
-  
-  input:checked + .like-btn-svg{
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input:checked+.like-btn-svg {
     transition: background 1s steps(28);
     animation: fave-like-btn-svg 1s steps(28);
     background-position: -2800px 0;
-  }
-  
-  @keyframes fave-like-btn-svg {
+}
+
+@keyframes fave-like-btn-svg {
     0% {
-      background-position: 0 0;
+        background-position: 0 0;
     }
     100% {
-      background-position: -2800px 0;
+        background-position: -2800px 0;
     }
-  }
+}
 
-.cuadrado{
+.cuadrado {
     width: 50px;
-    height:50px;
+    height: 50px;
     background-color: red;
 }
 
-.pbodeganombre{
+.pbodeganombre {
+    color: #f16a78;
     font-size: 30px;
 }
 
-.pbodegadireccion{
+.pbodegadireccion {
     font-size: 20px;
 }
 
-.pbodegaaforo{
+.pbodegaaforo {
     font-size: 20px;
 }

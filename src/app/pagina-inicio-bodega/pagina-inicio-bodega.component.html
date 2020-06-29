@@ -4,11 +4,9 @@
             <h1 class="bnombre">{{bodega.nombre}} </h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-bottom: 5%;">
         <div class="col-4">
-            <img class="bimagen"
-                src="https://c.tfstatic.com/w_656,h_368,c_fill,g_auto:subject,q_auto,f_auto/restaurant_photos/187/341187/source/bodega-64-terrasse-a264c.jpg"
-                alt="Imagen Producto">
+            <img class="bimagen" src="https://c.tfstatic.com/w_656,h_368,c_fill,g_auto:subject,q_auto,f_auto/restaurant_photos/187/341187/source/bodega-64-terrasse-a264c.jpg" alt="Imagen Producto">
         </div>
         <div class="col" id="info">
             <div class="row">
@@ -26,14 +24,15 @@
         </div>
         <div class="col">
             <div class="row">
-                <button class="botonbodega">Agregar Nuevo Producto</button>
+                <button class="botonbodega" routerLink="/registrarBP">Agregar Nuevo Producto</button>
             </div>
             <div class="row">
-                <button class="botonbodega">Actualizar Información de la Bodega</button>
+                <button class="botonbodega" routerLink="/actualizarBodega">Actualizar Información de la Bodega</button>
             </div>
         </div>
 
     </div>
+    <hr style="border-color:#f16a78; width: 50%;border-width: 3px;border-radius: 25px;">
     <div class="row">
         <div class="col">
 
@@ -55,7 +54,7 @@
                 </p>
                 <label> Bueno, yo fui a la bodega y es un lugar realmente acogedor, compré un par de cosas para la
                     semana.</label>
-                    <div class="divider"></div>
+                <hr style="border-color:grey; width: 90%;border-width: 2px;border-radius: 25px;">
                 <label class="cdescripcion">Raul Casanova</label>
                 <p class="clasificacion">
                     <input id="radio1" type="radio" name="estrellas" value="5">
@@ -70,7 +69,7 @@
                     <label for="radio5" id="es">★</label>
                 </p>
                 <label> Muy bueno el recibimiento y los productos son muy buenos</label>
-                <div class="divider"></div>
+                <hr style="border-color:grey; width: 90%;border-width: 2px;border-radius: 25px;">
                 <label class="cdescripcion">Alexander Melendez</label>
                 <p class="clasificacion">
                     <input id="radio1" type="radio" name="estrellas" value="5">
@@ -89,43 +88,10 @@
             </div>
 
         </div>
-        <div class="col" id="masven">
-
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" id="estilo-carrusel">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" id="imagen-inicio"
-                            src="https://cdn.discordapp.com/attachments/705952300526731295/715383530154229802/audio-agalep-823138mp3_823139.png"
-                            alt="First slide" style="width: 10%;height:10%;">
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
-                    </div>
-
-                    <div class="carousel-item" id="estilo-carrusel">
-                        <img class="d-block w-100" id="imagen-inicio"
-                            src="https://www.dogalize.com/wp-content/uploads/2017/06/La-sverminazione-e-la-pulizia-del-cucciolo-del-cane-2-800x400-800x400.jpg"
-                            alt="Second slide">
-                    </div>
-                    <div class="carousel-item" id="estilo-carrusel">
-                        <img class="d-block w-100" id="imagen-inicio"
-                            src="https://assets.puzzlefactory.pl/puzzle/218/136/original.jpg" alt="Third slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-
+        <div class="col">
+            <div id="mapa2">
             </div>
         </div>
 
     </div>
+</div>

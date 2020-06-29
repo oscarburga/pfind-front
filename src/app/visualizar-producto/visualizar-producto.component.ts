@@ -3,63 +3,71 @@ import { ActivatedRoute, ChildActivationStart } from '@angular/router';
 import { BodegaService } from '../bodega.service';
 import { BodegaProducto } from '../model/bodega-producto';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
-declare var google: any;
+import { environment } from 'src/environments/environment';
+
+import * as mapboxgl from 'mapbox-gl';
+import { Bodega } from '../model/bodega';
 
 @Component({
   selector: 'app-visualizar-producto',
   templateUrl: './visualizar-producto.component.html',
   styleUrls: ['./visualizar-producto.component.css']
 })
-export class VisualizarProductoComponent implements AfterViewInit, OnInit {
+export class VisualizarProductoComponent implements OnInit {
   bpid: number;
   bp: BodegaProducto;
-  map: any;
-  marker: any;
-  latitude: number;
-  longitude: number;
-  zoom: number = 15;
-  address: string;
+  bodega: Bodega;
   results: any;
 
+  mapa3: mapboxgl.Map;
+  latitud: number;
+  longitud: number;
+  address: string;
+  marker: mapboxgl.Marker;
+
   constructor(private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute) { }
-  
-    ngOnInit(){
-      this._ActivatedRoute.paramMap.subscribe(params =>{
-        this.bpid = Number(params.get('id'));
-      })
-      this.obtener();
-      this.bodegaService.obtenerBodegaProductoId(this.bpid).subscribe(data => this.bp = data);
-    }
+    private ngZone: NgZone, private bodegaService: BodegaService, private _ActivatedRoute: ActivatedRoute) { }
 
-  ngAfterViewInit(): void {
-    const DSLScript = document.createElement('script');
-    DSLScript.src = 'https://maps.googleapis.com/maps/api/js?key=xxxxx'; // replace by your API key
-    DSLScript.type = 'text/javascript';
-    document.body.appendChild(DSLScript);
-    document.body.removeChild(DSLScript);
+  ngOnInit() {
+    this._ActivatedRoute.paramMap.subscribe(params => {
+      this.bpid = Number(params.get('id'));
+    })
+    this.bodegaService.obtenerBodegaProductoId(this.bpid).subscribe(data => {
+      this.bp = data
+      this.bodega = this.bp.bodega
+      this.cambioDireccion(this.bodega.direccion)
+    });
+    (mapboxgl as any).accessToken = environment.mapboxKey;
+    this.mapa3 = new mapboxgl.Map({
+      container: 'mapa3', // container id
+      style: 'mapbox://styles/mapbox/streets-v11',
+      zoom: 9 // starting zoom
+    });
+    this.marker = new mapboxgl.Marker({
+      draggable: false
+    })
   }
 
-  crearmap(){
-    this.latitude = -12.0463503;
-    this.longitude = -77.0427589;
-    var ini_place = {
-      lat: this.latitude,
-      lng: this.longitude}
-    this.map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: ini_place });
-    this.marker = new google.maps.Marker({position: ini_place, map: this.map});
+  crearmarcador(lng: number, lat: number) {
+    this.mapa3.setCenter([lng,lat]);
+    this.marker.setLngLat([lng, lat]).addTo(this.mapa3);
   }
 
-  obtener(){
-   this.bodegaService.obtenerdeDireccion(this.address).subscribe(
-     data => {
-      console.log(data);
-      this.results = data.results[0];
-      this.latitude=this.results.geometry.location.lat;
-      this.longitude=this.results.geometry.location.lng;
-    }
-   )
+  cambioDireccion(value: string) { 
+    this.address =value;
+    this.obtenerMarcador();
   }
 
+  obtenerMarcador(){
+    this.bodegaService.obtenerdeDireccion(this.bodega.direccion).subscribe(
+      data => {
+        console.log(data);
+        if(data.results.length != 0){
+          this.latitud = data.results[0].geometry.location.lat;
+          this.longitud = data.results[0].geometry.location.lng;
+          this.crearmarcador(this.longitud, this.latitud);
+        }
+      }
+    )
+  }
 }

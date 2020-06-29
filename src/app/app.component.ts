@@ -21,7 +21,7 @@ export class AppComponent {
   perfil: any;
   Nombre: string;
   Apellido: string;
-  logueado: Boolean = true;
+  logueado: Boolean = false;
  
   constructor(
     private router: Router,
@@ -38,7 +38,7 @@ export class AppComponent {
     }
     //Si está logueado carga su foto de perfil
 
-    //this.router.navigate(["inicioBodega"]);
+    this.router.navigate(["inicioBodega"]);
    
   }
 

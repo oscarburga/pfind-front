@@ -13,6 +13,7 @@ export class VisualizarBodegaComponent implements OnInit {
   bid: number;
   bod: Bodega;
   re: Resena = new Resena();
+  resenas: Resena[]
   constructor(private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute) { }
   
   ngOnInit(): void {
@@ -27,4 +28,6 @@ export class VisualizarBodegaComponent implements OnInit {
     console.log(this.re.calificacion);
     this.bodegaService.crearResena(this.re, this.bod.codigo, 1).subscribe(data=> console.log(data));
   }
+
+  
 }

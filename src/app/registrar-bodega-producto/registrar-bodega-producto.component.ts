@@ -4,6 +4,7 @@ import { BodegaService } from '../bodega.service';
 import { Categoria } from '../model/categoria';
 import { ProductoService } from '../producto.service';
 import { Producto } from '../model/producto';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-registrar-bodega-producto',
@@ -18,7 +19,11 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   categorias: Categoria[];
   categoriaID: number;
   productos: Producto[];
-  constructor(private bodegaService : BodegaService, private productoService: ProductoService) { }
+
+  constructor(
+    private bodegaService : BodegaService, 
+    private productoService: ProductoService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.obtenerCategoria()

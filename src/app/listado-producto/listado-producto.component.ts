@@ -15,6 +15,9 @@ export class ListadoProductoComponent implements OnInit {
   costoTotal : number;
   lista_Productos :Observable<Listado[]>
   array: Listado[]
+  corazon: string = "fa fa-heart-o";
+  corazoncss: string = "black";
+
   constructor(private clienteService:ClienteService) { }
 
   ngOnInit(): void {
@@ -28,6 +31,14 @@ export class ListadoProductoComponent implements OnInit {
     this.clienteService.enlistarProductos().subscribe(
       data => this.lista_Productos = data
     )
+  }
+/////////////
+eliminardeLista(bt: number){
+    this.corazon ="fa fa-heart";
+    this.corazoncss = "red";
+    //this.clienteService.eliminarproductobodega(bt).subscribe(
+   //   data=> console.log("Agregado Exitosamente")
+   // );
   }
 
   loadPrecio(){

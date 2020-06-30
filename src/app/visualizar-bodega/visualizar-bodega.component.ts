@@ -7,6 +7,7 @@ import { Resena } from '../model/resena';
 
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-visualizar-bodega',
   templateUrl: './visualizar-bodega.component.html',
@@ -23,7 +24,7 @@ export class VisualizarBodegaComponent implements OnInit {
   longitud: number;
   address: string;
   marker: mapboxgl.Marker;
-  constructor(private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute) { }
+  constructor(private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute, private authService : AuthService) { }
   
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe(params =>{
@@ -47,7 +48,7 @@ export class VisualizarBodegaComponent implements OnInit {
   }
   save(): void{
     console.log(this.re.calificacion);
-    this.bodegaService.crearResena(this.re, this.bod.codigo, 1).subscribe(data=> console.log(data));
+    this.bodegaService.crearResena(this.re, this.bod.codigo, this.authService.usuario.idEntity).subscribe(data=> console.log(data));
   }
 
   crearmarcador(lng: number, lat: number) {

@@ -17,6 +17,9 @@ export class BodegaService {
 
   constructor(private http: HttpClient) { }
 
+  retrievedResponse: any;
+  retrievedImage: any;
+  base64Data: any;
   dataBusqueda: any;
    
 //######## USANDO ACTUALMENTE ###############################################################
@@ -90,11 +93,33 @@ export class BodegaService {
     )
   }
 
-//######## USANDO ACTUALMENTE ###############################################################
-
-  registrarBodegaProducto(bid: number, pid:number, precio:number) : Observable<Object>{
-    return this.http.post(this.urlBase + "/producto/registrar/" + bid.toString() + "/" + pid.toString() + "/" + precio.toString(), {headers: this.httpHeaders});
+  subirImagenProducto(imagenData:any, id:number){
+    return this.http.post(this.urlBase + "/upload_imagen_producto/1/" + id, imagenData, { observe: 'response'}).subscribe(
+      (response) => {
+        if(response.status === 200){
+          console.log("Imagen cargada correctamente")
+          console.log(response)
+        }else{
+          console.log("Imagen no cargada")
+        }
+      }
+    )
   }
+
+  registrarBodegaProducto(bp:BodegaProducto){
+    return this.http.post(this.urlBase + "/producto/registrar/" + 1,bp, {headers: this.httpHeaders});
+  }
+
+getImageProucto(bpid:number){
+    this.http.get(this.urlBase + '/get_imagenProducto/'+ 1 + "/"+ bpid).subscribe(
+        res => {
+          this.retrievedResponse = res;
+          this.base64Data = this.retrievedResponse.imagen;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+      );
+  }
+//######## USANDO ACTUALMENTE ###############################################################
 
   buscarCategoriaProducto(id:number, nombre:string) :Observable<any>{
     return this.http.get(this.urlBase + "/producto/buscarBPCtgNombre/" + id + "/" + nombre).pipe(

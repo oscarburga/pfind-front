@@ -1,26 +1,70 @@
 <div class="contenido">
-    <form [formGroup]="buscandoProducto" style="width: 100%; height: 100%;">
-        <div class="row">
-            <div class="col">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button">Categorias</button>
-                        <select class="custom-select" id="selectCategoria" formControlName="optionControl">
-                            <option *ngFor="let c of categorias" [value]="c.codigo">{{c.nombre}}</option>
-                        </select>
-                    </div>
+    <form (ngSubmit)="save()" #registrarForm="ngForm">
+        <div class="registro">
+            <div class="row">
+                <div class="col" style="text-align: center;">
+                    <h1>Registro de Producto</h1>
                 </div>
             </div>
-            <div class="col">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <select class="custom-select" id="selectProducto">
-                            <option selected>Elije un Producto</option>
-                            <option *ngFor="let p of productos">{{p.nombre}} - {{p.marca}}</option>
-                        </select>
-                        <label class="input-group-text" for="inputGroupSelect01">Productos</label>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-outline-secondary dropdown-toggle" id="botonCat" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categoria</button>
+                            <input type="text" class="form-control" id="input1" value="{{new_label_categoria}}"
+                                placeholder="Escoja una categoría" disabled>
+                            <div class="dropdown-menu">
+                                <ul *ngFor="let c of categorias" style="cursor: pointer;">
+                                    <a class="dropdown-item"
+                                        (click)="buscarProducto(c.codigo, c.nombre)">{{c.nombre}}</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</button>
+                            <input type="text" class="form-control" id="input2" value="{{new_label_producto}}"
+                                placeholder="Escoja un Producto" disabled>
+                            <div class="dropdown-menu">
+                                <ul *ngFor="let p of productos" style="cursor: pointer;">
+                                    <a class="dropdown-item"
+                                        (click)="escogerProducto(p, p.nombre + ' - ' + p.marca)">{{p.nombre}} -
+                                        {{p.marca}}</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01" #file
+                                    aria-describedby="inputGroupFileAddon01" (change)="onFileSelected(file.files)">
+                                <label class="custom-file-label" for="inputGroupFile01">{{new_label_file}}</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input type="number" name="precio" id="precio" placeholder="Ejemplo: 5.00, 6.50"[(ngModel)]="bodegaProducto.precio">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Descripción</h6>
+                            <textarea name="descripcion" id="descrip" cols="30" rows="10" class="descripcion"
+                                [(ngModel)]="bodegaProducto.descripcion"
+                                placeholder="Introduzca la Descripción de su Producto"></textarea>
+                        </div>
                     </div>
                 </div>
+                <div class="col">
+                    <h1>Preview</h1>
+                    <img [src]="imgURL" *ngIf="imgURL" id="img_preview" alt="Pre-Imagen-Producto">
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-info" [disabled]="registrarForm.form.invalid">Registrar</button>
             </div>
         </div>
     </form>

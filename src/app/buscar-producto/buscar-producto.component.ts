@@ -5,6 +5,7 @@ import { BodegaProducto } from '../model/bodega-producto';
 import { Categoria } from '../model/categoria';
 import { ClienteService } from '../cliente.service';
 import { Observable } from 'rxjs';
+import { Bodega } from '../model/bodega';
 
 
 @Component({
@@ -88,5 +89,7 @@ export class BuscarProductoComponent implements OnInit {
       data => this.cat = data
     )
   }
+
+
 
 }

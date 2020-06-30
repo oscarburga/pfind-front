@@ -9,4 +9,5 @@ export class BodegaProducto {
     bodega: Bodega;
     listado: Listado;
     descripcion: string;
+    imagen: ImageBitmap;
 }

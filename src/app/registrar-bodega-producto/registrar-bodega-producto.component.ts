@@ -4,7 +4,8 @@ import { BodegaService } from '../bodega.service';
 import { Categoria } from '../model/categoria';
 import { ProductoService } from '../producto.service';
 import { Producto } from '../model/producto';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { NumberValueAccessor } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-bodega-producto',
@@ -12,29 +13,42 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./registrar-bodega-producto.component.css']
 })
 export class RegistrarBodegaProductoComponent implements OnInit {
-
+  bodegaProducto: BodegaProducto;
   bid: number;
   pid: number;
   precio: number;
   categorias: Categoria[];
-  categoriaID: number;
   productos: Producto[];
-  buscandoProducto: FormGroup;
+  new_label_categoria: String;
+  new_label_producto: String;
+  new_label_file: String;
+  imgURL : any;
+  selectedFile: File;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  fileName:any;
+  bodeguita:any;
 
   constructor(
     private bodegaService : BodegaService, 
     private productoService: ProductoService,
-    private fb: FormBuilder) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.obtenerCategoria()
-    this.buscandoProducto = this.fb.group({
-      optionControl: ['Elija una Categoria']
-    });
+    this.bodegaProducto = new BodegaProducto();
+    this.new_label_file = "Examinar";
   }
   
   save(){
-    this.bodegaService.registrarBodegaProducto(this.bid, this.pid, this.precio).subscribe(data=> console.log(data));
+      this.bodegaService.registrarBodegaProducto(this.bodegaProducto).subscribe(data=> {
+        this.bodeguita = data;
+        const uploadImageData = new FormData();
+        uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+        this.bodegaService.subirImagenProducto(uploadImageData,this.bodeguita.codigo);
+        this.router.navigate(['/inicioBodega'])
+    })
   }
   
   obtenerCategoria(){
@@ -43,13 +57,29 @@ export class RegistrarBodegaProductoComponent implements OnInit {
       })
     }
 
-  buscarProducto(){
-    console.log(this.categoriaID)
-    this.productoService.buscarPorCategoria(this.categoriaID).subscribe(
-      data => {this.productos = data
-      console.log(data)}
+  buscarProducto(id:number, new_label:String){
+    this.new_label_categoria = new_label
+    this.productoService.buscarPorCategoria(id).subscribe(
+      data => {this.productos = data}
     )
   }
 
-
+  escogerProducto(pro:Producto, new_label:String){
+    this.new_label_producto = new_label;
+    this.bodegaProducto.producto = pro;
+  }
+  onFileSelected(files){
+   if (files.length > 0) {
+     //Lectura de la imagen para previsualizarla
+     var reader= new FileReader();
+     this.selectedFile = files[0];
+     this.fileName = files[0].name;
+     reader.readAsDataURL(files[0]);
+     reader.onload = (_event) =>{
+       this.imgURL = reader.result;
+     }
+      const file = files[0];
+      this.new_label_file = file.name
+   }
+  }
 }

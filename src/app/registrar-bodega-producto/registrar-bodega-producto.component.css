@@ -3,6 +3,39 @@
     padding-bottom: 5%;
 }
 
-#select{
-    height: 34px;
+.registro{
+    margin: 2% 10%;
+    border-radius: 3%;
+    padding: 2% 2%;
+    background-color: #F8F9FA;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
+
+.descripcion{
+}
+
+#img_preview{
+    max-width: 250x;
+    max-height: 300px;
+}
+
+#botonCat{
+    display: inline-block;
+}
+
+#input1{
+    display: inline-flex;
+    width: auto;
+    margin-right: 0;
+}
+
+#input2{
+    display: inline-block;
+    align-self: start;
+    width: fit-content;
+}
+
+ul{
+    padding: 0 0;
 }

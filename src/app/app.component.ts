@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { BodegaService } from 'src/app/bodega.service';
 import { Categoria } from 'src/app/model/categoria';
 import { ProductoService } from 'src/app/producto.service';

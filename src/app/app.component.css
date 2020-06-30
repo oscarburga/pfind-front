@@ -16,6 +16,10 @@
   background: none;
 }
 
+#items-dropdown a{
+  cursor: pointer;
+}
+
 #foto_perfil img{
   border-radius: 10px;
   margin-right: 10px;

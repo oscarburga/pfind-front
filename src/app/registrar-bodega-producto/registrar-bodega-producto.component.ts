@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BodegaProducto } from '../model/bodega-producto';
 import { BodegaService } from '../bodega.service';
+import { Categoria } from '../model/categoria';
 import { ProductoService } from '../producto.service';
-import { Bodega } from '../model/bodega';
 import { Producto } from '../model/producto';
-import { Listado } from '../model/listado';
 
 @Component({
   selector: 'app-registrar-bodega-producto',
@@ -16,14 +15,32 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   bid: number;
   pid: number;
   precio: number;
-  constructor(private bodegaService : BodegaService) { }
+  categorias: Categoria[];
+  categoriaID: number;
+  productos: Producto[];
+  constructor(private bodegaService : BodegaService, private productoService: ProductoService) { }
 
   ngOnInit(): void {
-
+    this.obtenerCategoria()
   }
   
   save(){
     this.bodegaService.registrarBodegaProducto(this.bid, this.pid, this.precio).subscribe(data=> console.log(data));
   }
+  
+  obtenerCategoria(){
+    this.bodegaService.obtenerCategoria().subscribe(data => {
+        this.categorias = data;
+      })
+    }
+
+  buscarProducto(){
+    console.log(this.categoriaID)
+    this.productoService.buscarPorCategoria(this.categoriaID).subscribe(
+      data => {this.productos = data
+      console.log(data)}
+    )
+  }
+
 
 }

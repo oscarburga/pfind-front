@@ -1,5 +1,8 @@
 .contenido{
     padding-top: 5%;
     padding-bottom: 5%;
-    align-content: center;
+}
+
+#select{
+    height: 34px;
 }

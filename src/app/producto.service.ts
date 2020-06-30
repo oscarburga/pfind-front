@@ -11,9 +11,7 @@ import { BodegaProducto } from './model/bodega-producto';
 export class ProductoService {
   private urlBase = "http://localhost:8080/producto";
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  constructor(private http: HttpClient) { }
-
-  
+  constructor(private http: HttpClient) { }  
 
   buscarPorCategoria(cid: number) : Observable<Producto[]>{
     return this.http.get(this.urlBase+ "/buscarCtg/" + cid.toString()).pipe(map(response => response as Producto[]))

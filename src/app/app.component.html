@@ -46,9 +46,9 @@
             <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil">{{DatosUsuario().Nombre}} {{DatosUsuario().Apellido}}
                 </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="http://localhost:4200//actualizarCliente"> Actualizar Información</a>
-                    <a class="dropdown-item" (click)=cerrarSesion()>Cerrar Sesión</a>
+                <div class="dropdown-menu" id="items-dropdown">
+                    <a class="dropdown-item" routerLink="/actualizarCliente"> Actualizar Información</a>
+                    <a class="dropdown-item" (click)=cerrarSesion() >Cerrar Sesión</a>
                 </div>
             </div>
         </ul>

@@ -4,6 +4,7 @@ import { BodegaService } from 'src/app/bodega.service';
 import { Categoria } from 'src/app/model/categoria';
 import { ProductoService } from 'src/app/producto.service';
 import { ClienteService } from 'src/app/cliente.service';
+import { AuthService } from './auth.service';
 
 
 
@@ -28,7 +29,7 @@ export class AppComponent {
     private bodegaServicio: BodegaService,
     private productoservicio: ProductoService,
     private clienteServicio: ClienteService,
-    
+    private authService: AuthService    
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class AppComponent {
     }
     //Si está logueado carga su foto de perfil
 
-    this.router.navigate(["inicioBodega"]);
+    this.router.navigate(["inicio"]);
    
   }
 
@@ -49,7 +50,32 @@ export class AppComponent {
 
   //Funcion que cambia cuando el cliente se loguea o se desloguea -> Falta que el profe explique
   ClienteLogueado() {
-    return this.logueado;
+    return this.authService.isAuthenticated();
+  }
+
+  isCliente() {
+    return this.authService.hasRole('ROLE_CLIENTE');
+  }
+  
+  isBodega() {
+    return this.authService.hasRole('ROLE_BODEGA');
+  }
+
+  actualizarInformacion(){
+    if (this.isCliente()){
+      this.router.navigate(['/actualizarCliente'])
+    }
+    else if (this.isBodega()){
+      this.router.navigate(['/actualizarBodega'])
+    }
+  }
+  redireccionarInicio(){
+    if (this.isCliente()){
+      this.router.navigate(['/inicio'])
+    }
+    else if (this.isBodega()){
+      this.router.navigate(['/inicioBodega'])
+    }
   }
 
   //Contiene la imagen del perfil del cliente logueado
@@ -89,6 +115,8 @@ export class AppComponent {
 
   cerrarSesion(){
     this.logueado = false;
+    this.authService.logout();
+    this.router.navigate(['/inicio']);
   }
 
 }

@@ -4,6 +4,7 @@ import { Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Cliente } from './model/cliente';
 import { Listado } from './model/listado';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,11 @@ export class ClienteService {
   }
   
   actualizarCliente(cliente: Cliente): Observable<Object>{
-    return this.http.post(this.urlBase+"/actualizar/" + this.Cliente_id, cliente, {headers: this.httpHeaders});
+      return this.http.put(this.urlBase+"/actualizar/" + cliente.codigo, cliente, {headers: this.httpHeaders});
+  }
+
+  buscarCliente(id: number) : Observable<any>{
+    return this.http.get(this.urlBase + "/buscarCliente/" + id.toString()).pipe(map(response=>response as Cliente));
   }
 
   subirImagen(imagenData:any){
@@ -59,6 +64,12 @@ export class ClienteService {
 
   enlistarProductos(): Observable<any>{
     return this.http.get(this.urlBase + "/" + this.Cliente_id + "/lista").pipe(
+      map(response => response as Listado[])
+    )
+  }
+
+  enlistarProductos_logeado(id:number): Observable<any>{
+    return this.http.get(this.urlBase + "/" + id.toString() + "/lista").pipe(
       map(response => response as Listado[])
     )
   }

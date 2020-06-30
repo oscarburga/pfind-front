@@ -4,6 +4,7 @@ import { BodegaProducto } from 'src/app/model/bodega-producto'
 import { ClienteService } from 'src/app/cliente.service'
 import { Observable } from 'rxjs';
 import { Listado } from 'src/app/model/listado'
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class ListadoProductoComponent implements OnInit {
   corazon: string = "fa fa-heart-o";
   corazoncss: string = "black";
 
-  constructor(private clienteService:ClienteService) { }
+  constructor(private clienteService:ClienteService, private authService:AuthService) { }
 
   ngOnInit(): void {
     this.reloadData();
@@ -28,7 +29,7 @@ export class ListadoProductoComponent implements OnInit {
 
   reloadData(){
     console.log("RELOAD!")
-    this.clienteService.enlistarProductos().subscribe(
+    this.clienteService.enlistarProductos_logeado(this.authService.usuario.idEntity).subscribe(
       data => this.lista_Productos = data
     )
   }

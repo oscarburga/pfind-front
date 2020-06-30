@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Bodega } from '../model/bodega';
 import { Categoria } from '../model/categoria';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -17,10 +18,11 @@ export class ActualizarBodegaComponent implements OnInit {
   bodega: Bodega = new Bodega();
   cat: Observable<Categoria[]>;
 
-  constructor(private bodegaService:BodegaService, private router:Router) { }
+  constructor(private bodegaService:BodegaService, private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
     this.getCategoria();
+    this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(data => this.bodega = data);
   }
 
   getBodega(){

@@ -3,6 +3,7 @@ import { ClienteService } from '../cliente.service';
 import { Router } from '@angular/router';
 import { Cliente } from '../model/cliente';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-actualizar-cliente',
@@ -19,9 +20,10 @@ export class ActualizarClienteComponent implements OnInit {
   retrieveResonse: any;
   ok: Boolean = false;
 
-  constructor(private clienteService: ClienteService, private router:Router) { }
+  constructor(private clienteService: ClienteService, private authService: AuthService, private router:Router) { }
 
   ngOnInit(): void {
+    this.clienteService.buscarCliente(this.authService.usuario.idEntity).subscribe(data=>this.cliente = data);
   }
 
   save(){

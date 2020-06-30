@@ -59,7 +59,7 @@ export class PaginaInicioBodegaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.bodegaService.buscarBodega(1).subscribe(
+    this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(
       data => {
         this.bodega = data
         this.cambioDireccion(this.bodega.direccion)
@@ -78,7 +78,6 @@ export class PaginaInicioBodegaComponent implements OnInit {
       
       console.log(this.authService.usuario.idEntity);
       console.log(this.authService.usuario.username);
-      console.log(this.authService.usuario.password);
   }
 
   crearmarcador(lng: number, lat: number) {

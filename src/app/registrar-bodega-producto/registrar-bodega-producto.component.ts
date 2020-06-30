@@ -6,6 +6,8 @@ import { ProductoService } from '../producto.service';
 import { Producto } from '../model/producto';
 import { NumberValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { Bodega } from '../model/bodega';
 
 @Component({
   selector: 'app-registrar-bodega-producto',
@@ -28,25 +30,27 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   base64Data: any;
   retrieveResonse: any;
   fileName:any;
-  bodeguita:any;
+  bodeguita:Bodega;
 
   constructor(
     private bodegaService : BodegaService, 
     private productoService: ProductoService,
+    private authService: AuthService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.obtenerCategoria()
     this.bodegaProducto = new BodegaProducto();
+    this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(data => this.bodeguita = data);
     this.new_label_file = "Examinar";
   }
   
   save(){
+      this.bodegaProducto.bodega = this.bodeguita;
       this.bodegaService.registrarBodegaProducto(this.bodegaProducto).subscribe(data=> {
-        this.bodeguita = data;
         const uploadImageData = new FormData();
         uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-        this.bodegaService.subirImagenProducto(uploadImageData,this.bodeguita.codigo);
+        this.bodegaService.subirImagenProducto(uploadImageData,this.bodeguita.codigo, this.bodegaProducto.codigo);
         this.router.navigate(['/inicioBodega'])
     })
   }

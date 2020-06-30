@@ -9,18 +9,6 @@
                 </div>
             </div>
             <div class="row">
-                <form (ngSubmit)="getBodega()" #buscarForm="ngForm">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="bodegaid">Id bodega</label>
-                            <input type="number" placeholder="Ingrese ID de la bodega" class="form-control" id="bodegaid"
-                                [(ngModel)]="bID" name="bodegaid" required #bodegaid="ngModel">
-                            <button type="submit" class="btn btn-info" [disabled]="buscarForm.form.invalid">Buscar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="row">
                 <div class="col">
                     <div class="form-group">
                         <label for="jefe">Jefe de la bodega</label>
@@ -112,26 +100,6 @@
                         <input type="text" placeholder="R.U.C" class="form-control" id="ruc" [(ngModel)]="bodega.ruc"
                             name="ruc">
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="titulo-categorias">
-                        <h3>Categorías</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding: 0 2%;">
-                <div class="col" *ngFor="let c of cat" style="width: 100%;" style="height: 100%;" style="padding: 0 0;">
-                    <button type="button" class="seleccion">{{c.nombre}}</button>
-                <!--<div class="form-group">
-                        <ul>
-                            <li *ngFor="let c of cat" class="list-group-item">
-                                <input type="text" id="cat_{{c.codigo}}">
-                                <label for="categoria">{{c.nombre}}</label>
-                            </li>
-                        </ul>
-                    </div>-->
                 </div>
             </div>
             <div class="row">

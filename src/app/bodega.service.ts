@@ -93,8 +93,8 @@ export class BodegaService {
     )
   }
 
-  subirImagenProducto(imagenData:any, id:number){
-    return this.http.post(this.urlBase + "/upload_imagen_producto/1/" + id, imagenData, { observe: 'response'}).subscribe(
+  subirImagenProducto(imagenData:any, id_bodega:number, id_bp:number){
+    return this.http.post(this.urlBase + "/upload_imagen_producto/"+id_bodega+ "/" + id_bp, imagenData, { observe: 'response'}).subscribe(
       (response) => {
         if(response.status === 200){
           console.log("Imagen cargada correctamente")
@@ -107,11 +107,11 @@ export class BodegaService {
   }
 
   registrarBodegaProducto(bp:BodegaProducto){
-    return this.http.post(this.urlBase + "/producto/registrar/" + 1,bp, {headers: this.httpHeaders});
+    return this.http.post(this.urlBase + "/producto/registrar/" + bp.bodega.codigo ,bp, {headers: this.httpHeaders});
   }
 
-getImageProucto(bpid:number){
-    this.http.get(this.urlBase + '/get_imagenProducto/'+ 1 + "/"+ bpid).subscribe(
+getImageProucto(bp:BodegaProducto){
+    this.http.get(this.urlBase + '/get_imagenProducto/'+ bp.bodega.codigo + "/"+ bp.codigo).subscribe(
         res => {
           this.retrievedResponse = res;
           this.base64Data = this.retrievedResponse.imagen;

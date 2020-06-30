@@ -15,7 +15,7 @@ import { AuthService } from '../auth.service';
 export class ActualizarBodegaComponent implements OnInit {
 
   bID : number;
-  bodega: Bodega = new Bodega();
+  bodega: Bodega;
   cat: Observable<Categoria[]>;
 
   constructor(private bodegaService:BodegaService, private authService:AuthService, private router:Router) { }
@@ -25,14 +25,11 @@ export class ActualizarBodegaComponent implements OnInit {
     this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(data => this.bodega = data);
   }
 
-  getBodega(){
-    this.bodegaService.buscarBodega(this.bID).subscribe(data => this.bodega = data);
-  }
-
-
   save(){
+    console.log(this.bodega);
+    this.bodega.productos = null;
     this.bodegaService.actualizarBodega(this.bodega).subscribe(
-      data => this.router.navigate(["/inicio"])
+      data => this.router.navigate(["/inicioBodega"])
     );
   }
 

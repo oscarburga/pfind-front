@@ -70,12 +70,10 @@ export class AppComponent {
     }
   }
   redireccionarInicio(){
-    if (this.isCliente()){
-      this.router.navigate(['/inicio'])
-    }
-    else if (this.isBodega()){
+    if (this.isBodega()){
       this.router.navigate(['/inicioBodega'])
     }
+    else this.router.navigate(['/inicio'])
   }
 
   //Contiene la imagen del perfil del cliente logueado

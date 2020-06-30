@@ -34,7 +34,7 @@ export class BodegaService {
   }
 
   buscarBodega(id: number) : Observable<any>{
-    return this.http.get(this.urlBase+"/"+id.toString()).pipe(map(response => response as Bodega));
+    return this.http.get(this.urlBase+"/"+ id.toString()).pipe(map(response => response as Bodega));
   }
 
   obtenerResenas(): Observable<any>{

@@ -19,6 +19,10 @@
                                 <div class="col">
                                     <h6>Descripción</h6>
                                     <p>{{bp.bodega_producto.descripcion}}</p>
+                                    <div class="col" id="caja_agregar">
+                                        <a (click)="eliminardeLista(bp.codigo)" id="eliminar_de_lista"
+                                            style="color:{{corazoncss}}"><i class={{corazon}} aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

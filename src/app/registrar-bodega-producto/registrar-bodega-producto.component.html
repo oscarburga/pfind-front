@@ -1,70 +1,78 @@
 <div class="contenido">
     <form (ngSubmit)="save()" #registrarForm="ngForm">
         <div class="registro">
-            <div class="row">
+            <div class="row" id="titulo">
                 <div class="col" style="text-align: center;">
                     <h1>Registro de Producto</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-outline-secondary dropdown-toggle" id="botonCat" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categoria</button>
-                            <input type="text" class="form-control" id="input1" value="{{new_label_categoria}}"
-                                placeholder="Escoja una categoría" disabled>
-                            <div class="dropdown-menu">
-                                <ul *ngFor="let c of categorias" style="cursor: pointer;">
-                                    <a class="dropdown-item"
-                                        (click)="buscarProducto(c.codigo, c.nombre)">{{c.nombre}}</a>
-                                </ul>
+                    <button class="btn btn-outline-secondary dropdown-toggle" id="botonCat" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categoria</button>
+                    <input type="text" class="form-control" id="input1" value="{{new_label_categoria}}"
+                        placeholder="Escoja una categoría" disabled required>
+                    <div class="dropdown-menu">
+                        <ul *ngFor="let c of categorias" style="cursor: pointer;">
+                            <a class="dropdown-item" (click)="buscarProducto(c.codigo, c.nombre)">{{c.nombre}}</a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Productos</button>
+                    <input type="text" class="form-control" id="input2" value="{{new_label_producto}}"
+                        placeholder="Escoja un Producto" disabled>
+                    <div class="dropdown-menu">
+                        <ul *ngFor="let p of productos" style="cursor: pointer;">
+                            <a class="dropdown-item"
+                                (click)="escogerProducto(p, p.nombre + ' - ' + p.marca)">{{p.nombre}} -
+                                {{p.marca}}</a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col" style="padding-top: 7px;">
+                    <label for="precio" class="label_precio">Precio del Producto</label>
+                    <input type="number" class="form-control" id="precio" name="precio" placeholder="Ejemplo: 5.00, 6.50"
+                        [(ngModel)]="bodegaProducto.precio" required #precio="ngModel">
+                       <div class="alert alert-danger" *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+                            <div *ngIf="precio.errors.required">
+                                Ingrese un Precio válido
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</button>
-                            <input type="text" class="form-control" id="input2" value="{{new_label_producto}}"
-                                placeholder="Escoja un Producto" disabled>
-                            <div class="dropdown-menu">
-                                <ul *ngFor="let p of productos" style="cursor: pointer;">
-                                    <a class="dropdown-item"
-                                        (click)="escogerProducto(p, p.nombre + ' - ' + p.marca)">{{p.nombre}} -
-                                        {{p.marca}}</a>
-                                </ul>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 25px;">
+                <div class="col">
+                    <div class="form-group">
+                        <h4>Descripción</h4>
+                        <textarea name="descripcion" id="descripcion" cols="60" rows="10" class="descripcion"
+                            [(ngModel)]="bodegaProducto.descripcion"
+                            placeholder="Introduzca la Descripción de su Producto" required #descripcion="ngModel"></textarea>
+                       <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                            <div *ngIf="descripcion.errors.required">
+                                Ingrese un Precio válido
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile01" #file
-                                    aria-describedby="inputGroupFileAddon01" (change)="onFileSelected(file.files)">
-                                <label class="custom-file-label" for="inputGroupFile01">{{new_label_file}}</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <input type="number" name="precio" id="precio" placeholder="Ejemplo: 5.00, 6.50"[(ngModel)]="bodegaProducto.precio">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <h6>Descripción</h6>
-                            <textarea name="descripcion" id="descrip" cols="30" rows="10" class="descripcion"
-                                [(ngModel)]="bodegaProducto.descripcion"
-                                placeholder="Introduzca la Descripción de su Producto"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <h1>Preview</h1>
-                    <img [src]="imgURL" *ngIf="imgURL" id="img_preview" alt="Pre-Imagen-Producto">
+                    <h4>Imágen del Producto</h4>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" #file
+                            aria-describedby="inputGroupFileAddon01" (change)="onFileSelected(file.files)">
+                        <label class="custom-file-label" for="inputGroupFile01">{{new_label_file}}</label>
+                    </div>
+                    <div class="mostrar-img">
+                        <img [src]="imgURL" *ngIf="imgURL" id="img_preview" alt="Pre-Imagen-Producto">
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <button type="submit" class="btn btn-info" [disabled]="registrarForm.form.invalid">Registrar</button>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col">
+                    <button type="submit" class="btn btn-info"
+                        [disabled]="registrarForm.form.invalid">Registrar</button>
+                </div>
             </div>
         </div>
     </form>

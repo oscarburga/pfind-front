@@ -1,23 +1,37 @@
 .contenido{
-    padding-top: 5%;
+    padding-top: 10rem;
     padding-bottom: 5%;
 }
 
+ul{
+    padding: 0 0;
+}
+
 .registro{
-    margin: 2% 10%;
+    margin-top: 0;
+    margin-bottom: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
     border-radius: 3%;
-    padding: 2% 2%;
+    padding-top: 0;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
     background-color: #F8F9FA;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 }
 
-.descripcion{
+#titulo{
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 35px;
+    border-bottom: 1px black solid;
 }
 
 #img_preview{
-    max-width: 250x;
-    max-height: 300px;
+    max-width: 300px;
+    max-height: 170px;
 }
 
 #botonCat{
@@ -27,15 +41,26 @@
 #input1{
     display: inline-flex;
     width: auto;
-    margin-right: 0;
 }
 
 #input2{
-    display: inline-block;
-    align-self: start;
-    width: fit-content;
+    display: inline-flex;
+    width: auto;
+    margin-right: 0;
 }
 
-ul{
-    padding: 0 0;
+#precio{
+    height: auto;
+    width: auto;
+    display: inline-flex;
+}
+
+.label_precio{
+    color: gray;
+    margin-right: 10px;
+    font-weight: normal;
+}
+
+.mostrar-img{
+    text-align: center;
 }

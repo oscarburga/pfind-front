@@ -30,7 +30,7 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   base64Data: any;
   retrieveResonse: any;
   fileName:any;
-  bodeguita:Bodega;
+  bodeguita:any;
 
   constructor(
     private bodegaService : BodegaService, 
@@ -41,17 +41,19 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerCategoria()
     this.bodegaProducto = new BodegaProducto();
-    this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(data => this.bodeguita = data);
+    this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(data => {
+      this.bodegaProducto.bodega = data;
+    });
     this.new_label_file = "Examinar";
   }
   
   save(){
-      this.bodegaProducto.bodega = this.bodeguita;
       console.log(this.bodegaProducto);
       this.bodegaService.registrarBodegaProducto(this.bodegaProducto).subscribe(data=> {
+        this.bodeguita = data;
         const uploadImageData = new FormData();
         uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-        this.bodegaService.subirImagenProducto(uploadImageData,this.bodeguita.codigo, this.bodegaProducto.codigo);
+        this.bodegaService.subirImagenProducto(uploadImageData,this.bodegaProducto.bodega.codigo, this.bodeguita.codigo);
         this.router.navigate(['/inicioBodega'])
     })
   }

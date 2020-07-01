@@ -27,18 +27,19 @@ export class ClienteService {
   }
   
   actualizarCliente(cliente: Cliente): Observable<Object>{
-      return this.http.put(this.urlBase+"/actualizar/" + cliente.codigo, cliente, {headers: this.httpHeaders});
+      return this.http.post(this.urlBase+"/actualizar/" + cliente.codigo, cliente, {headers: this.httpHeaders});
   }
 
   buscarCliente(id: number) : Observable<any>{
     return this.http.get(this.urlBase + "/buscarCliente/" + id.toString()).pipe(map(response=>response as Cliente));
   }
 
-  subirImagen(imagenData:any){
-    return this.http.post(this.urlBase + "/upload_imagen" , imagenData, { observe: 'response' }).subscribe(
+  subirImagen(id:number, imagenData:any){
+    return this.http.post(this.urlBase + "/upload_imagen/" +id , imagenData, { observe: 'response' }).subscribe(
       (response) => {
         if(response.status === 200){
           console.log("Imagen cargada correctamente")
+        this.getImage(id);
         }else{
           console.log("Imagen no cargada")
           }

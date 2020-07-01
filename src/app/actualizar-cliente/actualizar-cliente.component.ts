@@ -32,7 +32,7 @@ export class ActualizarClienteComponent implements OnInit {
       const uploadImageData = new FormData();
       console.log(this.selectedFile);
       uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-      this.clienteService.subirImagen(uploadImageData);
+      this.clienteService.subirImagen(this.authService.usuario.idEntity, uploadImageData);
       this.router.navigate(["/loginCliente"]);
     });
   }

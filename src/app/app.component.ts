@@ -5,8 +5,7 @@ import { Categoria } from 'src/app/model/categoria';
 import { ProductoService } from 'src/app/producto.service';
 import { ClienteService } from 'src/app/cliente.service';
 import { AuthService } from './auth.service';
-
-
+import { Cliente } from './model/cliente';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +22,7 @@ export class AppComponent {
   Nombre: string;
   Apellido: string;
   logueado: Boolean = true;
+  cliente: Cliente;
  
   constructor(
     private router: Router,
@@ -34,16 +34,19 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.obtenerCategoria();
-    if (this.ClienteLogueado()) {
-      this.clienteServicio.getImage(this.authService.usuario.id);
+    if (this.isCliente()) {
+      this.clienteServicio.buscarCliente(this.authService.usuario.idEntity).subscribe(
+        data => {
+          this.cliente = data;
+        }
+      );
+      this.clienteServicio.getImage(this.authService.usuario.idEntity);
     }
     //Si está logueado carga su foto de perfil
 
     this.router.navigate(["inicio"]);
-   
   }
 
-  
   isRClienteRoute() {
     return !(this.router.url == '/loginCliente' || this.router.url == '/loginBodega');
   }
@@ -73,16 +76,14 @@ export class AppComponent {
     if (this.isBodega()){
       this.router.navigate(['/inicioBodega'])
     }
-    else this.router.navigate(['/inicio'])
+    else {
+      this.router.navigate(['/inicio'])
+    }
   }
 
   //Contiene la imagen del perfil del cliente logueado
   Perfil() {
     return this.clienteServicio.retrievedImage;
-  }
-
-  DatosUsuario() {
-    return this.clienteServicio;
   }
 
   //######## USANDO ACTUALMENTE BUSQUEDA ###############################################################

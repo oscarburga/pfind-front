@@ -3,6 +3,7 @@ import { ClienteService } from '../cliente.service';
 import { Router } from '@angular/router';
 import { Cliente } from '../model/cliente';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-registrar-cliente',
@@ -20,7 +21,11 @@ export class RegistrarClienteComponent implements OnInit {
   retrieveResonse: any;
   ok: Boolean = false;
 
-  constructor(private clienteService: ClienteService, private router:Router) { }
+  constructor(
+    private clienteService: ClienteService, 
+    private router:Router,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     
@@ -32,7 +37,7 @@ export class RegistrarClienteComponent implements OnInit {
       const uploadImageData = new FormData();
       console.log(this.selectedFile);
       uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-      this.clienteService.subirImagen(uploadImageData);
+      this.clienteService.subirImagen(this.authService.usuario.idEntity, uploadImageData);
       this.router.navigate(["/loginCliente"]);
     });
   }

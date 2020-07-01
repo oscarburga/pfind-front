@@ -48,7 +48,6 @@ export class BuscarProductoComponent implements OnInit {
     return this.bodegaService.descargarData();  
   }
 //######## USANDO ACTUALMENTE ###############################################################
-  
 
  /* buscarPorNombre(){
     this.bodegaService.obtenerBodegaProducto(this.nombre).subscribe(
@@ -89,7 +88,4 @@ export class BuscarProductoComponent implements OnInit {
       data => this.cat = data
     )
   }
-
-
-
 }

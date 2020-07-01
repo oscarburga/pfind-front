@@ -59,7 +59,7 @@ export class PaginaInicioBodegaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(
+    this.bodegaService.buscarBodega(1).subscribe(
       data => {
         this.bodega = data
         this.cambioDireccion(this.bodega.direccion)

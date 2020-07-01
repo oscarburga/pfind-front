@@ -62,6 +62,7 @@ export class BodegaService {
   }
 
   descargarData(){
+    console.log(this.dataBusqueda)
     return this.dataBusqueda;
   }
 

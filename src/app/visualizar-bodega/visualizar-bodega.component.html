@@ -45,13 +45,16 @@
             <div class="row">
                 <label class="resenastitulo">Reseñas y comentarios de esta bodega</label>
             </div>
-            <div class="row">
-                <div class="resenas">
+            <div class="row" style="overflow-y: auto;
+            overflow-x: hidden;">
+                <div class="resenas" style="overflow-y: auto;
+                overflow-x: hidden;">
                     <div *ngFor="let p of bod.resena">
-                        <div class="row">
+
+                        <div class="row" style="margin-left: 5%;">
                             <label class="cnombre"> {{p.cliente.nombre}} {{p.cliente.apellido}}</label>
                         </div>
-                        <div class="row">
+                        <div class="row" style="margin-left: 5%;">
                             <div *ngFor="let number of [1,2,3,4,5]">
                                 <div *ngIf="number <= p.calificacion; else elseBlock">
                                     <label id="es" style="color: goldenrod;">★</label>
@@ -61,10 +64,11 @@
                                 </ng-template>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="margin-left: 5%;">
                             <label class="rcontenido">{{p.contenido}}</label>
                         </div>
                         <hr style="border-color:grey; width: 90%;border-width: 2px;border-radius: 5px;">
+
                     </div>
                 </div>
             </div>
@@ -80,26 +84,24 @@
             </div>
             <div class="row">
                 <div class="listado">
-                    <div *ngFor="let p of bod.productos">
-                        <div class="row">
-                            <div class="row">
-                                <label class="pnombre" routerLink="/producto/{{bod.codigo}}/{{p.producto.codigo}}">
-                                    {{p.producto.nombre}}</label>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
+                    <div *ngFor="let p of bod.productos; let i = index">
+                        <div *ngIf="i <= 10">
+                            <div class="row" style="margin-left: 5%;">
+                                <div class="row">
+                                    <label class="pnombre" routerLink="/producto/{{bod.codigo}}/{{p.producto.codigo}}">
+                                        {{p.producto.nombre}}</label>
                                 </div>
-                                <div class="col">
-                                    <label class="pprecio">S/. {{p.precio}}</label>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img class="pimagen" src={{p.producto.imagenprin}} alt="f">
+                                    </div>
+                                    <div class="col">
+                                        <label class="pprecio">S/. {{p.precio}}</label>
+                                    </div>
                                 </div>
+                                <hr style="border-color:grey; width: 90%;border-width: 2px;border-radius: 5px;">
                             </div>
-
-
                         </div>
-
-
-
                     </div>
                 </div>
             </div>

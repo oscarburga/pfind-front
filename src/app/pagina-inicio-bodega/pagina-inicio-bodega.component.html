@@ -33,58 +33,36 @@
 
     </div>
     <hr style="border-color:#f16a78; width: 50%;border-width: 3px;border-radius: 25px;">
-    <div class="row">
+    <div class="row" style="margin-top: 5%;">
         <div class="col">
 
-            <label class="rtitulo">Calificaciones y comentarios de tu bodega</label>
-            <div class="resenas">
-                <!--Plantilla que luego será reemplazada por *ngFor-->
-                <label class="cdescripcion">Alexander Melendez</label>
-                <p class="clasificacion">
-                    <input id="radio1" type="radio" name="estrellas" value="5">
-                    <label for="radio1" id="es">★</label>
-                    <input id="radio2" type="radio" name="estrellas" value="4">
-                    <label for="radio2" id="es">★</label>
-                    <input id="radio3" type="radio" name="estrellas" value="3">
-                    <label for="radio3" id="es">★</label>
-                    <input id="radio4" type="radio" name="estrellas" value="2">
-                    <label for="radio4" id="es">★</label>
-                    <input id="radio5" type="radio" name="estrellas" value="1">
-                    <label for="radio5" id="es">★</label>
-                </p>
-                <label> Bueno, yo fui a la bodega y es un lugar realmente acogedor, compré un par de cosas para la
-                    semana.</label>
-                <hr style="border-color:grey; width: 90%;border-width: 2px;border-radius: 25px;">
-                <label class="cdescripcion">Raul Casanova</label>
-                <p class="clasificacion">
-                    <input id="radio1" type="radio" name="estrellas" value="5">
-                    <label for="radio1" id="es">★</label>
-                    <input id="radio2" type="radio" name="estrellas" value="4">
-                    <label for="radio2" id="es">★</label>
-                    <input id="radio3" type="radio" name="estrellas" value="3">
-                    <label for="radio3" id="es">★</label>
-                    <input id="radio4" type="radio" name="estrellas" value="2">
-                    <label for="radio4" id="es">★</label>
-                    <input id="radio5" type="radio" name="estrellas" value="1">
-                    <label for="radio5" id="es">★</label>
-                </p>
-                <label> Muy bueno el recibimiento y los productos son muy buenos</label>
-                <hr style="border-color:grey; width: 90%;border-width: 2px;border-radius: 25px;">
-                <label class="cdescripcion">Alexander Melendez</label>
-                <p class="clasificacion">
-                    <input id="radio1" type="radio" name="estrellas" value="5">
-                    <label for="radio1" id="es">★</label>
-                    <input id="radio2" type="radio" name="estrellas" value="4">
-                    <label for="radio2" id="es">★</label>
-                    <input id="radio3" type="radio" name="estrellas" value="3">
-                    <label for="radio3" id="es">★</label>
-                    <input id="radio4" type="radio" name="estrellas" value="2">
-                    <label for="radio4" id="es">★</label>
-                    <input id="radio5" type="radio" name="estrellas" value="1">
-                    <label for="radio5" id="es">★</label>
-                </p>
-                <label> Tuve un problema con un producto y me resolvieron el problema los de la tienda, muy
-                    reconmedables.</label>
+            <div class="row">
+                <label class="resenastitulo">Calificaciones y comentarios de tu bodega</label>
+            </div>
+            <div class="row">
+                <div class="resenas">
+                    <div *ngFor="let p of bodega.resena">
+
+                        <div class="row" style="margin-left: 5%;">
+                            <label class="cnombre"> {{p.cliente.nombre}} {{p.cliente.apellido}}</label>
+                        </div>
+                        <div class="row" style="margin-left: 5%;">
+                            <div *ngFor="let number of [1,2,3,4,5]">
+                                <div *ngIf="number <= p.calificacion; else elseBlock">
+                                    <label id="es" style="color: goldenrod;">★</label>
+                                </div>
+                                <ng-template #elseBlock>
+                                    <label id="es" style="color: grey;">★</label>
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 5%;">
+                            <label class="rcontenido">{{p.contenido}}</label>
+                        </div>
+                        <hr style="border-color:grey; width: 90%;border-width: 2px;border-radius: 5px;">
+
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -92,6 +70,4 @@
             <div id="mapa2">
             </div>
         </div>
-
     </div>
-</div>

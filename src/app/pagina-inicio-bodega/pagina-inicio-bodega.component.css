@@ -1,3 +1,29 @@
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    border-radius: 25px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #f16a78;
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #f16a78;
+}
+
 #Inicio {
     padding-top: 7rem;
 }
@@ -7,6 +33,7 @@
     height: 90%;
     border: 1px #CCCCCC solid;
     margin-left: 2%;
+    margin-top: 7%;
     margin-right: 2%;
     border-radius: 5px;
     -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
@@ -60,6 +87,25 @@
 
 .baforob {
     font-size: 1vw;
+}
+
+.resenastitulo {
+    margin-left: 5%;
+    margin-bottom: 3%;
+    color: #f16a78;
+    font-size: 1vw;
+}
+
+.resenas {
+    width: 90%;
+    height: 30vh;
+    padding-top: 4%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px #CCCCCC solid;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
 }
 
 .botonbodega {

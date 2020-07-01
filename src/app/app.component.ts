@@ -33,6 +33,7 @@ export class AppComponent {
   ) { }
 
   ngOnInit(): void {
+    console.log("hola soy el appcomponent");
     this.obtenerCategoria();
     if (this.isCliente()) {
       this.clienteServicio.buscarCliente(this.authService.usuario.idEntity).subscribe(
@@ -40,6 +41,9 @@ export class AppComponent {
           this.cliente = data;
         }
       );
+      if(this.ClienteLogueado() == true){
+        console.log(this.authService.hasRole('ROLE_CLIENTE'))
+      }
       this.clienteServicio.getImage(this.authService.usuario.idEntity);
     }
     //Si está logueado carga su foto de perfil
@@ -47,6 +51,7 @@ export class AppComponent {
     this.router.navigate(["inicio"]);
   }
 
+  
   isRClienteRoute() {
     return !(this.router.url == '/loginCliente' || this.router.url == '/loginBodega');
   }
@@ -57,10 +62,12 @@ export class AppComponent {
   }
 
   isCliente() {
+    
     return this.authService.hasRole('ROLE_CLIENTE');
   }
   
   isBodega() {
+    
     return this.authService.hasRole('ROLE_BODEGA');
   }
 
@@ -118,5 +125,19 @@ export class AppComponent {
     this.router.navigate(['/inicio']);
   }
 
-}
+  inicializar(): void{
+    console.log("hola soy el appcomponent");
+    this.obtenerCategoria();
+    if (this.isCliente()) {
+      this.clienteServicio.buscarCliente(this.authService.usuario.idEntity).subscribe(
+        data => {
+          this.cliente = data;
+        }
+      );
+      this.clienteServicio.getImage(this.authService.usuario.idEntity);
+      console.log("SOY CLIENTE");
+  }
 
+  }
+
+}

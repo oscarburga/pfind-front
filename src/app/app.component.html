@@ -45,13 +45,17 @@
         </ul>
 
         <!--Usuario logueado-->
-
-        <ul class="nav navbar-nav navbar-right" *ngIf="ClienteLogueado()">
+        <li class="nav-item" *ngIf="isCliente()">
+            {{cliente.nombre}} {{cliente.apellido}}
+        </li>
+        <ul class="nav navbar-nav navbar-right" *ngIf="ClienteLogueado() ">
             <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil"
-                        *ngIf="isCliente()">{{cliente.nombre}} {{cliente.apellido}}</a>
-
+                        *ngIf="isCliente()">
+                        
+                    </a>
+                
                 <div class="dropdown-menu" id="items-dropdown">
                     <a class="dropdown-item" (click)=actualizarInformacion()> Actualizar Información</a>
                     <a class="dropdown-item" (click)=cerrarSesion()>Cerrar Sesión</a>

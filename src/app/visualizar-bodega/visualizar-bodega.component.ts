@@ -18,9 +18,10 @@ export class VisualizarBodegaComponent implements OnInit {
   bod: Bodega;
   re: Resena = new Resena();
   resenas: Resena[]
-
+  tresena : number;
   mapa: mapboxgl.Map;
   latitud: number;
+  cantr : number;
   longitud: number;
   address: string;
   marker: mapboxgl.Marker;
@@ -30,12 +31,12 @@ export class VisualizarBodegaComponent implements OnInit {
     this._ActivatedRoute.paramMap.subscribe(params =>{
       this.bid = Number(params.get('bid'));
     })
-    console.log(this.bid);
+    //console.log(this.bid);
     this.bodegaService.buscarBodega(this.bid).subscribe(data =>{
       console.log(this.bod = data)
       this.cambioDireccion(this.bod.direccion)
+      this.calcularR();
     } );
-    this.re.bodega = this.bod;
     (mapboxgl as any).accessToken = environment.mapboxKey;
     this.mapa = new mapboxgl.Map({
       container: 'mapa', // container id
@@ -45,9 +46,10 @@ export class VisualizarBodegaComponent implements OnInit {
     this.marker = new mapboxgl.Marker({
       draggable: false
     })
+    
   }
   save(): void{
-    console.log(this.re.calificacion);
+    
     this.bodegaService.crearResena(this.re, this.bod.codigo, this.authService.usuario.idEntity).subscribe(data=> console.log(data));
   }
 
@@ -73,5 +75,15 @@ export class VisualizarBodegaComponent implements OnInit {
       }
     )
   }
-  
+  calcularR(): any{ 
+    this.tresena = 0;
+    this.cantr = 0;
+    for(let i of this.bod.resena){
+      this.tresena = this.tresena + i.calificacion;
+      this.cantr = this.cantr+1;
+    }
+    this.tresena = this.tresena / this.cantr;
+    console.log("mi cali es " + this.tresena);
+    return this.tresena;
+  } 
 }

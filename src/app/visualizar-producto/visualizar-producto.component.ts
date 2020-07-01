@@ -18,11 +18,13 @@ export class VisualizarProductoComponent implements OnInit {
   bp: BodegaProducto;
   bodega: Bodega;
   results: any;
-
+  tresena: number;
+  cantr: number;
   mapa3: mapboxgl.Map;
   latitud: number;
   longitud: number;
   address: string;
+  bod: Bodega;
   marker: mapboxgl.Marker;
 
   constructor(private mapsAPILoader: MapsAPILoader,
@@ -36,7 +38,14 @@ export class VisualizarProductoComponent implements OnInit {
       this.bp = data
       this.bodega = this.bp.bodega
       this.cambioDireccion(this.bodega.direccion)
+      this.bodegaService.buscarBodega(this.bodega.codigo).subscribe(data =>{
+        this.bod = data
+        this.calcularR();
+      } );
     });
+
+    
+
     (mapboxgl as any).accessToken = environment.mapboxKey;
     this.mapa3 = new mapboxgl.Map({
       container: 'mapa3', // container id
@@ -46,6 +55,7 @@ export class VisualizarProductoComponent implements OnInit {
     this.marker = new mapboxgl.Marker({
       draggable: false
     })
+    
   }
 
   crearmarcador(lng: number, lat: number) {
@@ -70,4 +80,21 @@ export class VisualizarProductoComponent implements OnInit {
       }
     )
   }
+  calcularR(): any{
+
+    this.bodegaService.buscarBodega(this.bodega.codigo).subscribe(data =>{
+      console.log(this.bod = data)
+      this.cambioDireccion(this.bod.direccion)
+    } );
+
+    this.tresena = 0;
+    this.cantr = 0;
+    for(let i of this.bod.resena){
+      this.tresena = this.tresena + i.calificacion;
+      this.cantr = this.cantr+1;
+    }
+    this.tresena = this.tresena / this.cantr;
+    console.log("mi cali es " + this.tresena);
+    return this.tresena;
+  } 
 }

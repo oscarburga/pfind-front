@@ -35,7 +35,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.obtenerCategoria();
     if (this.ClienteLogueado()) {
-      this.clienteServicio.getImage();
+      this.clienteServicio.getImage(this.authService.usuario.id);
     }
     //Si está logueado carga su foto de perfil
 

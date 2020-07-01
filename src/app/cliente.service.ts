@@ -46,8 +46,8 @@ export class ClienteService {
     )
   }
 
-  getImage(){
-    this.http.get(this.urlBase + '/get_imagen/'+ this.Cliente_id).subscribe(
+  getImage(Cid: number){
+    this.http.get(this.urlBase + '/get_imagen/'+ Cid).subscribe(
         res => {
           this.retrievedResponse = res;
           this.Nombre = this.retrievedResponse.nombre;

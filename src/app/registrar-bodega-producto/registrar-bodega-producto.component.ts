@@ -47,6 +47,7 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   
   save(){
       this.bodegaProducto.bodega = this.bodeguita;
+      console.log(this.bodegaProducto);
       this.bodegaService.registrarBodegaProducto(this.bodegaProducto).subscribe(data=> {
         const uploadImageData = new FormData();
         uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);

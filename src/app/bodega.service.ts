@@ -94,6 +94,7 @@ export class BodegaService {
   }
 
   subirImagenProducto(imagenData:any, id_bodega:number, id_bp:number){
+    console.log("Imagen")
     return this.http.post(this.urlBase + "/upload_imagen_producto/"+id_bodega+ "/" + id_bp, imagenData, { observe: 'response'}).subscribe(
       (response) => {
         if(response.status === 200){

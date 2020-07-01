@@ -44,7 +44,7 @@
 
         <ul class="nav navbar-nav navbar-right" *ngIf="ClienteLogueado()">
             <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil">{{DatosUsuario().Nombre}} {{DatosUsuario().Apellido}}
+                <a class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil" *ngIf="isCliente()" >{{DatosUsuario().Nombre}} {{DatosUsuario().Apellido}}
                 </a>
                 <div class="dropdown-menu" id="items-dropdown">
                     <a class="dropdown-item" (click)=actualizarInformacion()> Actualizar Información</a>

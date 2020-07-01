@@ -47,6 +47,9 @@ export class BuscarProductoComponent implements OnInit {
   descargarData(){
     return this.bodegaService.descargarData();  
   }
+  actualizarRango(){
+      this.bodegaService.buscarPorRango(this.pmin, this.pmax);
+  }
 //######## USANDO ACTUALMENTE ###############################################################
 
  /* buscarPorNombre(){

@@ -94,7 +94,9 @@ export class VisualizarProductoComponent implements OnInit {
       this.cantr = this.cantr+1;
     }
     this.tresena = this.tresena / this.cantr;
+    this.tresena = Math.round(this.tresena * 100) /100;
     console.log("mi cali es " + this.tresena);
+    
     return this.tresena;
   } 
 }

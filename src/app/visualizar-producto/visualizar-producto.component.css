@@ -43,6 +43,16 @@
     font-size: 2vh;
 }
 
+.caligt {
+    font-size: 1.5vw;
+    color: #f16a78;
+}
+
+.calig {
+    font-size: 3vw;
+    margin-left: 15%;
+}
+
 .like-btn-svg {
     width: 50px;
     height: 30px;

@@ -4,10 +4,9 @@ import { BodegaService } from '../bodega.service';
 import { Categoria } from '../model/categoria';
 import { ProductoService } from '../producto.service';
 import { Producto } from '../model/producto';
-import { NumberValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Bodega } from '../model/bodega';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-bodega-producto',
@@ -31,6 +30,7 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   retrieveResonse: any;
   fileName:any;
   bodeguita:any;
+  estiloImg:String;
 
   constructor(
     private bodegaService : BodegaService, 
@@ -78,15 +78,24 @@ export class RegistrarBodegaProductoComponent implements OnInit {
   onFileSelected(files){
    if (files.length > 0) {
      //Lectura de la imagen para previsualizarla
-     var reader= new FileReader();
-     this.selectedFile = files[0];
-     this.fileName = files[0].name;
-     reader.readAsDataURL(files[0]);
-     reader.onload = (_event) =>{
-       this.imgURL = reader.result;
-     }
-      const file = files[0];
-      this.new_label_file = file.name
+     if(files[0].size > 1048576){
+       this.new_label_file = "Supera el tamaño máximo de un 1MB";
+       this.estiloImg = "border: 1px red solid;"
+       files = [];
+       this.imgURL = []
+      swal.fire('Error', `Imagen muy grande!`, 'error');
+     }else{
+        this.estiloImg = ""
+        var reader= new FileReader();
+        this.selectedFile = files[0];
+        this.fileName = files[0].name;
+        reader.readAsDataURL(files[0]);
+        reader.onload = (_event) =>{
+          this.imgURL = reader.result;
+          }
+         const file = files[0];
+         this.new_label_file = file.name
+      }
    }
   }
 }

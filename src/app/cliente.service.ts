@@ -27,7 +27,7 @@ export class ClienteService {
   }
   
   actualizarCliente(cliente: Cliente): Observable<Object>{
-      return this.http.put(this.urlBase+"/actualizar/" + cliente.codigo, cliente, {headers: this.httpHeaders});
+      return this.http.post(this.urlBase+"/actualizar/" + cliente.codigo, cliente, {headers: this.httpHeaders});
   }
 
   buscarCliente(id: number) : Observable<any>{

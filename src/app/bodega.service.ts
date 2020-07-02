@@ -81,7 +81,7 @@ export class BodegaService {
     let t2 = ""
     if ((!isUndefined(min)) && (!isNull(min))) t1 = min.toString();
     if ((!isUndefined(max)) && (!isNull(max))) t2 = max.toString();
-    return this.http.get(this.urlBase + "/producto/Rango/p_min=" + min + "/p_max=" + max).subscribe(data=> {
+    return this.http.get(this.urlBase + "/producto/Rango/p_min=" + t1 + "/p_max=" + t2).subscribe(data=> {
       this.data_porRango = data;
       this.dataBusqueda = this.intersecarListas(this.data_original, this.data_porRango);
     });

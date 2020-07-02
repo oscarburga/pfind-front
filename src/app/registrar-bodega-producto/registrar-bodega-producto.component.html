@@ -61,7 +61,7 @@
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="inputGroupFile01" #file
                             aria-describedby="inputGroupFileAddon01" (change)="onFileSelected(file.files)">
-                        <label class="custom-file-label" for="inputGroupFile01">{{new_label_file}}</label>
+                    <label class="custom-file-label" for="inputGroupFile01" style="{{estiloImg}}">{{new_label_file}}</label>
                     </div>
                     <div class="mostrar-img">
                         <img [src]="imgURL" *ngIf="imgURL" id="img_preview" alt="Pre-Imagen-Producto">

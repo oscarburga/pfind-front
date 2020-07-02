@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ClienteService } from '../cliente.service';
 import { Router } from '@angular/router';
 import { Cliente } from '../model/cliente';
-import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-registrar-cliente',
@@ -42,20 +42,23 @@ export class RegistrarClienteComponent implements OnInit {
     });
   }
 
-  onFileSelected(event){
-    
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.fileName = event.target.files[0].name;
-      this.selectedFile = event.target.files[0];
-    }
-
-    if(this.fileName.length < 30){
-      this.label_imagen = "Imagen seleccionada: " + this.fileName;
-    }else{
-      if(this.fileName.length > 50){
-        this.label_imagen = "Imagen seleccionada"
+    onFileSelected(event){
+    var file = event.target.files[0];
+    console.log(file)
+    if (file.size < 1048576) {
+      this.fileName = file.name;
+      this.selectedFile = file;
+      if(this.fileName.length < 30){
+        this.label_imagen = this.fileName;
+      }else{
+        if(this.fileName.length > 50){
+          this.label_imagen = "Imagen seleccionada"
+        }
       }
+    }else{
+      file = []
+      this.label_imagen ="Imagen muy grande";
+      swal.fire('Error', `Imagen muy grande!`, 'error');
     }
   }
 }

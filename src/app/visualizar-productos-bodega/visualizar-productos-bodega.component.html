@@ -1,0 +1,33 @@
+<p>visualizar-productos-bodega works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div *ngFor="let bp of bod.productos; let j = index ">
+                <div class="col">
+                    <div class="product">
+                        <div>
+                            <label class="pnombre" routerLink="/busqueda/Bodega/Producto/{{bp.codigo}}" id="cursor_producto">
+                                {{bp.producto.nombre}}</label>
+                        </div>
+                        <div class="row" id="cursor_producto">
+                            <img class="pimagen" [src]="bp.producto.imagenprin" alt="Imagen Producto">
+                        </div>
+                        <div class="row">
+                            <label class="pbodega" routerLink="/bodega/{{bod.codigo}}" id="cursor_producto">
+                                {{bod.nombre}}</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="pprecio">S/. {{bp.precio}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+
+</div>

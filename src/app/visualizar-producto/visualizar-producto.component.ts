@@ -93,6 +93,7 @@ export class VisualizarProductoComponent implements OnInit {
       this.tresena = this.tresena + i.calificacion;
       this.cantr = this.cantr+1;
     }
+    if (this.cantr == 0) this.cantr = 1;
     this.tresena = this.tresena / this.cantr;
     this.tresena = Math.round(this.tresena * 100) /100;
     console.log("mi cali es " + this.tresena);

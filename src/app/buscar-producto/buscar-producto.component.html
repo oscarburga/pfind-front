@@ -2,21 +2,42 @@
     <div class="contenido">
         <div class="criterios">
             <div class="precio">
-                <label class="lblranprecios">Rango de Precios</label>
-                <div class="rangoprecios">
-                    <input type="number" class="minimo" style="width: 80px; height: 30px" [(ngModel)]="pmin" placeholder="  Desde">
-                    <input type="number" class="maximo" style="width: 80px; height: 30px" [(ngModel)]="pmax" placeholder="  Hasta">
+                <div class="row" style="margin-left: 5%;">
+                    <label class="lblranprecios">Rango de Precios</label>
                 </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <input type="number" class="minimo" style="width: 80px; height: 30px" [(ngModel)]="pmin" placeholder="  Desde">
+                    </div>
+                    <div class="col">
+                        <input type="number" class="maximo" style="width: 80px; height: 30px" [(ngModel)]="pmax" placeholder="  Hasta">
+                    </div>
+
+
+                </div>
+
             </div>
-            <div class="marca">
-                <label class="lblranprecios">Marca</label>
-                <input type="text" style="width: 200px; height: 30px" [(ngModel)]="nombre_marca">
+            <div class="marca" style="margin-left: 10%;">
+                <div class="row">
+                    <label class="lblranprecios">Marca</label>
+                </div>
+                <div class="row">
+                    <input type="text" style="width: 200px; height: 30px" [(ngModel)]="nombre_marca">
+                </div>
+
             </div>
-            <div class="bodega">
-                <label class="lblranprecios">Bodega</label>
-                <input type="text" style="width: 200px; height: 30px" [(ngModel)]="nombre_bodega">
+            <div class="bodega" style="margin-left: 10%;">
+                <div class="row">
+                    <label class="lblranprecios">Bodega</label>
+                </div>
+                <div class="row">
+                    <input type="text" style="width: 200px; height: 30px" [(ngModel)]="nombre_bodega">
+                </div>
+
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 5%;">
                 <button type="submit" (click)=actualizarDatos() class="btn btn-info">Actualizar</button>
             </div>
         </div>
@@ -39,15 +60,15 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <label class="pprecio">S/.{{bp.precio}}</label>
+                                    <label class="pprecio">S/. {{bp.precio}}</label>
                                 </div>
-                                <div *ngIf="isCliente()" div class="col" id="caja_agregar">
-                                    <button class="botonbodega" (click)=registrarLP(bp.codigo)>+</button>
+                                <div class="col" id="caja_agregar">
+                                    <a id="agregar_lista" (click)=registrarLP(bp.codigo) style="color:{{corazoncss}}"><i class="{{corazon}}"aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    >
                 </div>
             </div>
 

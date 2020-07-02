@@ -65,6 +65,11 @@ input[type="checkbox"] {
     display: none;
 }
 
+#imgBodega{
+    max-width: 350px;
+    max-height: 300px;
+}
+
 input:checked+.like-btn-svg {
     transition: background 1s steps(28);
     animation: fave-like-btn-svg 1s steps(28);

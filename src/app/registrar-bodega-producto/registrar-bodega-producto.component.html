@@ -11,7 +11,7 @@
                     <button class="btn btn-outline-secondary dropdown-toggle" id="botonCat" type="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categoria</button>
                     <input type="text" class="form-control" id="input1" value="{{new_label_categoria}}"
-                        placeholder="Escoja una categoría" disabled required>
+                        placeholder="Escoja una categoría" readonly required>
                     <div class="dropdown-menu">
                         <ul *ngFor="let c of categorias" style="cursor: pointer;">
                             <a class="dropdown-item" (click)="buscarProducto(c.codigo, c.nombre)">{{c.nombre}}</a>
@@ -22,7 +22,7 @@
                     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Productos</button>
                     <input type="text" class="form-control" id="input2" value="{{new_label_producto}}"
-                        placeholder="Escoja un Producto" disabled>
+                        placeholder="Escoja un Producto" readonly>
                     <div class="dropdown-menu">
                         <ul *ngFor="let p of productos" style="cursor: pointer;">
                             <a class="dropdown-item"

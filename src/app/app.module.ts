@@ -23,6 +23,7 @@ import { LoginBodegaComponent } from './login-bodega/login-bodega.component';
 import { AgmCoreModule } from '@agm/core';
 import { PaginaInicioBodegaComponent } from './pagina-inicio-bodega/pagina-inicio-bodega.component';
 import { ActualizarClienteComponent } from './actualizar-cliente/actualizar-cliente.component';
+import { VisualizarProductosBodegaComponent } from './visualizar-productos-bodega/visualizar-productos-bodega.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ActualizarClienteComponent } from './actualizar-cliente/actualizar-clie
     LoginClienteComponent,
     LoginBodegaComponent,
     PaginaInicioBodegaComponent,
-    ActualizarClienteComponent
+    ActualizarClienteComponent,
+    VisualizarProductosBodegaComponent
   ],
   imports: [
     BrowserModule,

@@ -56,7 +56,7 @@ export class BuscarProductoComponent implements OnInit {
   }
 
   actualizarDatos(){
-    return this.bodegaService.buscarCompleto(null, this.nombre_marca, this.nombre_bodega, this.pmin, this.pmax, 1);
+    return this.bodegaService.buscarCompleto(null, this.nombre_marca, this.nombre_bodega, this.pmin, this.pmax, 0);
   }
 //######## USANDO ACTUALMENTE ###############################################################
 

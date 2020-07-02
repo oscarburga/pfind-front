@@ -40,17 +40,20 @@
                     Registrar</a></li>
             <li><a routerLink="/loginUsuario" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>
                     Iniciar</a></li>
-            <!--<li><a routerLink="/registrarBP" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RBP</a></li>
-      <li><a routerLink="/registrarProducto" class="login-buttoms"><span class="glyphicon glyphicon-log-in"></span>RP</a></li>-->
         </ul>
 
         <!--Usuario logueado-->
-        <div class="nav navbar-nav navbar-right" *ngIf="ClienteLogueado() ">
+        <div class="nav navbar-nav navbar-right" *ngIf="ClienteLogueado()">
             <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil"
-                        *ngIf="isCliente()">
-                        {{cliente.nombre}} {{cliente.apellido}}</a>
+
+                <a *ngIf="isCliente()" class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><img [src]="Perfil()" alt="Foto Perfil" >
+                        {{Nombre}} {{Apellido}}</a>
+
+                <a *ngIf="isBodega()" class="btn btn-secondary dropdown-toggle" id="foto_perfil" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><img [src]="perfil" alt="Foto Perfil" >
+                        {{Nombre}}</a>
+
                 <div class="dropdown-menu" id="items-dropdown">
                     <a class="dropdown-item" (click)=actualizarInformacion()> Actualizar Información</a>
                     <a class="dropdown-item" (click)=cerrarSesion()>Cerrar Sesión</a>

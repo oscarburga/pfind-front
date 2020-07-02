@@ -25,21 +25,19 @@ export class LoginClienteComponent implements OnInit {
   }
 
   login(): void { //autentica
-    console.log(this.usuario);
     if (this.usuario.username == null || this.usuario.password == null) {
       swal.fire('Error Login', 'Username o password vacías!', 'error');
       return;
     }
 
     this.authService.login(this.usuario).subscribe(response => { // se suscribe
-      console.log("login:"+response.access_token);
 
       this.authService.guardarUsuario(response.access_token);
       this.authService.guardarToken(response.access_token);
       let usuario = this.authService.usuario;
       this.router.navigate(['/inicio']);
       swal.fire('Login', `Hola ${usuario.username}, has iniciado sesión con éxito!`, 'success');
-      this.appComponent.inicializar();
+      this.appComponent.ngOnInit();
     }, err => {
       if (err.status == 400) {
         swal.fire('Error Login', 'Usuario o clave incorrectas!', 'error');

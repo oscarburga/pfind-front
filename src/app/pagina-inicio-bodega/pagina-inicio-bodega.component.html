@@ -1,25 +1,25 @@
 <div class="container" id="Inicio">
     <div class="row">
         <div class="col" style="text-align:  center;">
-            <h1 class="bnombre">{{bodega.nombre}} </h1>
+            <h1 class="bnombre">{{Nombre}} </h1>
         </div>
     </div>
     <div class="row" style="margin-bottom: 5%;">
         <div class="col-4">
-            <img class="bimagen" src="data:image/jpeg;base64,{{bodega.imagen}}" alt="Imagen Producto">
+            <img class="bimagen" [src]="imagen" alt="Imagen Producto">
         </div>
         <div class="col" id="info">
             <div class="row">
                 <label class="bdireccion">Dirección </label>
             </div>
             <div class="row">
-                <label class="bdireccionb">{{bodega.direccion}} </label>
+                <label class="bdireccionb">{{direccion}}</label>
             </div>
             <div class="row">
                 <label class="baforo">Aforo</label>
             </div>
             <div class="row">
-                <label class="baforob">{{bodega.aforo}} </label>
+                <label class="baforob">{{aforo}} </label>
             </div>
         </div>
         <div class="col">

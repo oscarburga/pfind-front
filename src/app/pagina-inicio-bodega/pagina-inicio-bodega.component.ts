@@ -29,6 +29,10 @@ export class PaginaInicioBodegaComponent implements OnInit {
   longitud: number;
   address: string;
   marker :mapboxgl.Marker;
+  Nombre: String;
+  imagen: String;
+  direccion: String;
+  aforo: number;
   constructor(private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute, private authService : AuthService, private router: Router) { }
 
   private agregarAuthorizationHeader() {
@@ -59,10 +63,13 @@ export class PaginaInicioBodegaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("Hola soy inicio bodega");
     this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(
       data => {
-        this.bodega = data
+        this.bodega = data;
+        this.Nombre = this.bodega.nombre;
+        this.imagen = "data:image/jpeg;base64," + this.bodega.imagen;
+        this.direccion = this.bodega.direccion;
+        this.aforo = this.bodega.aforo;
         this.cambioDireccion(this.bodega.direccion)
       }
       );
@@ -76,9 +83,6 @@ export class PaginaInicioBodegaComponent implements OnInit {
       this.marker = new mapboxgl.Marker({
         draggable: false
       })
-      
-      console.log(this.authService.usuario.idEntity);
-      console.log(this.authService.usuario.username);
   }
 
   crearmarcador(lng: number, lat: number) {
@@ -103,7 +107,6 @@ export class PaginaInicioBodegaComponent implements OnInit {
   obtenerMarcador(){
     this.bodegaService.obtenerdeDireccion(this.bodega.direccion).subscribe(
       data => {
-        console.log(data);
         if(data.results.length != 0){
           this.latitud = data.results[0].geometry.location.lat;
           this.longitud = data.results[0].geometry.location.lng;
@@ -116,7 +119,6 @@ export class PaginaInicioBodegaComponent implements OnInit {
   obtenerDireccionLngLat(){
     this.bodegaService.obtenerdeLngLat(this.latitud,this.longitud).subscribe(
       data => {
-        console.log(data);
         if(data.results.length != 0){
           this.address = data.results[0].formatted_address;
         }

@@ -23,7 +23,6 @@ export class PaginaInicioComponent implements OnInit {
   }
 
   obtenerAuspiciadores(): void{
-    console.log("hola")
     this.auspiciadorServicio.obtenerAuspiciadores().subscribe(
       data=> this.aus = data
     )

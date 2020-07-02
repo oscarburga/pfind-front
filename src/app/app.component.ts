@@ -6,6 +6,7 @@ import { ProductoService } from 'src/app/producto.service';
 import { ClienteService } from 'src/app/cliente.service';
 import { AuthService } from './auth.service';
 import { Cliente } from './model/cliente';
+import { Bodega } from './model/bodega';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,12 @@ export class AppComponent {
   logoInicio = 'https://cdn.discordapp.com/attachments/700237020278030396/714972834518270052/online-shopping.png'
   cat: Categoria[];
   desplegarmenu: Boolean = false;
-  perfil: any;
-  Nombre: string;
-  Apellido: string;
+  perfil: String;
+  Nombre: String;
+  Apellido: String;
   logueado: Boolean = true;
   cliente: Cliente;
+  bodega: Bodega;
  
   constructor(
     private router: Router,
@@ -33,24 +35,38 @@ export class AppComponent {
   ) { }
 
   ngOnInit(): void {
-    console.log("hola soy el appcomponent");
     this.obtenerCategoria();
-    if (this.isCliente()) {
-      this.clienteServicio.buscarCliente(this.authService.usuario.idEntity).subscribe(
-        data => {
-          this.cliente = data;
+    //Si es bodega
+    console.log("Estoy recargando")
+      if(this.isBodega()){ 
+        this.router.navigate[("/inicioBodega")]
+        this.bodegaServicio.buscarBodega(this.authService.usuario.idEntity).subscribe(
+          data => {
+           this.bodega = data; 
+           this.Nombre = this.bodega.nombre;
+           this.perfil = "data:image/jpeg;base64," + this.bodega.imagen;
+          }
+        )
+      }else{
+        //Si es cliente
+      if(this.isCliente()) {
+        this.clienteServicio.buscarCliente(this.authService.usuario.idEntity).subscribe(
+          data => {
+            this.cliente = data;
+            this.Nombre = this.cliente.nombre;
+            this.Apellido = this.cliente.apellido;
         }
       );
-      if(this.ClienteLogueado() == true){
-        console.log(this.authService.hasRole('ROLE_CLIENTE'))
+        this.clienteServicio.getImage(this.authService.usuario.idEntity);
       }
-      this.clienteServicio.getImage(this.authService.usuario.idEntity);
+      //Si es cliente o no se ha logueado
+      this.router.navigate(["/inicio"])
     }
+    console.log("Role actual..")
+    console.log("Bodega: " + this.isBodega())
+    console.log("Cliente: "+ this.isCliente())
     //Si está logueado carga su foto de perfil
-
-    this.router.navigate(["inicio"]);
   }
-
   
   isRClienteRoute() {
     return !(this.router.url == '/loginCliente' || this.router.url == '/loginBodega');
@@ -62,7 +78,6 @@ export class AppComponent {
   }
 
   isCliente() {
-    
     return this.authService.hasRole('ROLE_CLIENTE');
   }
   
@@ -122,22 +137,7 @@ export class AppComponent {
   cerrarSesion(){
     this.logueado = false;
     this.authService.logout();
-    this.router.navigate(['/inicio']);
-  }
-
-  inicializar(): void{
-    console.log("hola soy el appcomponent");
-    this.obtenerCategoria();
-    if (this.isCliente()) {
-      this.clienteServicio.buscarCliente(this.authService.usuario.idEntity).subscribe(
-        data => {
-          this.cliente = data;
-        }
-      );
-      this.clienteServicio.getImage(this.authService.usuario.idEntity);
-      console.log("SOY CLIENTE");
-  }
-
+    this.ngOnInit()
   }
 
 }

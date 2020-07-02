@@ -211,4 +211,8 @@ img {
     border: none;
     background: none;
   }
+
+  .nav-derecha{
+    display: none;
+  }
 }

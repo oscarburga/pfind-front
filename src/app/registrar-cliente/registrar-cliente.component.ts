@@ -20,6 +20,7 @@ export class RegistrarClienteComponent implements OnInit {
   base64Data: any;
   retrieveResonse: any;
   ok: Boolean = false;
+  clientito:any;
 
   constructor(
     private clienteService: ClienteService, 
@@ -34,10 +35,11 @@ export class RegistrarClienteComponent implements OnInit {
   save(){
     this.cliente.distrito = "Rimac";
     this.clienteService.registrarCliente(this.cliente).subscribe(data => {
+      this.clientito = data
       const uploadImageData = new FormData();
       console.log(this.selectedFile);
       uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-      this.clienteService.subirImagen(this.authService.usuario.idEntity, uploadImageData);
+      this.clienteService.subirImagen(this.clientito.codigo, uploadImageData);
       this.router.navigate(["/loginCliente"]);
     });
   }
@@ -46,6 +48,7 @@ export class RegistrarClienteComponent implements OnInit {
     var file = event.target.files[0];
     console.log(file)
     if (file.size < 1048576) {
+      console.log("entro a la funcion")
       this.fileName = file.name;
       this.selectedFile = file;
       if(this.fileName.length < 30){

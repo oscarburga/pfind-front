@@ -11,15 +11,10 @@
 
         <!-- Login Form -->
         <form>
-            <input [(ngModel)]="usuario.username" type="number" id="ruc" class="fadeIn third" name="login" placeholder="RUC">
+            <input [(ngModel)]="usuario.username" type="text" id="ruc" class="fadeIn third" name="login" placeholder="RUC">
             <input [(ngModel)]="usuario.password" type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
             <input (click)='login()' type="submit" class="fadeIn fourth" value="Iniciar">
         </form>
-
-        <!-- Remind Passowrd -->
-        <div id="formFooter">
-            <a class="underlineHover" href="#">Olvidé la contraseña</a>
-        </div>
 
     </div>
 

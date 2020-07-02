@@ -1,19 +1,21 @@
-.contenido{
+.contenido {
     padding-top: 10rem;
     padding-left: 13%;
+    width: 550px;
     padding-bottom: 5%;
     align-content: center;
 }
-.criterios{
+
+.criterios {
     float: left;
     padding: 10px;
     background-color: rgb(240, 239, 239);
     border-radius: 5%;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
     margin-right: 2%;
-    
 }
+
 .botonbodega {
     width: 50%;
     height: 4vh;
@@ -28,7 +30,7 @@
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
-.busubi{
+.busubi {
     margin-left: 7%;
     margin-bottom: 5%;
     margin-top: 5%;
@@ -36,18 +38,18 @@
     border-radius: 5%;
 }
 
-.buttonubi{
+.buttonubi {
     margin-left: 7%;
 }
 
-.lblranprecios{
+.lblranprecios {
     font-size: 13px;
     margin-top: 5%;
     margin-left: 4%;
     margin-bottom: 4%;
 }
 
-.minimo{
+.minimo {
     size: 100px;
     margin-right: 5%;
     margin-left: 4%;
@@ -55,42 +57,41 @@
     border-radius: 5%;
 }
 
-.maximo{
+.maximo {
     border: 0;
     border-radius: 5%;
 }
 
-.bodega{
+.bodega {
     margin-top: 0%;
 }
 
-.product{
+.product {
     width: 230px;
     height: 300px;
     padding: 5%;
     padding-left: 10%;
-    background-color:  rgb(240, 239, 239);
+    background-color: rgb(240, 239, 239);
     border-radius: 5%;
     margin-bottom: 10%;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
 }
 
-.pnombre{
+.pnombre {
     font-size: large;
     margin-bottom: 3%;
     margin-right: 1%;
 }
 
-
-.pbodega{
+.pbodega {
     margin-top: 5%;
     font-size: small;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.pprecio{
+.pprecio {
     font-size: 1vw;
     font-weight: bold;
     padding-left: 10%;
@@ -98,21 +99,21 @@
     width: auto;
 }
 
-.pimagen{
+.pimagen {
     width: 170px;
     height: 170px;
     margin-left: 5%;
     border-radius: 5%;
-    -webkit-box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
-#agregar_lista{
+#agregar_lista {
     font-size: x-large;
     cursor: pointer;
 }
 
-#caja_agregar{
+#caja_agregar {
     text-align: center;
     width: auto;
     padding-top: 0;
@@ -122,11 +123,11 @@
     margin: 0 0;
 }
 
-#cursor_producto{
+#cursor_producto {
     cursor: pointer;
 }
 
-.corazon{
+.corazon {
     position: relative;
 }
 
@@ -136,37 +137,37 @@
     background: url(https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png) no-repeat;
     background-position: 0 0;
     cursor: pointer;
-  }
-  
-  input[type="checkbox"] {
-    display:none;
-  }
-  
-  input:checked + .like-btn-svg{
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input:checked+.like-btn-svg {
     transition: background 1s steps(28);
     animation: fave-like-btn-svg 1s steps(28);
     background-position: -2800px 0;
-  }
-  
-  .drop-cat{
-      list-style: none;
-      padding: 0 0;
-  }
+}
 
-  @keyframes fave-like-btn-svg {
+.drop-cat {
+    list-style: none;
+    padding: 0 0;
+}
+
+@keyframes fave-like-btn-svg {
     0% {
-      background-position: 0 0;
+        background-position: 0 0;
     }
     100% {
-      background-position: -2800px 0;
+        background-position: -2800px 0;
     }
-  }
+}
 
-  @media only screen and (max-width: 995px){
-    .contenido{
+@media only screen and (max-width: 995px) {
+    .contenido {
         padding-top: 10rem;
         padding-left: 13%;
         padding-bottom: 5%;
         align-content: center;
     }
-  }
+}

@@ -55,7 +55,6 @@
                 </div>
                 <div class="col">
                     <div class="form-group" id="selectedFile">
-                        <!--<h5 id="imagen">{{label_imagen}}</h5>-->
                         <input type="file" class="form-control" id="imagen" (change)="onFileSelected($event)" name="profile" style="display: none;" #selectedFile>
                         <button type="button" (click)="selectedFile.click()" class="btn btn-secondary">{{label_imagen}}</button>
                     </div>
@@ -101,26 +100,6 @@
                         </div>
 
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="titulo-categorias">
-                        <h3>Categorías</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding: 0 2%;">
-                <div class="col" *ngFor="let c of cat" style="width: 100%;" style="height: 100%;" style="padding: 0 0;">
-                    <button type="button" class="seleccion">{{c.nombre}}</button>
-                    <!--<div class="form-group">
-                        <ul>
-                            <li *ngFor="let c of cat" class="list-group-item">
-                                <input type="text" id="cat_{{c.codigo}}">
-                                <label for="categoria">{{c.nombre}}</label>
-                            </li>
-                        </ul>
-                    </div>-->
                 </div>
             </div>
             <div class="row">

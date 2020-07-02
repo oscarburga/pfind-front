@@ -5,6 +5,7 @@ import { Bodega } from '../model/bodega';
 import { Categoria } from '../model/categoria';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import swal from 'sweetalert2';
 
 import * as mapboxgl from 'mapbox-gl';
 
@@ -109,19 +110,22 @@ export class RegistarBodegaComponent implements OnInit {
   }
 
   onFileSelected(event){
-    
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.fileName = event.target.files[0].name;
-      this.selectedFile = event.target.files[0];
-    }
-
-    if(this.fileName.length < 30){
-      this.label_imagen = this.fileName;
-    }else{
-      if(this.fileName.length > 50){
-        this.label_imagen = "Imagen seleccionada"
+    var file = event.target.files[0];
+    console.log(file)
+    if (file.size < 1048576) {
+      this.fileName = file.name;
+      this.selectedFile = file;
+      if(this.fileName.length < 30){
+        this.label_imagen = this.fileName;
+      }else{
+        if(this.fileName.length > 50){
+          this.label_imagen = "Imagen seleccionada"
+        }
       }
+    }else{
+      file = []
+      this.label_imagen ="Imagen muy grande";
+      swal.fire('Error', `Imagen muy grande!`, 'error');
     }
   }
 }

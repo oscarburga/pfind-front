@@ -13,6 +13,7 @@ import swal from 'sweetalert2';
   templateUrl: './registrar-bodega-producto.component.html',
   styleUrls: ['./registrar-bodega-producto.component.css']
 })
+
 export class RegistrarBodegaProductoComponent implements OnInit {
   bodegaProducto: BodegaProducto;
   bid: number;

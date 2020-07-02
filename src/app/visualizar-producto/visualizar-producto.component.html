@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row" style="margin-bottom: 5%;">
         <div class="col-4">
-            <img class="pimagen" src="{{bp.producto.imagenprin}}" alt="Imagen Producto">
+            <img class="pimagen" src="data:image/jpeg;base64,{{bp.imagen}}" alt="Imagen Producto">
         </div>
         <div class="col-3">
             <div class="info">
@@ -9,7 +9,6 @@
                     <label class="pnombre">{{bp.producto.nombre}}</label>
                 </div>
                 <div class="row">
-
                     <label class="pprecio">S/.{{bp.precio}}</label>
 
                     <div>
@@ -78,7 +77,7 @@
             </div>
         </div>
         <div class="col">
-            <label>Aquí debería estar la imagende la bodega</label>
+            <img src="data:image/jpeg;base64,{{bp.bodega.imagen}}" alt="">
         </div>
     </div>
 </div>

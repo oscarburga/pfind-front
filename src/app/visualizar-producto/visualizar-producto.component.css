@@ -19,8 +19,8 @@
 }
 
 .pimagen {
-    width: 90%;
-    height: 90%;
+    max-width: 300px;
+    max-height: 300px;
     -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
 }

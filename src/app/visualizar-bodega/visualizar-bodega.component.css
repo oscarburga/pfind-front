@@ -24,6 +24,10 @@
     background: #f16a78;
 }
 
+.container{
+    padding-top: 10rem;
+}
+
 #mapa {
     width: 100%;
     height: 15vw;

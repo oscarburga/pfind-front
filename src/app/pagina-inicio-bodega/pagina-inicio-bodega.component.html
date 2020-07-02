@@ -6,7 +6,7 @@
     </div>
     <div class="row" style="margin-bottom: 5%;">
         <div class="col-4">
-            <img class="bimagen" src="https://c.tfstatic.com/w_656,h_368,c_fill,g_auto:subject,q_auto,f_auto/restaurant_photos/187/341187/source/bodega-64-terrasse-a264c.jpg" alt="Imagen Producto">
+            <img class="bimagen" src="data:image/jpeg;base64,{{bodega.imagen}}" alt="Imagen Producto">
         </div>
         <div class="col" id="info">
             <div class="row">
@@ -42,7 +42,6 @@
             <div class="row">
                 <div class="resenas">
                     <div *ngFor="let p of bodega.resena">
-
                         <div class="row" style="margin-left: 5%;">
                             <label class="cnombre"> {{p.cliente.nombre}} {{p.cliente.apellido}}</label>
                         </div>

@@ -15,5 +15,5 @@ export class Bodega{
     bodega_categoria: BodegaCategoria[];
     productos: BodegaProducto[];
     resena: Resena[];
-    imagen:any
+    imagen:ImageBitmap;
 }

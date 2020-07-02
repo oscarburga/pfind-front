@@ -8,6 +8,7 @@ import { BodegaProducto } from './model/bodega-producto';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 import { Resena } from './model/resena' ;
 import { R3ResolvedDependencyType } from '@angular/compiler';
+import { isUndefined, isNull } from 'util';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +22,9 @@ export class BodegaService {
   retrievedImage: any;
   base64Data: any;
   dataBusqueda: any;
+  data_original: any;
+  data_porRango: any;
+   
    
 //######## USANDO ACTUALMENTE ###############################################################
   registrarBodega(bodega:Bodega){
@@ -51,18 +55,50 @@ export class BodegaService {
  
   obtenerBodegaProductoNombre(nombre: string){
     return this.http.get(this.urlBase + "/Bodega_Producto_Nombre/" + nombre).subscribe(
-      data => this.dataBusqueda = data
+      data => {
+        this.dataBusqueda = data;
+        this.data_original = data;
+      }
     )
   }
 
   buscarCategoria(id:number){
     return this.http.get(this.urlBase + "/producto/buscarBPCtg/" + id).subscribe(
-      data => this.dataBusqueda  = data
+      data => {
+        this.dataBusqueda  = data;
+        this.data_original = data;
+      }
     )
   }
 
+
   descargarData(){
     return this.dataBusqueda;
+  }
+  
+  buscarPorRango(min:number, max:number) {
+    let t1 = ""
+    let t2 = ""
+    if ((!isUndefined(min)) && (!isNull(min))) t1 = min.toString();
+    if ((!isUndefined(max)) && (!isNull(max))) t2 = max.toString();
+    return this.http.get(this.urlBase + "/producto/Rango/p_min=" + min + "/p_max=" + max).subscribe(data=> {
+      this.data_porRango = data;
+      this.dataBusqueda = this.intersecarListas(this.data_original, this.data_porRango);
+    });
+  }
+
+  intersecarListas(A:BodegaProducto[], B:BodegaProducto[]): BodegaProducto[] {
+    let ret: BodegaProducto[] = [];
+    for(let i = 0; i< A.length; i+=1){
+      let contained = false;
+      for(let j = 0; j<B.length; j+=1){
+        if (B[j].codigo == A[i].codigo) contained = true;
+        if (contained) j = B.length;
+      }
+      if (contained) ret.push(A[i]);
+    }
+    console.log(ret);
+    return ret;
   }
 
   obtenerBodegaProductoId(id:number) : Observable<any>{

@@ -40,15 +40,23 @@
 
     <div class="row" style="margin-top: 5%;">
         <div class="col">
-            <label>calificacion general de la bodega</label>
-            <div class="row" style="margin-left: 5%;">
-                <div *ngFor="let number of [1,2,3,4,5]">
-                    <div *ngIf="number <= tresena; else elseBlock">
-                        <label id="es" style="color: goldenrod;">★</label>
+            <div class="row">
+                <label class="caligt">Calificacion general</label>
+            </div>
+            <div class="row">
+                <label class="calig">{{tresena}}</label>
+            </div>
+            <div class="row">
+
+                <div class="row" style="margin-left: 5%; font-size: 2vw; margin-left: 8%;">
+                    <div *ngFor="let number of [1,2,3,4,5]">
+                        <div *ngIf="number <= tresena; else elseBlock">
+                            <label id="es" style="color: goldenrod;">★</label>
+                        </div>
+                        <ng-template #elseBlock>
+                            <label id="es" style="color: grey;">★</label>
+                        </ng-template>
                     </div>
-                    <ng-template #elseBlock>
-                        <label id="es" style="color: grey;">★</label>
-                    </ng-template>
                 </div>
             </div>
         </div>

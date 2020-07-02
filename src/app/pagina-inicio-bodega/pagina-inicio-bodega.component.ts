@@ -33,7 +33,13 @@ export class PaginaInicioBodegaComponent implements OnInit {
   imagen: String;
   direccion: String;
   aforo: number;
-  constructor(private bodegaService: BodegaService, private _ActivatedRoute : ActivatedRoute, private authService : AuthService, private router: Router) { }
+  resena: Resena[];
+  constructor(
+    private bodegaService: BodegaService, 
+    private _ActivatedRoute : ActivatedRoute, 
+    private authService : AuthService, 
+    private router: Router
+    ) { }
 
   private agregarAuthorizationHeader() {
     let token = this.authService.token;
@@ -70,6 +76,7 @@ export class PaginaInicioBodegaComponent implements OnInit {
         this.imagen = "data:image/jpeg;base64," + this.bodega.imagen;
         this.direccion = this.bodega.direccion;
         this.aforo = this.bodega.aforo;
+        this.resena = this.bodega.resena;
         this.cambioDireccion(this.bodega.direccion)
       }
       );

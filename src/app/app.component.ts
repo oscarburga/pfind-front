@@ -39,12 +39,12 @@ export class AppComponent {
     //Si es bodega
     console.log("Estoy recargando")
       if(this.isBodega()){ 
-        this.router.navigate[("/inicioBodega")]
         this.bodegaServicio.buscarBodega(this.authService.usuario.idEntity).subscribe(
           data => {
            this.bodega = data; 
            this.Nombre = this.bodega.nombre;
            this.perfil = "data:image/jpeg;base64," + this.bodega.imagen;
+           this.router.navigate(["/inicioBodega"])
           }
         )
       }else{

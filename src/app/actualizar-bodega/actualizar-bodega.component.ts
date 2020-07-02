@@ -5,6 +5,7 @@ import { Bodega } from '../model/bodega';
 import { Categoria } from '../model/categoria';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -17,19 +18,37 @@ export class ActualizarBodegaComponent implements OnInit {
   bID : number;
   bodega: Bodega;
   cat: Observable<Categoria[]>;
+  fileName:String;
+  selectedFile: File;
+  label_imagen: String;
 
-  constructor(private bodegaService:BodegaService, private authService:AuthService, private router:Router) { }
+  constructor(
+    private bodegaService:BodegaService, 
+    private authService:AuthService, 
+    private router:Router,
+    private appComponent: AppComponent
+    ) { }
 
   ngOnInit(): void {
     this.getCategoria();
-    this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(data => this.bodega = data);
+    this.bodegaService.buscarBodega(this.authService.usuario.idEntity).subscribe(data => {
+      this.bodega = data;
+      this.label_imagen = "Selecciona tu imagen de perfil";
+    });
   }
 
   save(){
-    console.log(this.bodega);
     this.bodega.productos = null;
     this.bodegaService.actualizarBodega(this.bodega).subscribe(
-      data => this.router.navigate(["/inicioBodega"])
+     data => {
+       if(this.selectedFile != undefined){
+      const uploadImageData = new FormData();
+      console.log(this.selectedFile);
+      uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+      this.bodegaService.subirImagen(uploadImageData);
+     }
+       this.appComponent.ngOnInit();
+     }
     );
   }
 
@@ -39,4 +58,19 @@ export class ActualizarBodegaComponent implements OnInit {
     );
   }
 
+  onFileSelected(event){
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.fileName = event.target.files[0].name;
+      this.selectedFile = event.target.files[0];
+    }
+
+    if(this.fileName.length < 30){
+      this.label_imagen = "Imagen seleccionada: " + this.fileName;
+    }else{
+      if(this.fileName.length > 50){
+        this.label_imagen = "Imagen seleccionada"
+      }
+    }
+  }
 }

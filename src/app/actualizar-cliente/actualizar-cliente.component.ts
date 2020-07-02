@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Cliente } from '../model/cliente';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-actualizar-cliente',
@@ -13,14 +14,19 @@ import { AuthService } from '../auth.service';
 export class ActualizarClienteComponent implements OnInit {
   cliente: Cliente = new Cliente();
   fileName: String;
-  label_imagen : String = "Selecciona tu imágen de perfil";
+  label_imagen : String = "Selecciona tu imagen de perfil";
   selectedFile: File;
   retrievedImage: any;
   base64Data: any;
   retrieveResonse: any;
   ok: Boolean = false;
 
-  constructor(private clienteService: ClienteService, private authService: AuthService, private router:Router) { }
+  constructor(
+    private clienteService: ClienteService, 
+    private authService: AuthService, 
+    private router:Router,
+    private appComponent: AppComponent
+    ) { }
 
   ngOnInit(): void {
     this.clienteService.buscarCliente(this.authService.usuario.idEntity).subscribe(data=>this.cliente = data);
@@ -29,19 +35,20 @@ export class ActualizarClienteComponent implements OnInit {
   save(){
     this.cliente.distrito = "Rimac";
     this.clienteService.actualizarCliente(this.cliente).subscribe(data => {
-      const uploadImageData = new FormData();
-      console.log(this.selectedFile);
-      uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-      this.clienteService.subirImagen(this.authService.usuario.idEntity, uploadImageData);
-      this.router.navigate(["/loginCliente"]);
+      if(this.selectedFile != undefined){
+        const uploadImageData = new FormData();
+        console.log(this.selectedFile);
+        uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+        this.clienteService.subirImagen(this.authService.usuario.idEntity, uploadImageData);
+      }
+      this.appComponent.ngOnInit();
     });
   }
   onFileSelected(event){
-    
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.fileName = event.target.files[0].name;
-      this.selectedFile = event.target.files[0];
+      this.fileName = file.name;
+      this.selectedFile = file;
     }
 
     if(this.fileName.length < 30){

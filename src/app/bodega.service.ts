@@ -21,9 +21,9 @@ export class BodegaService {
   retrievedResponse: any;
   retrievedImage: any;
   base64Data: any;
+  nombre:string;
+  cat_id:number;
   dataBusqueda: any;
-  data_original: any;
-  data_porRango: any;
    
    
 //######## USANDO ACTUALMENTE ###############################################################
@@ -54,51 +54,39 @@ export class BodegaService {
   }
  
   obtenerBodegaProductoNombre(nombre: string){
-    return this.http.get(this.urlBase + "/Bodega_Producto_Nombre/" + nombre).subscribe(
-      data => {
-        this.dataBusqueda = data;
-        this.data_original = data;
-      }
-    )
+    this.nombre = nombre;
+    return this.http.get(this.urlBase + "/Bodega_Producto_Nombre/" + nombre).subscribe(data => this.dataBusqueda = data);
+  }
+  
+//"/producto/busqueda/cat_id={cid}/nom={nombre}/marc={marca}/bod={bodega}/min={pmin}/max={pmax}/searchbar={sbar}"
+  buscarCompleto(cid:number, marc:string, bod:string, min:number, max:number, searchbar:number){
+    let t1 = "/cat_id="
+    let t2 = "/nom="
+    let t3 = "/marc="
+    let t4 = "/bod="
+    let t5 = "/min="
+    let t6 = "/max="
+    let t7 = "/searchbar="
+    let urlfinal = this.urlBase + "/producto/busqueda";
+    if (cid == null || cid == undefined) cid = this.cat_id;
+    t1 += cid.toString();
+    if (this.nombre != null && this.nombre != undefined) t2+= this.nombre;
+    if (marc != null && marc != undefined) t3 += marc;
+    if (bod != null && bod != undefined) t4 += bod;
+    if (min != null && min != undefined) t5 += min.toString();
+    if (max != null && max != undefined) t6 += max.toString();
+    if (searchbar != null && searchbar != undefined) t7 += searchbar.toString();
+    urlfinal += t1+t2+t3+t4+t5+t6+t7;
+    this.http.get(urlfinal).subscribe(data=> this.dataBusqueda = data);
   }
 
   buscarCategoria(id:number){
-    return this.http.get(this.urlBase + "/producto/buscarBPCtg/" + id).subscribe(
-      data => {
-        this.dataBusqueda  = data;
-        this.data_original = data;
-      }
-    )
+    this.cat_id = id;
+    return this.http.get(this.urlBase + "/producto/buscarBPCtg/" + id).subscribe(data => this.dataBusqueda = data);
   }
-
 
   descargarData(){
     return this.dataBusqueda;
-  }
-  
-  buscarPorRango(min:number, max:number) {
-    let t1 = ""
-    let t2 = ""
-    if ((!isUndefined(min)) && (!isNull(min))) t1 = min.toString();
-    if ((!isUndefined(max)) && (!isNull(max))) t2 = max.toString();
-    return this.http.get(this.urlBase + "/producto/Rango/p_min=" + t1 + "/p_max=" + t2).subscribe(data=> {
-      this.data_porRango = data;
-      this.dataBusqueda = this.intersecarListas(this.data_original, this.data_porRango);
-    });
-  }
-
-  intersecarListas(A:BodegaProducto[], B:BodegaProducto[]): BodegaProducto[] {
-    let ret: BodegaProducto[] = [];
-    for(let i = 0; i< A.length; i+=1){
-      let contained = false;
-      for(let j = 0; j<B.length; j+=1){
-        if (B[j].codigo == A[i].codigo) contained = true;
-        if (contained) j = B.length;
-      }
-      if (contained) ret.push(A[i]);
-    }
-    console.log(ret);
-    return ret;
   }
 
   obtenerBodegaProductoId(id:number) : Observable<any>{

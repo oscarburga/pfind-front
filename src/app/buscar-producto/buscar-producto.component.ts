@@ -52,8 +52,8 @@ export class BuscarProductoComponent implements OnInit {
     return this.bodegaService.getImageProucto(bp)
   }
 
-  actualizarRango(){
-      this.bodegaService.buscarPorRango(this.pmin, this.pmax);
+  actualizarDatos(){
+    return this.bodegaService.buscarCompleto(null, this.nombre_marca, this.nombre_bodega, this.pmin, this.pmax, 0);
   }
 //######## USANDO ACTUALMENTE ###############################################################
 

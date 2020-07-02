@@ -14,8 +14,12 @@
                 <label class="lblranprecios">Marca</label>
                 <input type="text" style="width: 200px; height: 30px" [(ngModel)]="nombre_marca">
             </div>
+            <div class="bodega">
+                <label class="lblranprecios">Bodega</label>
+                <input type="text" style="width: 200px; height: 30px" [(ngModel)]="nombre_bodega">
+            </div>
             <div class="form-group">
-                <button type="submit" (click)=actualizarRango() class="btn btn-info">Actualizar</button>
+                <button type="submit" (click)=actualizarDatos() class="btn btn-info">Actualizar</button>
             </div>
         </div>
         <div class="container">

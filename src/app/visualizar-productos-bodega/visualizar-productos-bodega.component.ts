@@ -19,5 +19,11 @@ export class VisualizarProductosBodegaComponent implements OnInit {
     } );
 
   }
-  
+  quitar(id: number){
+    this.bodegaService.quitar(id).subscribe(data =>{
+      this.ngOnInit();
+    });
+    
+}
+
 }

@@ -59,24 +59,16 @@ export class ClienteService {
       );
   }
 
-  listarProductos(bp:number) : Observable<any>{
-    return this.http.post(this.urlBase + '/agregar/' + this.Cliente_id + '/' + bp, { observe: 'response' });
-    }
-
-  enlistarProductos(): Observable<any>{
-    return this.http.get(this.urlBase + "/" + this.Cliente_id + "/lista").pipe(
-      map(response => response as Listado[])
-    )
+  registrarLP(cid:number, bpid:number) {
+    return this.http.post(this.urlBase + "/registrarLP/cliente_id="+cid+"/bp_id="+bpid, {headers: this.httpHeaders});
   }
 
-  enlistarProductos_logeado(id:number): Observable<any>{
-    return this.http.get(this.urlBase + "/" + id.toString() + "/lista").pipe(
-      map(response => response as Listado[])
-    )
+  eliminarLP(lpid:number){
+    return this.http.delete(this.urlBase + "/quitar/" + lpid, {headers:this.httpHeaders});
   }
-
-  obtenerPrecio() : Observable<any>{
-    return this.http.get(this.urlBase + '/costo/' + this.Cliente_id)
+  
+  obtenerLP(cid:number) : Observable<any> {
+    return this.http.get(this.urlBase + "/listar/" + cid);
   }
   
 }

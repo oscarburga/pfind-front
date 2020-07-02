@@ -1,38 +1,49 @@
 <div class="container">
-    <div class="titulo">
-        <h1><i class="fa fa-heart" aria-hidden="true" style="color: red;"></i> LISTA DE COMPRAS</h1>
+    <div class="row">
+        <div class="titulo">
+            <h1><i class="fa fa-heart" aria-hidden="true" style="color:#f16a78; "></i> LISTA DE COMPRAS</h1>
+        </div>
+
     </div>
-    <div class="lista">
-        <div class="contenedor-lista">
-            <ul *ngFor="let bp of lista_Productos">
+    <div class="row">
+        <div class="listado">
+            <div *ngFor="let p of listado_producto">
                 <div class="row">
-                    <div class="estilo-producto">
-                        <div class="col">
-                            <div class="row">
-                                <h5>{{bp.bodega_producto.producto.nombre}}</h5>
+                    <div class="col">
+                        <div class="row" style="margin-left: 3%;">
+                            <label class="pnombre" style="color:#f16a78; font-size: 1.5vw;" routerLink="/busqueda/Bodega/Producto/{{p.bodega_producto.codigo}}">
+                                    {{p.bodega_producto.producto.nombre}}</label>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <img class="pimagen" src="data:image/jpeg;base64,{{p.bodega_producto.imagen}}" alt="f">
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <img src="https://cdn.discordapp.com/attachments/700237020278030396/715743103738445824/fce5d0_7e3539aafb40477284039ec77340dc0emv2.png"
-                                        alt="Producto" class="imagen-producto">
+                            <div class="col">
+                                <label class="pprecio">S/. {{p.bodega_producto.precio}}</label>
+                            </div>
+                            <div class="col" id="caja_eliminar">
+                                <div class="row">
+                                    <label class="bnombre">{{p.bodega_producto.bodega.nombre}}</label>
                                 </div>
-                                <div class="col">
-                                    <h6>Descripción</h6>
-                                    <p>{{bp.bodega_producto.descripcion}}</p>
-                                    <div class="col" id="caja_agregar">
-                                        <a (click)="eliminardeLista(bp.codigo)" id="eliminar_de_lista"
-                                            style="color:{{corazoncss}}"><i class={{corazon}} aria-hidden="true"></i></a>
-                                    </div>
+                                <div class="row">
+                                    <label class="bdireccion">{{p.bodega_producto.bodega.direccion}}</label>
                                 </div>
+
+                            </div>
+                            <div class="col" id="caja_eliminar">
+                                <a id="quitar_lista" (click)=eliminarLP() style="color:{{corazoncss}}"><i class={{corazon}} aria-hidden="true"></i></a>
                             </div>
                         </div>
-                        <div class="col">{{bp.bodega_producto.bodega.nombre}}</div>
+
+                        <hr style="border-color: #f16a78; width: 90%;border-width: 2px;border-radius: 5px;">
+
                     </div>
+
                 </div>
-            </ul>
+            </div>
         </div>
-        <div class="precio">
-            <h4>Costo Total: {{costoTotal}}</h4>
-        </div>
+    </div>
+    <div class="row">
+        <label>Costo Total: {{costo_total}}</label>
     </div>
 </div>

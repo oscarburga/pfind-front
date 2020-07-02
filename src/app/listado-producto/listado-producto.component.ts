@@ -3,7 +3,7 @@ import { Producto} from '../model/producto';
 import { BodegaProducto } from 'src/app/model/bodega-producto'
 import { ClienteService } from 'src/app/cliente.service'
 import { Observable } from 'rxjs';
-import { Listado } from 'src/app/model/listado'
+import { ListadoProducto} from '../model/listado-producto'
 import { AuthService } from '../auth.service';
 
 
@@ -14,35 +14,36 @@ import { AuthService } from '../auth.service';
 })
 export class ListadoProductoComponent implements OnInit {
   costoTotal : number;
-  lista_Productos :Observable<Listado[]>
-  array: Listado[]
+  listado_producto : ListadoProducto[];
   corazon: string = "fa fa-heart-o";
   corazoncss: string = "black";
+  lp_eliminar: number;
+  costo_total: number;
 
   constructor(private clienteService:ClienteService, private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.reloadData();
-    this.loadPrecio()
-    console.log(this.costoTotal)
+    this.clienteService.obtenerLP(this.authService.usuario.idEntity).subscribe(data =>{ 
+      this.listado_producto = data;
+      this.costo_total = 0;
+      for(let i = 0; i<this.listado_producto.length; i++){
+        console.log(i);
+        this.costo_total += this.listado_producto[i].bodega_producto.precio;
+      }
+
+    });
   }
 
-  reloadData(){
-    console.log("RELOAD!")
-    this.clienteService.enlistarProductos_logeado(this.authService.usuario.idEntity).subscribe(
-      data => this.lista_Productos = data
-    )
-  }
-/////////////
-eliminardeLista(bt: number){
-    this.corazon ="fa fa-heart";
-    this.corazoncss = "red";
-    //this.clienteService.eliminarproductobodega(bt).subscribe(
-   //   data=> console.log("Agregado Exitosamente")
-   // );
+  eliminarLP(){
+    if (this.lp_eliminar == null || this.lp_eliminar == undefined) return;
+    this.clienteService.eliminarLP(this.lp_eliminar);
+    this.lp_eliminar = null;
   }
 
-  loadPrecio(){
-    this.clienteService.obtenerPrecio().subscribe(data => this.costoTotal = data);
+  costo(): any{
+    this.costo_total = 0;
+    console.log("quetal")
+    return this.costo_total;
   }
+
 }

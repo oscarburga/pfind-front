@@ -4,10 +4,8 @@
             <div class="precio">
                 <label class="lblranprecios">Rango de Precios</label>
                 <div class="rangoprecios">
-                    <input type="number" class="minimo" style="width: 80px; height: 30px" [(ngModel)]="pmin"
-                        placeholder="  Desde">
-                    <input type="number" class="maximo" style="width: 80px; height: 30px" [(ngModel)]="pmax"
-                        placeholder="  Hasta">
+                    <input type="number" class="minimo" style="width: 80px; height: 30px" [(ngModel)]="pmin" placeholder="  Desde">
+                    <input type="number" class="maximo" style="width: 80px; height: 30px" [(ngModel)]="pmax" placeholder="  Hasta">
                 </div>
             </div>
             <div class="marca">
@@ -28,8 +26,7 @@
                     <div class="col">
                         <div class="product">
                             <div>
-                                <label class="pnombre" routerLink="/busqueda/Bodega/Producto/{{bp.codigo}}"
-                                    id="cursor_producto">
+                                <label class="pnombre" routerLink="/busqueda/Bodega/Producto/{{bp.codigo}}" id="cursor_producto">
                                     {{bp.producto.nombre}}</label>
                             </div>
                             <div class="row" id="cursor_producto">
@@ -45,8 +42,7 @@
                                     <label class="pprecio">S/. {{bp.precio}}</label>
                                 </div>
                                 <div class="col" id="caja_agregar">
-                                    <a (click)="agregarLista(bp.codigo)" id="agregar_lista"
-                                        style="color:{{corazoncss}}"><i class={{corazon}} aria-hidden="true"></i></a>
+                                    <a id="agregar_lista" (click)=registrarLP(bp.codigo) style="color:{{corazoncss}}"><i class={{corazon}} aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>

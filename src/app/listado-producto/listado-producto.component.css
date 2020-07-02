@@ -15,6 +15,20 @@
     margin-left: 2%;
 }
 
+.botonbodega {
+    width: 80%;
+    height: 6vh;
+    background-color: #f16a78;
+    margin: 4%;
+    border: 0px;
+    border-radius: 15px;
+    font-size: 1vw;
+    color: white;
+    font-weight: 900;
+    -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+}
+
 .pimagen {
     width: 8vw;
     height: 8vw;

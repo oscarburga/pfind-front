@@ -86,4 +86,7 @@ export class VisualizarBodegaComponent implements OnInit {
     console.log("mi cali es " + this.tresena);
     return this.tresena;
   } 
+  isCliente(){
+    return this.authService.hasRole("ROLE_CLIENTE");
+  }
 }

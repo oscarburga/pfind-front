@@ -54,7 +54,7 @@
         </div>
     </div>
     <hr style="border-color:#f16a78; width: 90%;border-width: 3px;border-radius: 25px;">
-    <div class="row" style="margin-top: 5%;">
+    <div class="row"  style="margin-top: 5%;">
         <div class="col">
             <div class="row">
                 <label class="resenastitulo">Reseñas y comentarios de esta bodega</label>
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="row">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="botong">
+                <button type="button" *ngIf="isCliente()" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="botong">
                     Deja tus comentarios
                 </button>
             </div>

@@ -19,7 +19,7 @@ export class ListadoProductoComponent implements OnInit {
   corazoncss: string = "black";
   lp_eliminar: number;
   costo_total: number;
-
+  listadoP: ListadoProducto;
   constructor(private clienteService:ClienteService, private authService:AuthService) { }
 
   ngOnInit(): void {
@@ -34,10 +34,12 @@ export class ListadoProductoComponent implements OnInit {
     });
   }
 
-  eliminarLP(){
-    if (this.lp_eliminar == null || this.lp_eliminar == undefined) return;
-    this.clienteService.eliminarLP(this.lp_eliminar);
-    this.lp_eliminar = null;
+  eliminarLP(lp: ListadoProducto){
+      console.log(lp.codigo);
+      this.clienteService.eliminarLP(lp.codigo).subscribe(data =>{
+        this.ngOnInit();
+      });
+      
   }
 
   costo(): any{

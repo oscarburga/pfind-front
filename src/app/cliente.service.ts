@@ -70,5 +70,9 @@ export class ClienteService {
   obtenerLP(cid:number) : Observable<any> {
     return this.http.get(this.urlBase + "/listar/" + cid);
   }
-  
+  /*
+  obtenerLPP(cid:number, bpid:Number) : Observable<any>{
+    return this.http.get(this.urlBase + "buscarLP/cid=" + cid + "/bpid="+bpid);
+  }
+*/
 }

@@ -1,52 +1,18 @@
 <body>
     <div class="contenido">
         <div class="criterios">
-            <div class="ubicacion" role="search" style="width: 250px">
-                <input type="text" class="busubi" style="width: 210px; height: 30px" placeholder="  Introduce tu ubicación">
-                <div class="buttonubi">
-                    <button type="button" class="btn btn-primary btn-lg active" style="background-color:lightskyblue; border-color: lightskyblue; 
-                    width: 110px; height: 30px; font-size: x-small;font-weight: 900">Elige en el mapa</button>
-                    <button type="button" class="btn btn-default btn-lg active" style="background-color:rgb(112, 175, 214); border-color:rgb(112, 175, 214);
-                    width: 100px; height: 30px; color: white; font-size: x-small;font-weight: 900;">Mi
-                        ubicacion</button>
-                </div>
-            </div>
             <div class="precio">
                 <label class="lblranprecios">Rango de Precios</label>
                 <div class="rangoprecios">
-                    <input type="number" class="minimo" style="width: 80px; height: 30px" [(ngModel)]="pmin" placeholder="  Desde">
-                    <input type="number" class="maximo" style="width: 80px; height: 30px" [(ngModel)]="pmax" placeholder="  Hasta">
+                    <input type="number" class="minimo" style="width: 80px; height: 30px" [(ngModel)]="pmin"
+                        placeholder="  Desde">
+                    <input type="number" class="maximo" style="width: 80px; height: 30px" [(ngModel)]="pmax"
+                        placeholder="  Hasta">
                 </div>
             </div>
             <div class="marca">
                 <label class="lblranprecios">Marca</label>
                 <input type="text" style="width: 200px; height: 30px" [(ngModel)]="nombre_marca">
-            </div>
-            <div class="bodega">
-                <!-- Example single danger button -->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categorías
-                    </button>
-                    <div class="dropdown-menu">
-                        <ul class="drop-cat" *ngFor="let c of cat">
-                            <li><a class="dropdown-item" routerLink="/inicio">{{c.nombre}}</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!----
-                <table class="bodegas">
-                    <thead>
-                        <tr>
-                            <th>Bodega</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let p of filbodega">
-                            <th>{{p}}</th>
-                        </tr>
-                    </tbody>
-                </table>-->
             </div>
             <div class="form-group">
                 <button type="submit" (click)=actualizarRango() class="btn btn-info">Actualizar</button>
@@ -58,11 +24,12 @@
                     <div class="col">
                         <div class="product">
                             <div>
-                                <label class="pnombre" routerLink="/busqueda/Bodega/Producto/{{bp.codigo}}" id="cursor_producto">
+                                <label class="pnombre" routerLink="/busqueda/Bodega/Producto/{{bp.codigo}}"
+                                    id="cursor_producto">
                                     {{bp.producto.nombre}}</label>
                             </div>
                             <div class="row" id="cursor_producto">
-                                <img class="pimagen" [src]="obtenerImagen(bp)" alt="Imagen Producto">
+                                <img class="pimagen" src="data:image/jpeg;base64,{{bp.imagen}}" alt="Imagen Producto">
                             </div>
                             <div class="row">
                                 <label class="pbodega" routerLink="/bodega/{{bp.bodega.codigo}}" id="cursor_producto">
@@ -74,7 +41,8 @@
                                     <label class="pprecio">S/. {{bp.precio}}</label>
                                 </div>
                                 <div class="col" id="caja_agregar">
-                                    <a (click)="agregarLista(bp.codigo)" id="agregar_lista" style="color:{{corazoncss}}"><i class={{corazon}} aria-hidden="true"></i></a>
+                                    <a (click)="agregarLista(bp.codigo)" id="agregar_lista"
+                                        style="color:{{corazoncss}}"><i class={{corazon}} aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -85,58 +53,3 @@
 
         </div>
     </div>
-
-
-    <!--<div class="busqueda">
-       
-    </div>-->
-    <!--<div class="co">
-        <div class="card-header">Productos</div>
-        <div>
-            <input type="radio" [(ngModel)]="catg" value="0">
-            <label for="lblCat">Todas las categorías</label>
-        </div>
-        <div *ngFor="let c of cat">
-            <input type="radio" [(ngModel)]="catg" value="{{c.codigo}}">
-            <label for="lblCat">{{c.nombre}}</label>
-        </div>
-        <div class="card-body text-dark">
-            <h5 class="card-title">Listado de Productos</h5>
-        </div>
-        <section class="hola">
-            <label for="lblNombre">Nombre</label>
-            <input type="text" class="form-control" id="lblNombre" name="lblNombre" [(ngModel)]="nombre">
-        </section>
-        <table class="productos">
-            <thead>
-                <tr>
-                    <th>Bodega</th>
-                    <th>Precio</th>
-                    <th>Producto</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let p of bodegaProducto">
-                    <th>{{p.bodega.nombre}}</th>
-                    <th>{{p.precio}}</th>
-                    <th>{{p.producto.nombre}}</th>
-                </tr>
-            </tbody>
-        </table>
-        <div class="bodega">
-            <label class="lblranprecios">Bodega</label>
-            <table class="bodegas">
-                <thead>
-                    <tr>
-                        <th>Bodega</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let p of filbodega">
-                        <th>{{p}}</th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>-->
-</body>

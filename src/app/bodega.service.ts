@@ -149,6 +149,7 @@ export class BodegaService {
 getImageProucto(bp:BodegaProducto){
     this.http.get(this.urlBase + '/get_imagenProducto/'+ bp.bodega.codigo + "/"+ bp.codigo).subscribe(
         res => {
+          console.log("data:image/jpeg;base64,"+res)
           return 'data:image/jpeg;base64,' + res;
         }
       );

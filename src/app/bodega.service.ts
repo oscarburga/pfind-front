@@ -55,7 +55,7 @@ export class BodegaService {
  
   obtenerBodegaProductoNombre(nombre: string){
     this.nombre = nombre;
-    return this.http.get(this.urlBase + "/Bodega_Producto_Nombre/" + nombre).subscribe(data => this.dataBusqueda = data);
+    return this.http.get(this.urlBase + "/Bodega_Producto_Nombre/nom=" + nombre).subscribe(data => this.dataBusqueda = data);
   }
   
 //"/producto/busqueda/cat_id={cid}/nom={nombre}/marc={marca}/bod={bodega}/min={pmin}/max={pmax}/searchbar={sbar}"
@@ -68,14 +68,14 @@ export class BodegaService {
     let t6 = "/max="
     let t7 = "/searchbar="
     let urlfinal = this.urlBase + "/producto/busqueda";
-    if (cid == null || cid == undefined) cid = this.cat_id;
-    t1 += cid.toString();
-    if (this.nombre != null && this.nombre != undefined) t2+= this.nombre;
-    if (marc != null && marc != undefined) t3 += marc;
-    if (bod != null && bod != undefined) t4 += bod;
-    if (min != null && min != undefined) t5 += min.toString();
-    if (max != null && max != undefined) t6 += max.toString();
-    if (searchbar != null && searchbar != undefined) t7 += searchbar.toString();
+    if (isNull(cid) || isUndefined(cid)) cid = this.cat_id;
+    if (!isNull(cid) && !isUndefined(cid)) t1 += cid.toString();
+    if (!isNull(this.nombre) && !isUndefined(this.nombre)) t2+= this.nombre;
+    if (!isNull(marc) && !isUndefined(marc)) t3 += marc;
+    if (!isNull(bod) && !isUndefined(bod)) t4 += bod;
+    if (!isNull(min) && !isUndefined(min)) t5 += min;
+    if (!isNull(max) && !isUndefined(max)) t6 += max;
+    if (!isNull(searchbar) && !isUndefined(searchbar)) t7 += searchbar;
     urlfinal += t1+t2+t3+t4+t5+t6+t7;
     this.http.get(urlfinal).subscribe(data=> this.dataBusqueda = data);
   }

@@ -39,10 +39,10 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <label class="pprecio">S/. {{bp.precio}}</label>
+                                    <label class="pprecio">S/.{{bp.precio}}</label>
                                 </div>
-                                <div class="col" id="caja_agregar">
-                                    <a id="agregar_lista{{j}}" (click)=registrarLP(bp.codigo) style="color:{{corazoncss}}"><i class="{{corazon}}"aria-hidden="true"></i></a>
+                                <div *ngIf="isCliente()" div class="col" id="caja_agregar">
+                                    <button class="botonbodega" (click)=registrarLP(bp.codigo)>+</button>
                                 </div>
                             </div>
                         </div>

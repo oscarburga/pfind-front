@@ -14,6 +14,19 @@
     margin-right: 2%;
     
 }
+.botonbodega {
+    width: 50%;
+    height: 4vh;
+    background-color: #f16a78;
+    margin: 4%;
+    border: 0px;
+    border-radius: 15px;
+    font-size: 1vw;
+    color: white;
+    font-weight: 900;
+    -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+}
 
 .busubi{
     margin-left: 7%;
@@ -78,7 +91,7 @@
 }
 
 .pprecio{
-    font-size: x-large;
+    font-size: 1vw;
     font-weight: bold;
     padding-left: 10%;
     color: red;

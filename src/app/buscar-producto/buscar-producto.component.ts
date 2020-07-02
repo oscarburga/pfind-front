@@ -71,6 +71,9 @@ export class BuscarProductoComponent implements OnInit {
     }
   }
 
+  isCliente(){
+    return this.authService.hasRole("ROLE_CLIENTE");
+  }
   
   registrarLP(bpid: number){ 
     this.corazon ="fa fa-heart";

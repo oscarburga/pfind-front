@@ -149,5 +149,7 @@ getImageProucto(bp:BodegaProducto){
       map(response => response as BodegaProducto[])
     )
   }
-
+  quitar(id: number){
+    return this.http.delete(this.urlBase +"/quitar/" + id, {headers:this.httpHeaders});
+  }
 }

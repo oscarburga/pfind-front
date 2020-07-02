@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="titulo">
-            <h1><i class="fa fa-heart" aria-hidden="true" style="color:#f16a78; "></i> LISTA DE COMPRAS</h1>
+            <h1> LISTA DE PRODUCTOS</h1>
         </div>
     </div>
     <div class="row">
@@ -10,8 +10,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="row" style="margin-left: 3%;">
-                            <label class="pnombre" style="color:#f16a78; font-size: 1.5vw;"
-                                routerLink="/busqueda/Bodega/Producto/{{p.codigo}}">
+                            <label class="pnombre" style="color:#f16a78; font-size: 1.5vw;" routerLink="/busqueda/Bodega/Producto/{{p.codigo}}">
                                 {{p.producto.nombre}}</label>
                         </div>
                         <div class="row">
@@ -25,6 +24,9 @@
                                 <div class="row">
                                     <label class="bnombre">{{p.nombre}}</label>
                                 </div>
+                            </div>
+                            <div class="col">
+                                <button class="botonquitar" (click)="quitar(p.codigo)">Quitar</button>
                             </div>
                         </div>
                         <hr style="border-color: #f16a78; width: 90%;border-width: 2px;border-radius: 5px;">

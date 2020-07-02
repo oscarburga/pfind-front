@@ -62,7 +62,6 @@ export class BodegaService {
   }
 
   descargarData(){
-    console.log(this.dataBusqueda)
     return this.dataBusqueda;
   }
 
@@ -114,9 +113,7 @@ export class BodegaService {
 getImageProucto(bp:BodegaProducto){
     this.http.get(this.urlBase + '/get_imagenProducto/'+ bp.bodega.codigo + "/"+ bp.codigo).subscribe(
         res => {
-          this.retrievedResponse = res;
-          this.base64Data = this.retrievedResponse.imagen;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          return 'data:image/jpeg;base64,' + res;
         }
       );
   }

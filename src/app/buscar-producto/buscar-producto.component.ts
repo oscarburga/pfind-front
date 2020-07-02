@@ -47,6 +47,10 @@ export class BuscarProductoComponent implements OnInit {
   descargarData(){
     return this.bodegaService.descargarData();  
   }
+
+  obtenerImagen(bp:BodegaProducto){
+    return this.bodegaService.getImageProucto(bp)
+  }
 //######## USANDO ACTUALMENTE ###############################################################
 
  /* buscarPorNombre(){

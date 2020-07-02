@@ -62,7 +62,7 @@
                                     {{bp.producto.nombre}}</label>
                             </div>
                             <div class="row" id="cursor_producto">
-                                <img class="pimagen" [src]="bp.producto.imagenprin" alt="Imagen Producto">
+                                <img class="pimagen" [src]="obtenerImagen(bp)" alt="Imagen Producto">
                             </div>
                             <div class="row">
                                 <label class="pbodega" routerLink="/bodega/{{bp.bodega.codigo}}" id="cursor_producto">

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { BodegaService } from 'src/app/bodega.service';
+import { BodegaService } from 'src/app/service/bodega.service';
 import { Categoria } from 'src/app/model/categoria';
-import { ProductoService } from 'src/app/producto.service';
-import { ClienteService } from 'src/app/cliente.service';
-import { AuthService } from './auth.service';
+import { ProductoService } from 'src/app/service/producto.service';
+import { ClienteService } from 'src/app/service/cliente.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { Cliente } from './model/cliente';
 import { Bodega } from './model/bodega';
 
